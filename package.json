@@ -18,18 +18,17 @@
     "html-to-image": "^1.11.13",
     "musubii": "^8.6.0",
     "papaparse": "^5.5.3",
-    "preact": "^10.26.9",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-icons": "^5.5.0"
   },
   "devDependencies": {
-    "@types/node": "^24.0.4",
+    "@types/node": "^24.0.13",
     "@types/papaparse": "^5.3.16",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react-oxc": "^0.2.3",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "rolldown-vite": "^7.0.3",
+    "rolldown-vite": "^7.0.8",
     "typescript": "^5.8.3",
     "vite": "npm:rolldown-vite@latest",
     "vitest": "^3.2.4"
