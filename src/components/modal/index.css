@@ -175,6 +175,16 @@
   line-height: 1.5;
 }
 
+.modal-docs a {
+  text-decoration: underline;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .modal-docs a:hover {
+    text-decoration: none;
+  }
+}
+
 .modal-links {
   padding: 20px;
   background-color: var(--theme-bg-2);

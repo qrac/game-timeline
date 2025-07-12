@@ -241,7 +241,7 @@ function Info({
   closeModal: () => void
 }) {
   const readmeCsvUrl =
-    "https://raw.githubusercontent.com/qrac/game-timeline/main/README.md"
+    "https://github.com/qrac/game-timeline/blob/main/README.md"
   const linkList = [
     {
       title: "開発者",
@@ -283,7 +283,7 @@ function Info({
           <p>
             CSVの書き方は、GitHubの
             <a href={readmeCsvUrl}>README</a>
-            をご確認ください。
+            をご覧ください。
           </p>
           <p>
             ※外部通信は一切ありません。ブラウザリロードでデフォルトに戻ります。
