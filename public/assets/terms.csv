@@ -1,0 +1,81 @@
+id,name,label,color
+hardware,ハードウェア,HARDWARE
+software,ソフトウェア,SOFTWARE
+news,ニュース,NEWS
+
+home,据え置き機,HOME
+portable,携帯機,PORTABLE
+arcade,アーケード,ARCADE,#53a01f
+multi,マルチプラットフォーム,MULTI,#7846ad
+
+fc,ファミコン,FC,#a94454
+fcdc,ディスクシステム,FCDC,#a94454
+sfc,スーパーファミコン,SFC
+n64,NINTENDO 64,N64,#4b4a4a
+gc,ゲームキューブ,GC,#614ec0
+wii,Wii,Wii,#90939c
+wiiu,Wii U,Wii U,#0497be
+switch,Nintendo Switch,Switch,#ba343d
+gb,ゲームボーイ,GB,#827e84
+gba,ゲームボーイアドバンス,GBA,#3b4290
+nds,ニンテンドーDS,DS,#6c6d60
+3ds,ニンテンドー3DS,3DS,#c04a4c
+
+ps1,PlayStation,PS1,#838381
+ps2,PlayStation 2,PS2,#2a61a5
+ps3,PlayStation 3,PS3,#53545b
+ps4,PlayStation 4,PS4,#13469f
+ps5,PlayStation 5,PS5,#3d4350
+psp,PlayStation Portable,PSP,#53545b
+psvita,PlayStation Vita,PSVITA,#015FA5
+
+md,メガドライブ,MD
+ss,セガサターン,SS,#707177
+dc,ドリームキャスト,DC
+gg,ゲームギア,GG
+
+ng,NEOGEO,NG,#3b3b3b
+ngcd,NEOGEO CD,NGCD,#3b3b3b
+ngp,ネオジオポケット,NGP
+ngpc,ネオジオポケットカラー,NGPC
+
+xbox,Xbox,Xbox
+pce,PCエンジン,PCE
+pcfx,PC-FX,PC-FX
+ws,ワンダースワン,WS
+wsc,ワンダースワンカラー,WSC
+win,Windows,Win,#285778
+
+nintendo,任天堂,NINTENDO,#e70013
+sony,ソニー,SONY,#0070d1
+sega,セガ,SEGA,#0082c9
+snk,SNK,SNK,#008ed7
+microsoft,マイクロソフト,Microsoft
+nec,NEC,NEC
+3do,3DO,3DO
+bandai,バンダイ,BANDAI
+epoch,エポック社,EPOCH
+pokemon,ポケモン,Pokémon
+enix,エニックス,ENIX
+square,スクウェア,SQUARE
+square-enix,スクウェア・エニックス,SQUARE ENIX
+capcom,カプコン,CAPCOM
+adk,ADK,ADK
+namco,ナムコ,NAMCO
+taito,タイトー,TAITO
+tecmo,テクモ,TECMO
+arcsys,アークシステムワークス,ARCSYS
+
+japan,日本,JAPAN
+world,世界,WORLD
+toy,おもちゃ,TOY
+service,サービス,SERVICE
+digital,デジタル,DIGITAL
+music,音楽,MUSIC
+film,映画,FILM
+anime,アニメ,ANIME
+
+google,Google,Google
+amazon,Amazon,Amazon
+apple,Apple,Apple
+ghibli,スタジオジブリ,Studio Ghibli

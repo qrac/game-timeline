@@ -1,0 +1,10 @@
+name,date,category,tags,labels
+ファミリーコンピュータ,1983-07-15,hardware,"nintendo,home,fc"
+ファミリーコンピュータ ディスクシステム,1986-02-21,hardware,"nintendo,home,fc,fcdc"
+
+スーパーマリオブラザーズ,1985-09-13,software,"nintendo,action","fc"
+スーパーマリオブラザーズ2,1986-06-03,software,"nintendo,action","fcdc"
+
+ドラゴンクエスト,1986-05-27,software,"enix,rpg","fc"
+
+映画 AKIRA,1988-07-16,news,"film,japan"

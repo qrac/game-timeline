@@ -1,0 +1,35 @@
+@import "musubii/src/bases/theme/light.css";
+@import "musubii/src/bases/typo/font.css";
+@import "musubii/src/bases/base/reset.css";
+@import "musubii/src/bases/base/html.css";
+@import "musubii/src/elements/button/main.css";
+@import "musubii/src/elements/form/main.css";
+@import "musubii/src/elements/form/select.css";
+@import "musubii/src/elements/form/label.css";
+@import "musubii/src/elements/form/radio.css";
+@import "musubii/src/elements/form/checkbox.css";
+
+:root {
+  --pj-app-max-width: 600px;
+  --pj-scrollbar-width: 0px;
+  --pj-color-accent: #7c899c;
+  --theme-tx-2: #101010;
+  --theme-tx-3: #6a6a71;
+  --theme-bg-1: #fcfcfc;
+  --theme-bg-2: #f4f4f4;
+  --theme-bg-3: #ebebeb;
+  --theme-bd-1: #dbdbdd;
+  --theme-bd-2: #c6c6c8;
+}
+
+body {
+  background-color: var(--theme-bg-3);
+}
+
+.app-main {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
