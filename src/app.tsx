@@ -135,8 +135,9 @@ export default function App() {
 
   useEffect(() => {
     const setup = async () => {
-      const itemsData = await fetchFile("/assets/items.csv")
-      const termsData = await fetchFile("/assets/terms.csv")
+      const timestamp = Date.now()
+      const itemsData = await fetchFile(`/assets/items.csv?t=${timestamp}`)
+      const termsData = await fetchFile(`/assets/terms.csv?t=${timestamp}`)
       const parsedItems = parseCsv(itemsData)
       const parsedTerms = parseCsv(termsData)
 
