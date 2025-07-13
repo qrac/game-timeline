@@ -10,6 +10,7 @@ multi,マルチプラットフォーム,MULTI,#7846ad
 
 fc,ファミコン,FC,#a94454
 fcdc,ディスクシステム,FCDC,#a94454
+datach,データック,DATACH
 sfc,スーパーファミコン,SFC
 n64,NINTENDO 64,N64,#4b4a4a
 gc,ゲームキューブ,GC,#614ec0
@@ -17,6 +18,7 @@ wii,Wii,Wii,#90939c
 wiiu,Wii U,Wii U,#0497be
 switch,Nintendo Switch,Switch,#ba343d
 gb,ゲームボーイ,GB,#827e84
+gbc,ゲームボーイカラー,GBC,#725ACE
 gba,ゲームボーイアドバンス,GBA,#3b4290
 nds,ニンテンドーDS,DS,#6c6d60
 3ds,ニンテンドー3DS,3DS,#c04a4c
@@ -29,6 +31,7 @@ ps5,PlayStation 5,PS5,#3d4350
 psp,PlayStation Portable,PSP,#53545b
 psvita,PlayStation Vita,PSVITA,#015FA5
 
+msx2,MSX2,MSX2
 md,メガドライブ,MD
 ss,セガサターン,SS,#707177
 dc,ドリームキャスト,DC
@@ -45,26 +48,42 @@ pcfx,PC-FX,PC-FX
 ws,ワンダースワン,WS
 wsc,ワンダースワンカラー,WSC
 win,Windows,Win,#285778
+mac,Mac,Mac,#556AD0
+ios,iOS,iOS,#080808
+android,Android,Android,#57BD6B
+steam,Steam,Steam,#145F8F
 
 nintendo,任天堂,NINTENDO,#e70013
 sony,ソニー,SONY,#0070d1
 sega,セガ,SEGA,#0082c9
 snk,SNK,SNK,#008ed7
 microsoft,マイクロソフト,Microsoft
-nec,NEC,NEC
-3do,3DO,3DO
-bandai,バンダイ,BANDAI
-epoch,エポック社,EPOCH
 pokemon,ポケモン,Pokémon
+gamefreak,ゲームフリーク,Game Freak
+culturebrain,カルチャーブレイン,Culture Brain
 enix,エニックス,ENIX
 square,スクウェア,SQUARE
 square-enix,スクウェア・エニックス,SQUARE ENIX
+chunsoft,チュンソフト,CHUNSOFT
+spike-chunsoft,スパイク・チュンソフト,SPIKE CHUNSOFT
+atlus,アトラス,ATLUS
+bandai,バンダイ,BANDAI
+namco,ナムコ,NAMCO
+konami,コナミ,KONAMI
+epoch,エポック社,EPOCH
+hudson,ハドソン,Hudson
+sunsoft,サンソフト,SUNSOFT
+ascii,アスキー,ASCII
+takara,タカラ,Takara
+victor,ビクター,Victor
+mesaya,メサイヤ,MESAYA
 capcom,カプコン,CAPCOM
 adk,ADK,ADK
-namco,ナムコ,NAMCO
+arcsys,アークシステムワークス,ARCSYS
 taito,タイトー,TAITO
 tecmo,テクモ,TECMO
-arcsys,アークシステムワークス,ARCSYS
+nec,NEC,NEC
+3do,3DO,3DO
 
 japan,日本,JAPAN
 world,世界,WORLD
