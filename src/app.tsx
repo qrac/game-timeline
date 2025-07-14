@@ -89,14 +89,14 @@ export default function App() {
     const reader = new FileReader()
 
     reader.onload = (event) => {
-      const { termList, visibleLank } = options
+      const { termList } = options
       const itemsData = event.target?.result as string
       const parsedItems = parseCsv(itemsData)
 
       const newItemList = csvToItemList(parsedItems)
-      const categoryIds = getTermIds(newItemList, "category", visibleLank)
-      const tagIds = getTermIds(newItemList, "tags", visibleLank)
-      const labelIds = getTermIds(newItemList, "labels", visibleLank)
+      const categoryIds = getTermIds(newItemList, "category", 1)
+      const tagIds = getTermIds(newItemList, "tags", 1)
+      const labelIds = getTermIds(newItemList, "labels", 1)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
       const newCategoryList = resolveTermList(categoryIds, termList)
@@ -114,6 +114,7 @@ export default function App() {
         colorList: newColorList,
         startYear,
         endYear,
+        visibleLank: 1,
       })
     }
     reader.readAsText(file)
