@@ -19,6 +19,11 @@ import {
 import "./app.css"
 
 const defaultOptions: Options = {
+  itemList: [],
+  termList: [],
+  categoryList: [],
+  tagList: [],
+  colorList: [],
   startYear: 1983,
   endYear: 2025,
   omitEmptyYears: false,
@@ -26,19 +31,12 @@ const defaultOptions: Options = {
 }
 
 export default function App() {
-  const [itemList, setItemList] = useState<Item[]>([])
-  const [termList, setTermList] = useState<Term[]>([])
-  const [categoryList, setCategoryList] = useState<Term[]>([])
-  const [tagList, setTagList] = useState<Term[]>([])
-  const [colorList, setColorList] = useState<Color[]>([])
   const [options, setOptions] = useState<Options>(defaultOptions)
   const [scrollbarWidth, setScrollbarWidth] = useState(0)
-
   const [activeTimeline, setActiveTimeline] = useState(false)
   const [activeModal, setActiveModal] = useState<string | null>(null)
-
   //const [imageData, setImageData] = useState<string | null>(null)
-  const timelineRef = useRef<HTMLDivElement>(null)
+  //const timelineRef = useRef<HTMLDivElement>(null)
 
   /*const runGenerate = async () => {
     if (!timelineRef.current) return
@@ -60,33 +58,45 @@ export default function App() {
     setActiveModal(null)
   }
 
-  const changeCategoryList = (newCategoryList: Term[]) => {
-    setCategoryList(newCategoryList)
-  }
-  const changeTagList = (newTagList: Term[]) => {
-    setTagList(newTagList)
-  }
   const changeOptions = (newOptions: Partial<Options>) => {
     setOptions((prevOptions) => ({
       ...prevOptions,
       ...newOptions,
     }))
   }
+  const changeVisibleLank = (visibleLank: number) => {
+    const { itemList, termList } = options
 
-  const openItems = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const categoryIds = getTermIds(itemList, "category", visibleLank)
+    const tagIds = getTermIds(itemList, "tags", visibleLank)
+    const labelIds = getTermIds(itemList, "labels", visibleLank)
+    const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
+
+    const newCategoryList = resolveTermList(categoryIds, termList)
+    const newTagList = resolveTermList(tagLabelIds, termList)
+
+    changeOptions({
+      categoryList: newCategoryList,
+      tagList: newTagList,
+      visibleLank,
+    })
+  }
+
+  const uploadItems = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
 
     const reader = new FileReader()
 
     reader.onload = (event) => {
+      const { termList, visibleLank } = options
       const itemsData = event.target?.result as string
       const parsedItems = parseCsv(itemsData)
 
       const newItemList = csvToItemList(parsedItems)
-      const categoryIds = getTermIds(newItemList, "category")
-      const tagIds = getTermIds(newItemList, "tags")
-      const labelIds = getTermIds(newItemList, "labels")
+      const categoryIds = getTermIds(newItemList, "category", visibleLank)
+      const tagIds = getTermIds(newItemList, "tags", visibleLank)
+      const labelIds = getTermIds(newItemList, "labels", visibleLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
       const newCategoryList = resolveTermList(categoryIds, termList)
@@ -97,39 +107,45 @@ export default function App() {
       const startYear = Math.min(...yearList)
       const endYear = Math.max(...yearList)
 
-      setItemList(newItemList)
-      setCategoryList(newCategoryList)
-      setTagList(newTagList)
-      setColorList(newColorList)
-      changeOptions({ startYear, endYear })
+      changeOptions({
+        itemList: newItemList,
+        categoryList: newCategoryList,
+        tagList: newTagList,
+        colorList: newColorList,
+        startYear,
+        endYear,
+      })
     }
     reader.readAsText(file)
   }
 
-  const openTerms = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const uploadTerms = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
 
     const reader = new FileReader()
 
     reader.onload = (event) => {
+      const { itemList, visibleLank } = options
       const termsData = event.target?.result as string
       const parsedTerms = parseCsv(termsData)
 
       const newTermList = csvToTermList(parsedTerms)
-      const categoryIds = getTermIds(itemList, "category")
-      const tagIds = getTermIds(itemList, "tags")
-      const labelIds = getTermIds(itemList, "labels")
+      const categoryIds = getTermIds(itemList, "category", visibleLank)
+      const tagIds = getTermIds(itemList, "tags", visibleLank)
+      const labelIds = getTermIds(itemList, "labels", visibleLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
       const newCategoryList = resolveTermList(categoryIds, newTermList)
       const newTagList = resolveTermList(tagLabelIds, newTermList)
       const newColorList = getColorList(newTermList)
 
-      setTermList(newTermList)
-      setCategoryList(newCategoryList)
-      setTagList(newTagList)
-      setColorList(newColorList)
+      changeOptions({
+        termList: newTermList,
+        categoryList: newCategoryList,
+        tagList: newTagList,
+        colorList: newColorList,
+      })
     }
     reader.readAsText(file)
   }
@@ -137,34 +153,35 @@ export default function App() {
   useEffect(() => {
     const setup = async () => {
       const timestamp = Date.now()
+      const { visibleLank } = options
+
       const itemsData = await fetchFile(`/assets/items.csv?t=${timestamp}`)
       const termsData = await fetchFile(`/assets/terms.csv?t=${timestamp}`)
       const parsedItems = parseCsv(itemsData)
       const parsedTerms = parseCsv(termsData)
 
-      const defaultItemList = csvToItemList(parsedItems)
-      const defaultTermList = csvToTermList(parsedTerms)
-      const categoryIds = getTermIds(defaultItemList, "category")
-      const tagIds = getTermIds(defaultItemList, "tags")
-      const labelIds = getTermIds(defaultItemList, "labels")
+      const newItemList = csvToItemList(parsedItems)
+      const newTermList = csvToTermList(parsedTerms)
+      const categoryIds = getTermIds(newItemList, "category", visibleLank)
+      const tagIds = getTermIds(newItemList, "tags", visibleLank)
+      const labelIds = getTermIds(newItemList, "labels", visibleLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
-      const defaultCategoryList = resolveTermList(categoryIds, defaultTermList)
-      const defaultTagList = resolveTermList(tagLabelIds, defaultTermList)
-      const defaultColorList = getColorList(defaultTermList)
+      const newCategoryList = resolveTermList(categoryIds, newTermList)
+      const newTagList = resolveTermList(tagLabelIds, newTermList)
+      const newColorList = getColorList(newTermList)
 
-      const defaultYearList = getYearList(defaultItemList)
-      const defaultStartYear = Math.min(...defaultYearList)
-      const defaultEndYear = Math.max(...defaultYearList)
-
-      setItemList(defaultItemList)
-      setTermList(defaultTermList)
-      setCategoryList(defaultCategoryList)
-      setTagList(defaultTagList)
-      setColorList(defaultColorList)
+      const newYearList = getYearList(newItemList)
+      const newStartYear = Math.min(...newYearList)
+      const newEndYear = Math.max(...newYearList)
 
       changeOptions({
-        startYear: defaultStartYear,
-        endYear: defaultEndYear,
+        itemList: newItemList,
+        termList: newTermList,
+        categoryList: newCategoryList,
+        tagList: newTagList,
+        colorList: newColorList,
+        startYear: newStartYear,
+        endYear: newEndYear,
       })
       setScrollbarWidth(window.innerWidth - document.body.clientWidth)
       setActiveTimeline(true)
@@ -173,10 +190,7 @@ export default function App() {
   }, [])
   return (
     <div className="app">
-      <ComponentVariable
-        colorList={colorList}
-        scrollbarWidth={scrollbarWidth}
-      />
+      <ComponentVariable options={options} scrollbarWidth={scrollbarWidth} />
       <div className="app-main">
         <ComponentHeader
           //runGenerate={runGenerate}
@@ -184,27 +198,20 @@ export default function App() {
           runSetting={runSetting}
         />
         <ComponentTimeline
-          itemList={itemList}
-          categoryList={categoryList}
-          tagList={tagList}
           options={options}
           activeTimeline={activeTimeline}
-          ref={timelineRef}
+          //ref={timelineRef}
         />
       </div>
       <ComponentModal
         activeModal={activeModal}
         closeModal={closeModal}
-        itemList={itemList}
-        categoryList={categoryList}
-        tagList={tagList}
-        options={options}
         //imageData={imageData}
-        changeCategoryList={changeCategoryList}
-        changeTagList={changeTagList}
+        options={options}
         changeOptions={changeOptions}
-        openItems={openItems}
-        openTerms={openTerms}
+        changeVisibleLank={changeVisibleLank}
+        uploadItems={uploadItems}
+        uploadTerms={uploadTerms}
       />
     </div>
   )

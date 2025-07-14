@@ -127,10 +127,16 @@ export function csvToTermList(parsedCsv: { [key: string]: string }[]): Term[] {
     .filter((term) => term.id)
 }
 
-export function getTermIds(itemList: Item[], property: keyof Item): string[] {
+export function getTermIds(
+  itemList: Item[],
+  property: keyof Item,
+  visibleLank: number
+): string[] {
+  const filteredItemList = itemList.filter((item) => item.lank <= visibleLank)
+
   const values: string[] = []
 
-  for (const item of itemList) {
+  for (const item of filteredItemList) {
     const value = item[property]
 
     if (typeof value === "string") {

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import { clsx } from "clsx"
 import { FiX, FiDownload, FiUpload } from "react-icons/fi"
 
-import type { Item, Term, Options } from "../../types"
+import type { Term, Options } from "../../types"
 import { getYearList } from "../../utils"
 import "./index.css"
 
@@ -11,29 +11,21 @@ const sidebarIds = ["setting"]
 export function ComponentModal({
   activeModal,
   closeModal,
-  itemList,
-  categoryList,
-  tagList,
-  options,
   //imageData,
-  changeCategoryList,
-  changeTagList,
+  options,
   changeOptions,
-  openItems,
-  openTerms,
+  changeVisibleLank,
+  uploadItems,
+  uploadTerms,
 }: {
   activeModal: string | null
   closeModal: () => void
-  itemList: Item[]
-  categoryList: Term[]
-  tagList: Term[]
-  options: Options
   //imageData: string | null
-  changeCategoryList: (newCategoryList: Term[]) => void
-  changeTagList: (newTagList: Term[]) => void
+  options: Options
   changeOptions: (newOptions: Partial<Options>) => void
-  openItems: (e: React.ChangeEvent<HTMLInputElement>) => void
-  openTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
+  changeVisibleLank: (visibleLank: number) => void
+  uploadItems: (e: React.ChangeEvent<HTMLInputElement>) => void
+  uploadTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -56,16 +48,12 @@ export function ComponentModal({
       <Info activeModal={activeModal} closeModal={closeModal} />
       <Setting
         activeModal={activeModal}
-        itemList={itemList}
-        openItems={openItems}
-        openTerms={openTerms}
-        categoryList={categoryList}
-        changeCategoryList={changeCategoryList}
-        tagList={tagList}
-        changeTagList={changeTagList}
+        closeModal={closeModal}
         options={options}
         changeOptions={changeOptions}
-        closeModal={closeModal}
+        changeVisibleLank={changeVisibleLank}
+        uploadItems={uploadItems}
+        uploadTerms={uploadTerms}
       />
     </aside>
   )
@@ -306,38 +294,31 @@ function Info({
 function Setting({
   activeModal,
   closeModal,
-  itemList,
-  categoryList,
-  tagList,
   options,
-  changeCategoryList,
-  changeTagList,
   changeOptions,
-  openItems,
-  openTerms,
+  changeVisibleLank,
+  uploadItems,
+  uploadTerms,
 }: {
   activeModal: string | null
   closeModal: () => void
-  itemList: Item[]
-  categoryList: Term[]
-  tagList: Term[]
   options: Options
-  changeCategoryList: (newCategoryList: Term[]) => void
-  changeTagList: (newTagList: Term[]) => void
   changeOptions: (newOptions: Partial<Options>) => void
-  openItems: (e: React.ChangeEvent<HTMLInputElement>) => void
-  openTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
+  changeVisibleLank: (visibleLank: number) => void
+  uploadItems: (e: React.ChangeEvent<HTMLInputElement>) => void
+  uploadTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
+  const { itemList, categoryList, tagList } = options
   const yearList = getYearList(itemList)
 
-  const openItemsRef = useRef<HTMLInputElement>(null)
-  const openTermsRef = useRef<HTMLInputElement>(null)
+  const uploadItemsRef = useRef<HTMLInputElement>(null)
+  const uploadTermsRef = useRef<HTMLInputElement>(null)
 
-  const handleOpenItems = () => {
-    openItemsRef.current?.click()
+  const handleUploadItems = () => {
+    uploadItemsRef.current?.click()
   }
-  const handleOpenTerms = () => {
-    openTermsRef.current?.click()
+  const handleUploadTerms = () => {
+    uploadTermsRef.current?.click()
   }
   return (
     <Container modalId="setting" activeModal={activeModal}>
@@ -376,7 +357,7 @@ function Setting({
             <Check
               checked={options.visibleLank >= 2 ? true : false}
               onChange={(e) => {
-                changeOptions({ visibleLank: e.target.checked ? 2 : 1 })
+                changeVisibleLank(e.target.checked ? 2 : 1)
               }}
               text="細かいデータまで表示"
             />
@@ -388,11 +369,11 @@ function Setting({
               <Tagcloud
                 list={categoryList}
                 onToggle={(id) => {
-                  changeCategoryList(
-                    categoryList.map((term) =>
+                  changeOptions({
+                    categoryList: categoryList.map((term) =>
                       term.id === id ? { ...term, filter: !term.filter } : term
-                    )
-                  )
+                    ),
+                  })
                 }}
               />
             </div>
@@ -404,11 +385,11 @@ function Setting({
               <Tagcloud
                 list={tagList}
                 onToggle={(id) => {
-                  changeTagList(
-                    tagList.map((term) =>
+                  changeOptions({
+                    tagList: tagList.map((term) =>
                       term.id === id ? { ...term, filter: !term.filter } : term
-                    )
-                  )
+                    ),
+                  })
                 }}
               />
             </div>
@@ -427,7 +408,7 @@ function Setting({
               <button
                 type="button"
                 className="button is-plain is-primary"
-                onClick={handleOpenItems}
+                onClick={handleUploadItems}
               >
                 <FiUpload />
                 <span className="text">ブラウザで開く</span>
@@ -436,8 +417,8 @@ function Setting({
                 type="file"
                 accept=".csv"
                 style={{ display: "none" }}
-                ref={openItemsRef}
-                onChange={openItems}
+                ref={uploadItemsRef}
+                onChange={uploadItems}
               />
             </div>
           </div>
@@ -455,7 +436,7 @@ function Setting({
               <button
                 type="button"
                 className="button is-plain is-primary"
-                onClick={handleOpenTerms}
+                onClick={handleUploadTerms}
               >
                 <FiUpload />
                 <span className="text">ブラウザで開く</span>
@@ -464,8 +445,8 @@ function Setting({
                 type="file"
                 accept=".csv"
                 style={{ display: "none" }}
-                ref={openTermsRef}
-                onChange={openTerms}
+                ref={uploadTermsRef}
+                onChange={uploadTerms}
               />
             </div>
           </div>

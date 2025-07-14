@@ -24,6 +24,11 @@ export type Color = {
 }
 
 export type Options = {
+  itemList: Item[]
+  termList: Term[]
+  categoryList: Term[]
+  tagList: Term[]
+  colorList: Color[]
   startYear: number
   endYear: number
   omitEmptyYears: boolean

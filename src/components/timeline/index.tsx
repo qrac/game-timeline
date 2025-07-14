@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 
-import type { Item, Term, Options } from "../../types"
+import type { Options } from "../../types"
 import { ComponentItem } from "../item"
 import {
   filterItemList,
@@ -11,20 +11,15 @@ import {
 import "./index.css"
 
 export function ComponentTimeline({
-  itemList,
-  categoryList,
-  tagList,
   options,
   activeTimeline,
-  ref,
-}: {
-  itemList: Item[]
-  categoryList: Term[]
-  tagList: Term[]
+}: //ref,
+{
   options: Options
   activeTimeline: boolean
-  ref: React.Ref<HTMLDivElement>
+  //ref: React.Ref<HTMLDivElement>
 }) {
+  const { itemList, categoryList, tagList } = options
   const filteredItemList = filterItemList(itemList, categoryList, tagList)
   const yearList = getYearList(filteredItemList)
   const { startYear, endYear, omitEmptyYears } = options
@@ -39,7 +34,7 @@ export function ComponentTimeline({
     <main className="timeline">
       <div
         className={clsx("timeline-container", activeTimeline && "is-active")}
-        ref={ref}
+        //ref={ref}
       >
         {filteredItemList.length > 0 ? (
           <div className="timeline-contents">
