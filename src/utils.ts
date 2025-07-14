@@ -185,6 +185,12 @@ export function getColorList(termList: Term[]): Color[] {
     .filter((color) => color.id && color.color)
 }
 
+export function getLankList(itemList: Item[]): number[] {
+  const lankSet = new Set(itemList.map((item) => item.lank))
+  const lankList = Array.from(lankSet).sort((a, b) => a - b)
+  return lankList.length > 0 ? lankList : [1]
+}
+
 export function getYearList(itemList: Item[]): number[] {
   return [...new Set(itemList.map((item) => item.year))].sort((a, b) => a - b)
 }

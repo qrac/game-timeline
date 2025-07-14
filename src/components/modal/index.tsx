@@ -308,7 +308,16 @@ function Setting({
   uploadItems: (e: React.ChangeEvent<HTMLInputElement>) => void
   uploadTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
-  const { itemList, categoryList, tagList } = options
+  const {
+    itemList,
+    lankList,
+    categoryList,
+    tagList,
+    startYear,
+    endYear,
+    omitEmptyYears,
+    visibleLank,
+  } = options
   const yearList = getYearList(itemList)
 
   const uploadItemsRef = useRef<HTMLInputElement>(null)
@@ -329,7 +338,7 @@ function Setting({
             <p className="modal-field-title">表示する年</p>
             <div className="modal-field-selects">
               <Select
-                value={options.startYear}
+                value={startYear}
                 onChange={(e) => {
                   changeOptions({ startYear: Number(e.target.value) })
                 }}
@@ -337,7 +346,7 @@ function Setting({
               />
               <p>to</p>
               <Select
-                value={options.endYear}
+                value={endYear}
                 onChange={(e) => {
                   changeOptions({ endYear: Number(e.target.value) })
                 }}
@@ -345,7 +354,7 @@ function Setting({
               />
             </div>
             <Check
-              checked={options.omitEmptyYears}
+              checked={omitEmptyYears}
               onChange={(e) => {
                 changeOptions({ omitEmptyYears: e.target.checked })
               }}
@@ -353,13 +362,13 @@ function Setting({
             />
           </div>
           <div className="modal-field">
-            <p className="modal-field-title">表示するデータ</p>
-            <Check
-              checked={options.visibleLank >= 2 ? true : false}
+            <p className="modal-field-title">ランクフィルター</p>
+            <Select
+              value={visibleLank}
               onChange={(e) => {
-                changeVisibleLank(e.target.checked ? 2 : 1)
+                changeVisibleLank(Number(e.target.value))
               }}
-              text="細かいデータまで表示"
+              list={lankList}
             />
           </div>
 

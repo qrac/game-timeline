@@ -26,6 +26,7 @@ export type Color = {
 export type Options = {
   itemList: Item[]
   termList: Term[]
+  lankList: number[]
   categoryList: Term[]
   tagList: Term[]
   colorList: Color[]

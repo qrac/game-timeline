@@ -14,6 +14,7 @@ import {
   getTermIds,
   resolveTermList,
   getColorList,
+  getLankList,
   getYearList,
 } from "./utils"
 import "./app.css"
@@ -24,6 +25,7 @@ const defaultOptions: Options = {
   categoryList: [],
   tagList: [],
   colorList: [],
+  lankList: [1],
   startYear: 1983,
   endYear: 2025,
   omitEmptyYears: false,
@@ -72,12 +74,12 @@ export default function App() {
     const labelIds = getTermIds(itemList, "labels", visibleLank)
     const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
-    const newCategoryList = resolveTermList(categoryIds, termList)
-    const newTagList = resolveTermList(tagLabelIds, termList)
+    const categoryList = resolveTermList(categoryIds, termList)
+    const tagList = resolveTermList(tagLabelIds, termList)
 
     changeOptions({
-      categoryList: newCategoryList,
-      tagList: newTagList,
+      categoryList: categoryList,
+      tagList: tagList,
       visibleLank,
     })
   }
@@ -93,28 +95,31 @@ export default function App() {
       const itemsData = event.target?.result as string
       const parsedItems = parseCsv(itemsData)
 
-      const newItemList = csvToItemList(parsedItems)
-      const categoryIds = getTermIds(newItemList, "category", 1)
-      const tagIds = getTermIds(newItemList, "tags", 1)
-      const labelIds = getTermIds(newItemList, "labels", 1)
+      const itemList = csvToItemList(parsedItems)
+      const lankList = getLankList(itemList)
+      const visibleLank = lankList[0]
+      const categoryIds = getTermIds(itemList, "category", visibleLank)
+      const tagIds = getTermIds(itemList, "tags", visibleLank)
+      const labelIds = getTermIds(itemList, "labels", visibleLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
-      const newCategoryList = resolveTermList(categoryIds, termList)
-      const newTagList = resolveTermList(tagLabelIds, termList)
-      const newColorList = getColorList(termList)
+      const categoryList = resolveTermList(categoryIds, termList)
+      const tagList = resolveTermList(tagLabelIds, termList)
+      const colorList = getColorList(termList)
 
-      const yearList = getYearList(newItemList)
+      const yearList = getYearList(itemList)
       const startYear = Math.min(...yearList)
       const endYear = Math.max(...yearList)
 
       changeOptions({
-        itemList: newItemList,
-        categoryList: newCategoryList,
-        tagList: newTagList,
-        colorList: newColorList,
+        itemList,
+        lankList,
+        categoryList,
+        tagList,
+        colorList,
         startYear,
         endYear,
-        visibleLank: 1,
+        visibleLank,
       })
     }
     reader.readAsText(file)
@@ -131,21 +136,21 @@ export default function App() {
       const termsData = event.target?.result as string
       const parsedTerms = parseCsv(termsData)
 
-      const newTermList = csvToTermList(parsedTerms)
+      const termList = csvToTermList(parsedTerms)
       const categoryIds = getTermIds(itemList, "category", visibleLank)
       const tagIds = getTermIds(itemList, "tags", visibleLank)
       const labelIds = getTermIds(itemList, "labels", visibleLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
-      const newCategoryList = resolveTermList(categoryIds, newTermList)
-      const newTagList = resolveTermList(tagLabelIds, newTermList)
-      const newColorList = getColorList(newTermList)
+      const categoryList = resolveTermList(categoryIds, termList)
+      const tagList = resolveTermList(tagLabelIds, termList)
+      const colorList = getColorList(termList)
 
       changeOptions({
-        termList: newTermList,
-        categoryList: newCategoryList,
-        tagList: newTagList,
-        colorList: newColorList,
+        termList,
+        categoryList,
+        tagList,
+        colorList,
       })
     }
     reader.readAsText(file)
@@ -154,35 +159,38 @@ export default function App() {
   useEffect(() => {
     const setup = async () => {
       const timestamp = Date.now()
-      const { visibleLank } = options
 
       const itemsData = await fetchFile(`/assets/items.csv?t=${timestamp}`)
       const termsData = await fetchFile(`/assets/terms.csv?t=${timestamp}`)
       const parsedItems = parseCsv(itemsData)
       const parsedTerms = parseCsv(termsData)
 
-      const newItemList = csvToItemList(parsedItems)
-      const newTermList = csvToTermList(parsedTerms)
-      const categoryIds = getTermIds(newItemList, "category", visibleLank)
-      const tagIds = getTermIds(newItemList, "tags", visibleLank)
-      const labelIds = getTermIds(newItemList, "labels", visibleLank)
+      const itemList = csvToItemList(parsedItems)
+      const termList = csvToTermList(parsedTerms)
+      const lankList = getLankList(itemList)
+      const visibleLank = lankList[0]
+      const categoryIds = getTermIds(itemList, "category", visibleLank)
+      const tagIds = getTermIds(itemList, "tags", visibleLank)
+      const labelIds = getTermIds(itemList, "labels", visibleLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
-      const newCategoryList = resolveTermList(categoryIds, newTermList)
-      const newTagList = resolveTermList(tagLabelIds, newTermList)
-      const newColorList = getColorList(newTermList)
+      const categoryList = resolveTermList(categoryIds, termList)
+      const tagList = resolveTermList(tagLabelIds, termList)
+      const colorList = getColorList(termList)
 
-      const newYearList = getYearList(newItemList)
-      const newStartYear = Math.min(...newYearList)
-      const newEndYear = Math.max(...newYearList)
+      const yearList = getYearList(itemList)
+      const startYear = Math.min(...yearList)
+      const endYear = Math.max(...yearList)
 
       changeOptions({
-        itemList: newItemList,
-        termList: newTermList,
-        categoryList: newCategoryList,
-        tagList: newTagList,
-        colorList: newColorList,
-        startYear: newStartYear,
-        endYear: newEndYear,
+        itemList,
+        termList,
+        lankList,
+        categoryList,
+        tagList,
+        colorList,
+        startYear,
+        endYear,
+        visibleLank,
       })
       setScrollbarWidth(window.innerWidth - document.body.clientWidth)
       setActiveTimeline(true)
