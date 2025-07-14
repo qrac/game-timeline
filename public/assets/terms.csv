@@ -64,6 +64,7 @@ culturebrain,カルチャーブレイン,Culture Brain
 enix,エニックス,ENIX
 square,スクウェア,SQUARE
 square-enix,スクウェア・エニックス,SQUARE ENIX
+quest,クエスト,QUEST
 chunsoft,チュンソフト,CHUNSOFT
 spike-chunsoft,スパイク・チュンソフト,SPIKE CHUNSOFT
 atlus,アトラス,ATLUS
@@ -73,13 +74,19 @@ konami,コナミ,KONAMI
 epoch,エポック社,EPOCH
 hudson,ハドソン,Hudson
 sunsoft,サンソフト,SUNSOFT
+compile,コンパイル,COMPILE
 ascii,アスキー,ASCII
 takara,タカラ,Takara
 victor,ビクター,Victor
+technos,テクノスジャパン,Technos Japan
 mesaya,メサイヤ,MESAYA
+natsume,ナツメ,Natsume
+datam,データム・ポリスター,DATAM
+athena,アテナ,ATHENA
 capcom,カプコン,CAPCOM
 adk,ADK,ADK
 arcsys,アークシステムワークス,ARCSYS
+dataeast,データイースト,DATAEAST
 taito,タイトー,TAITO
 tecmo,テクモ,TECMO
 nec,NEC,NEC
