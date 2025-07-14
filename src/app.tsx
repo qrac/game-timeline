@@ -22,6 +22,7 @@ const defaultOptions: Options = {
   startYear: 1983,
   endYear: 2025,
   omitEmptyYears: false,
+  visibleLank: 1,
 }
 
 export default function App() {

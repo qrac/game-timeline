@@ -7,7 +7,7 @@ export type Item = {
   category: string
   tags: string[]
   labels: string[]
-  visible: boolean
+  lank: number
 }
 
 export type Term = {
@@ -27,4 +27,5 @@ export type Options = {
   startYear: number
   endYear: number
   omitEmptyYears: boolean
+  visibleLank: number
 }

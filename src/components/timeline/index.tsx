@@ -51,7 +51,7 @@ export function ComponentTimeline({
                     return (
                       item.year === year &&
                       item.category !== "news" &&
-                      item.visible
+                      item.lank <= options.visibleLank
                     )
                   })
                   .sort((a, b) => a.timestamp - b.timestamp)
@@ -60,7 +60,7 @@ export function ComponentTimeline({
                     return (
                       item.year === year &&
                       item.category === "news" &&
-                      item.visible
+                      item.lank <= options.visibleLank
                     )
                   })
                   .sort((a, b) => a.timestamp - b.timestamp)

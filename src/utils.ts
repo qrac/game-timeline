@@ -90,15 +90,26 @@ export function csvToItemList(parsedCsv: { [key: string]: string }[]): Item[] {
   return parsedCsv
     .map((row) => {
       const name = row.name?.trim() || ""
-      /* prettier-ignore */
-      const { year, timestamp, hasMonth, hasDay } = getCustomDate(row.date.trim())
+      const { year, timestamp, hasMonth, hasDay } = getCustomDate(
+        row.date.trim()
+      )
       const category = row.category?.trim() || ""
       const tags = strToArray(row.tags || "")
       const labels = strToArray(row.labels || "")
-      const visible = row.visible ? Boolean(row.visible) : true
+      const lank = row.lank ? Math.max(1, Math.floor(Number(row.lank))) : 1
+      //const visible = row.visible ? Boolean(row.visible) : true
 
-      /* prettier-ignore */
-      return { name, year, timestamp, hasMonth, hasDay, category, tags, labels, visible }
+      return {
+        name,
+        year,
+        timestamp,
+        hasMonth,
+        hasDay,
+        category,
+        tags,
+        labels,
+        lank,
+      }
     })
     .filter((item) => item.year && item.timestamp)
 }

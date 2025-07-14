@@ -232,8 +232,11 @@
   padding: 16px 20px;
 }
 
+.modal-field > * + * {
+  margin-top: 12px;
+}
+
 .modal-field-title {
-  margin-bottom: 0.75em;
   font-size: 0.875rem;
   font-weight: 600;
   font-feature-settings: "palt";
@@ -277,12 +280,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-left: 2px;
-}
-
-.modal-field > .modal-field-check {
-  margin: -16px -20px;
-  padding: 16px 20px;
+  padding: 4px 4px 4px 2px;
 }
 
 .modal-field-check .text {

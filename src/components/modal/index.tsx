@@ -363,15 +363,22 @@ function Setting({
                 list={yearList}
               />
             </div>
-          </div>
-
-          <div className="modal-field">
             <Check
               checked={options.omitEmptyYears}
               onChange={(e) => {
                 changeOptions({ omitEmptyYears: e.target.checked })
               }}
               text="データのない年を省略"
+            />
+          </div>
+          <div className="modal-field">
+            <p className="modal-field-title">表示するデータ</p>
+            <Check
+              checked={options.visibleLank >= 2 ? true : false}
+              onChange={(e) => {
+                changeOptions({ visibleLank: e.target.checked ? 2 : 1 })
+              }}
+              text="細かいデータまで表示"
             />
           </div>
 
