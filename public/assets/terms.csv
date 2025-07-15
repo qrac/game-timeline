@@ -44,6 +44,7 @@ ngp,ネオジオポケット,NGP
 ngpc,ネオジオポケットカラー,NGPC
 
 xbox,Xbox,Xbox
+xbox360,Xbox 360,Xbox 360
 pce,PCエンジン,PCE
 pcfx,PC-FX,PC-FX
 ws,ワンダースワン,WS
@@ -75,6 +76,7 @@ from-software,フロム・ソフトウェア,FROM SOFTWARE
 atlus,アトラス,ATLUS
 bandai,バンダイ,BANDAI
 namco,ナムコ,NAMCO
+bandai-namco,バンダイナムコ,BANDAI NAMCO
 konami,コナミ,KONAMI
 epoch,エポック社,EPOCH
 hudson,ハドソン,Hudson
