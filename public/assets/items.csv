@@ -122,6 +122,26 @@ New スーパーマリオブラザーズ U,2012-12-18,software,"nintendo","wiiu"
 ドンキーコング,1983-07-15,software,"nintendo","fc"
 スーパードンキーコング,1994-11-26,software,"nintendo","sfc"
 
+スプラトゥーン,2015-05-28,software,"nintendo","wiiu"
+スプラトゥーン2,2017-07-21,software,"nintendo","switch"
+スプラトゥーン3,2022-09-09,software,"nintendo","switch"
+
+ピクミン,2001-10-26,software,"nintendo","gc"
+ピクミン2,2004-04-29,software,"nintendo","gc"
+ピクミン3,2013-07-13,software,"nintendo","wiiu"
+ピクミン4,2023-07-21,software,"nintendo","switch"
+Pikmin Bloom,2021-11-01,software,"nintendo","ios,android"
+
+どうぶつの森,2001-04-14,software,"nintendo","n64"
+おいでよ どうぶつの森,2005-11-23,software,"nintendo","nds"
+街へいこうよ どうぶつの森,2008-11-20,software,"nintendo","wii"
+とびだせ どうぶつの森,2012-11-08,software,"nintendo","3ds"
+あつまれ どうぶつの森,2020-03-20,software,"nintendo","switch"
+
+メトロイド,1986-08-06,software,"nintendo","fcdc",2
+メトロイドII RETURN OF SAMUS,1992-01-20,software,"nintendo","gb",2
+スーパーメトロイド,1994-03-19,software,"nintendo","sfc"
+
 MOTHER,1989-07-27,software,"nintendo","fc"
 MOTHER2 ギーグの逆襲,1994-08-27,software,"nintendo","sfc"
 MOTHER3,2006-04-20,software,"nintendo","gba"
@@ -215,7 +235,7 @@ BUSHI青龍伝〜二人の勇者〜,1997-01-17,software,"gamefreak","sfc",3
 
 スターオーシャン,1996-07-19,software,"enix","sfc"
 
-アクトレイザー,1990-12-16,software,"enix","sfc"
+アクトレイザー,1990-12-16,software,"enix","sfc",2
 アクトレイザー2 沈黙への聖戦,1993-10-29,software,"enix","sfc",3
 
 魔法陣グルグル,1995-04-21,software,"enix","sfc",2
@@ -235,6 +255,25 @@ BUSHI青龍伝〜二人の勇者〜,1997-01-17,software,"gamefreak","sfc",3
 
 弟切草,1992-03-07,software,"chunsoft","sfc"
 かまいたちの夜,1994-11-25,software,"chunsoft","sfc"
+
+天誅,1998-02-26,software,"acquire","ps1",2
+天誅 弐,2000-11-30,software,"acquire","ps1",2
+天誅 参,2003-04-24,software,"k2,from-software","ps2",2
+天誅 紅,2004-07-22,software,"k2,from-software","ps2",2
+天誅 忍大全,2005-07-28,software,"k2,from-software","psp",2
+天誅 千乱,2006-10-05,software,"k2,from-software","xbox360",2
+天誅 4,2008-10-23,software,"acquire,from-software","wii",2
+天誅 DARK SHADOW,2006-04-06,software,"from-software","nds",3
+Shadow Assault 〜TENCHU〜,2008-10-08,software,"from-software","xbox360",3
+
+侍,2002-02-07,software,"acquire,spike","ps2",2
+侍道2,2003-10-09,software,"acquire,spike","ps2",2
+サムライウエスタン 活劇侍道,2005-01-01,software,"acquire,spike","ps2",2
+侍道3,2008-11-13,software,"acquire,spike","ps3",2
+侍道4,2011-03-03,software,"acquire,spike","ps3",2
+侍道外伝 KATANAKAMI,2020-02-20,software,"acquire,spike-chunsoft","multi",2
+忍道 戒,2005-11-10,software,"acquire,spike","ps2",2
+忍道2 散華,2011-12-17,software,"acquire,spike","psvita",2
 
 チョコボの不思議なダンジョン,1997-12-23,software,"square","ps1",2
 チョコボの不思議なダンジョン2,1998-12-23,software,"square","ps1",2
@@ -299,7 +338,7 @@ Sa・Ga2 秘宝伝説,1990-12-14,software,"square","gb",2
 聖剣伝説 VISIONS of MANA,2024-08-29,software,"square-enix","multi"
 
 キングダム ハーツ,2002-03-28,software,"square","ps2"
-キングダム ハーツ チェイン オブ メモリーズ,2004-11-11,software,"square-enix","gba"
+キングダム ハーツ チェイン オブ メモリーズ,2004-11-11,software,"square-enix","gba",2
 キングダム ハーツII,2005-12-22,software,"square-enix","ps2"
 キングダム ハーツIII,2019-01-25,software,"square-enix","ps4,xbox"
 
@@ -314,6 +353,21 @@ Sa・Ga2 秘宝伝説,1990-12-14,software,"square","gb",2
 
 OCTOPATH TRAVELER,2018-07-13,software,"square-enix","switch"
 OCTOPATH TRAVELER II,2023-02-24,software,"square-enix","multi"
+
+CHAOS RINGS,2010-04-20,software,"square-enix","ios",2
+CHAOS RINGSΩ,2011-05-20,software,"square-enix","ios",2
+CHAOS RINGS II,2012-03-15,software,"square-enix","ios",2
+CHAOS RINGS III,2016-04-07,software,"square-enix","ios,android",2
+ケイオスリングスIII プリクエル・トリロジー,2016-04-07,software,"square-enix","psvita",2
+
+ゼノギアス,1998-02-11,software,"square","ps1"
+ゼノサーガ エピソードI,2002-02-28,software,"namco","ps2",2
+ゼノサーガ エピソードII,2004-06-24,software,"namco","ps2",2
+ゼノサーガ エピソードIII,2006-04-27,software,"bandai-namco","ps2",2
+ゼノブレイド,2010-06-10,software,"nintendo","wii"
+ゼノブレイドクロス,2015-04-29,software,"nintendo","wiiu",2
+ゼノブレイド2,2017-12-01,software,"nintendo","switch"
+ゼノブレイド3,2022-07-29,software,"nintendo","switch"
 
 伝説のオウガバトル,1993-03-12,software,"quest","sfc"
 タクティクスオウガ,1995-10-06,software,"quest","sfc"
@@ -412,17 +466,17 @@ SDガンダム外伝 ナイトガンダム物語 大いなる遺産,1991-12-21,s
 テイルズ オブ リバース,2004-12-16,software,"namco","ps2"
 テイルズ オブ レジェンディア,2005-08-25,software,"namco","ps2"
 テイルズ オブ ジ アビス,2005-12-15,software,"namco","ps2"
-テイルズ オブ ザ テンペスト,2006-10-26,software,"namco","nds"
-テイルズ オブ イノセンス,2007-12-06,software,"namco","nds"
-テイルズ オブ シンフォニア -ラタトスクの騎士-,2008-06-26,software,"namco","wii"
-テイルズ オブ ヴェスペリア,2008-08-07,software,"namco","xbox"
-テイルズ オブ ハーツ,2008-12-18,software,"namco","nds"
-テイルズ オブ グレイセス,2009-12-10,software,"namco","wii"
-テイルズ オブ エクシリア,2011-09-08,software,"namco","ps3"
-テイルズ オブ エクシリア2,2012-11-01,software,"namco","ps3"
-テイルズ オブ ゼスティリア,2015-01-22,software,"namco","ps3"
-テイルズ オブ ベルセリア,2016-08-18,software,"namco","ps4,ps3"
-テイルズ オブ アライズ,2021-09-09,software,"namco","multi"
+テイルズ オブ ザ テンペスト,2006-10-26,software,"bandai-namco","nds"
+テイルズ オブ イノセンス,2007-12-06,software,"bandai-namco","nds"
+テイルズ オブ シンフォニア -ラタトスクの騎士-,2008-06-26,software,"bandai-namco","wii"
+テイルズ オブ ヴェスペリア,2008-08-07,software,"bandai-namco","xbox"
+テイルズ オブ ハーツ,2008-12-18,software,"bandai-namco","nds"
+テイルズ オブ グレイセス,2009-12-10,software,"bandai-namco","wii"
+テイルズ オブ エクシリア,2011-09-08,software,"bandai-namco","ps3"
+テイルズ オブ エクシリア2,2012-11-01,software,"bandai-namco","ps3"
+テイルズ オブ ゼスティリア,2015-01-22,software,"bandai-namco","ps3"
+テイルズ オブ ベルセリア,2016-08-18,software,"bandai-namco","ps4,ps3"
+テイルズ オブ アライズ,2021-09-09,software,"bandai-namco","multi"
 
 パックマン,1984-11-02,software,"namco","fc"
 マッピー,1984-11-14,software,"namco","fc"
@@ -544,6 +598,13 @@ RPGツクール2,1996-01-31,software,"ascii","sfc",2
 
 絵描衛門,1991-09-13,software,"athena","fc",3
 デザエモン,1994-09-30,software,"athena","sfc",2
+
+ICO,2001-12-06,software,"sony","ps2",2
+ワンダと巨像,2005-10-27,software,"sony","ps2",2
+人喰いの大鷲トリコ,2016-12-06,software,"sony","ps4",2
+TOKYO JUNGLE,2012-06-07,software,"sony","ps3",2
+GRAVITY DAZE,2012-02-09,software,"sony","psvita",2
+GRAVITY DAZE 2,2017-01-19,software,"sony","ps4",2
 
 ソニック・ザ・ヘッジホッグ,1991-07-26,software,"sega","md"
 ガンスターヒーローズ,1993-09-10,software,"sega,treasure","md",3
@@ -671,13 +732,22 @@ CAPCOM vs. SNK 2,2001-08-03,software,"capcom","arcade"
 ロックマン4 新たなる野望!!,1991-12-06,software,"capcom","fc",3
 ロックマン5 ブルースの罠!?,1992-12-04,software,"capcom","fc",3
 ロックマン6 史上最大の戦い!!,1993-11-05,software,"capcom","fc",3
-ロックマンX,1993-12-17,software,"capcom","sfc"
 ロックマン7 宿命の対決!,1995-03-24,software,"capcom","sfc",3
+ロックマンX,1993-12-17,software,"capcom","sfc"
+
+デビルメイクライ,2001-08-23,software,"capcom","ps2"
+デビルメイクライ2,2003-01-30,software,"capcom","ps2",2
+デビルメイクライ3,2005-02-17,software,"capcom","ps2",2
+デビルメイクライ4,2008-01-31,software,"capcom","ps3",2
+デビルメイクライ5,2019-03-08,software,"capcom","multi",2
+DmC Devil May Cry,2013-01-17,software,"capcom","ps3",2
 
 ファイナルファイト,1990-12-21,software,"capcom","sfc"
 ファイナルファイト2,1993-05-22,software,"capcom","sfc"
 
 ミッキーのマジカルアドベンチャー,1992-11-20,software,"capcom","sfc",2
+
+大神,2006-04-20,software,"capcom","ps2",2
 
 GUILTY GEAR X,2000-07-19,software,"arcsys","arcade"
 GUILTY GEAR XX,2002-05-23,software,"arcsys","arcade"
@@ -711,7 +781,6 @@ BSデジタル放送,2000-12-01,news,"japan"
 USJ,2001-03-31,news,"japan"
 東京ディズニーシー,2001-09-04,news,"japan"
 住基ネット,2002-08-05,news,"japan"
-スクウェアとエニックスの合併,2003-04-01,news,"square,enix,square-enix,japan"
 地上デジタル放送,2003-12-01,news,"japan"
 東日本大震災,2011-03-11,news,"japan"
 東京スカイツリー,2012-05-22,news,"japan"
@@ -731,7 +800,9 @@ EU,1993-11-01,news,"world"
 
 セガ ハード撤退,2001-03-31,news,"sega"
 SNK 破産,2001-10-30,news,"snk"
+スクウェアとエニックスの合併,2003-04-01,news,"square,enix,square-enix,japan"
 SNKプレイモア,2003-07-01,news,"snk"
+バンダイとナムコ 経営統合,2006-03-31,news,"bandai,namco,bandai-namco,japan"
 SNK（商号変更）,2016-12-01,news,"snk"
 
 SDガンダム カードダス,1988-07-00,news,"toy,japan,bandai"

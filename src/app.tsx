@@ -30,7 +30,7 @@ const defaultOptions: Options = {
   endYear: 2025,
   omitEmptyYears: false,
   visibleLank: 2,
-  lankNote: "1=有名作品のみ, 2=個人的な注目作品含む, 3=全件表示",
+  lankNote: "1=有名作品のみ, 2=個性派作品含む, 3=全件表示",
 }
 
 export default function App() {
