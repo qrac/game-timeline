@@ -34,4 +34,5 @@ export type Options = {
   endYear: number
   omitEmptyYears: boolean
   visibleLank: number
+  lankNote: string
 }

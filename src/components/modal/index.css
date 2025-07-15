@@ -243,6 +243,13 @@
   letter-spacing: 0.0125em;
 }
 
+.modal-field-note {
+  color: var(--theme-tx-3);
+  font-size: 0.75rem;
+  font-feature-settings: "palt";
+  letter-spacing: 0.0125em;
+}
+
 .modal-field-selects {
   display: flex;
   align-items: center;

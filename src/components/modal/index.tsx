@@ -265,8 +265,7 @@ function Info({
             ただ、すべての情報は網羅していませんし、人によって振り返りたい作品は異なるかと思います。
           </p>
           <p>
-            そこで、独自のデータを表示させる機能も作りました！設定からCSVファイルを「ダウンロード
-            → 編集 → ブラウザで開く」と表示できます。
+            そこで、独自のデータを表示させる機能も作りました！設定の最下部からCSVファイルの差し替えが可能です。
           </p>
           <p>
             CSVの書き方は、GitHubの
@@ -317,6 +316,7 @@ function Setting({
     endYear,
     omitEmptyYears,
     visibleLank,
+    lankNote,
   } = options
   const yearList = getYearList(itemList)
 
@@ -335,7 +335,7 @@ function Setting({
       <div className="modal-contents">
         <div className="modal-fields">
           <div className="modal-field">
-            <p className="modal-field-title">表示する年</p>
+            <h3 className="modal-field-title">表示する年</h3>
             <div className="modal-field-selects">
               <Select
                 value={startYear}
@@ -362,7 +362,7 @@ function Setting({
             />
           </div>
           <div className="modal-field">
-            <p className="modal-field-title">ランクフィルター</p>
+            <h3 className="modal-field-title">表示する情報量</h3>
             <Select
               value={visibleLank}
               onChange={(e) => {
@@ -370,11 +370,12 @@ function Setting({
               }}
               list={lankList}
             />
+            {lankNote && <p className="modal-field-note">※{lankNote}</p>}
           </div>
 
           {categoryList.length > 0 && (
             <div className="modal-field">
-              <p className="modal-field-title">カテゴリーフィルター</p>
+              <h3 className="modal-field-title">カテゴリーフィルター</h3>
               <Tagcloud
                 list={categoryList}
                 onToggle={(id) => {
@@ -390,7 +391,7 @@ function Setting({
 
           {tagList.length > 0 && (
             <div className="modal-field">
-              <p className="modal-field-title">タグフィルター</p>
+              <h3 className="modal-field-title">タグフィルター</h3>
               <Tagcloud
                 list={tagList}
                 onToggle={(id) => {
@@ -405,7 +406,7 @@ function Setting({
           )}
 
           <div className="modal-field">
-            <p className="modal-field-title">データの差し替え</p>
+            <h3 className="modal-field-title">データの差し替え</h3>
             <div className="modal-field-buttons">
               <a
                 href="/assets/items.csv"
@@ -433,7 +434,7 @@ function Setting({
           </div>
 
           <div className="modal-field">
-            <p className="modal-field-title">カテゴリー・タグの差し替え</p>
+            <h3 className="modal-field-title">カテゴリー・タグの差し替え</h3>
             <div className="modal-field-buttons">
               <a
                 href="/assets/terms.csv"

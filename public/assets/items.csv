@@ -8,9 +8,9 @@ Wii,2006-12-02,hardware,"nintendo,home,wii"
 Wii U,2012-12-08,hardware,"nintendo,home,wiiu"
 Nintendo Switch,2017-03-03,hardware,"nintendo,home,portable,switch"
 Nintendo Switch 2,2025-06-05,hardware,"nintendo,home,portable,switch"
-スーパースコープ,1993-06-21,hardware,"nintendo,home,sfc"
-バーチャルボーイ,1995-07-21,hardware,"nintendo,home"
-スーパーゲームボーイ,1994-06-14,hardware,"nintendo,home,sfc,gb"
+スーパースコープ,1993-06-21,hardware,"nintendo,home,sfc",,2
+バーチャルボーイ,1995-07-21,hardware,"nintendo,home",,2
+スーパーゲームボーイ,1994-06-14,hardware,"nintendo,home,sfc,gb",,2
 スーパーゲームボーイ2,1998-01-30,hardware,"nintendo,home,sfc,gb",,2
 ゲームボーイ,1989-04-21,hardware,"nintendo,portable,gb"
 ゲームボーイカラー,1998-10-21,hardware,"nintendo,portable,gb"
@@ -26,10 +26,10 @@ PlayStation 5,2020-11-12,hardware,"sony,home,ps5"
 PlayStation Portable,2004-12-12,hardware,"sony,portable,psp"
 PlayStation Portable go,2009-11-01,hardware,"sony,portable,psp",,2
 PlayStation Vita,2011-12-17,hardware,"sony,portable,psvita"
-PlayStation Vita TV,2013-11-14,hardware,"sony,home,psvita"
-PlayStation Portal,2023-11-15,hardware,"sony,portable,ps5"
+PlayStation Vita TV,2013-11-14,hardware,"sony,home,psvita",,2
+PlayStation Portal,2023-11-15,hardware,"sony,portable,ps5",,2
 PlayStation VR,2016-10-13,hardware,"sony,home,ps4"
-PlayStation VR2,2023-02-22,hardware,"sony,home,ps5"
+PlayStation VR2,2023-02-22,hardware,"sony,home,ps5",,2
 
 メガドライブ,1988-10-29,hardware,"sega,home,md"
 セガサターン,1994-11-22,hardware,"sega,home,ss"
@@ -37,7 +37,7 @@ PlayStation VR2,2023-02-22,hardware,"sony,home,ps5"
 ゲームギア,1990-10-06,hardware,"sega,portable,gg"
 
 NEOGEO,1990-04-26,hardware,"snk,home,ng"
-NEOGEO CD,1994-09-09,hardware,"snk,home,ng,ngcd"
+NEOGEO CD,1994-09-09,hardware,"snk,home,ng,ngcd",,2
 ネオジオポケット,1998-10-28,hardware,"snk,portable,ngp"
 ネオジオポケットカラー,1999-03-19,hardware,"snk,portable,ngp,ngpc"
 
@@ -46,6 +46,7 @@ Xbox 360,2005-12-10,hardware,"microsoft,home,xbox"
 Xbox One,2014-09-04,hardware,"microsoft,home,xbox"
 Xbox Series X,2020-11-10,hardware,"microsoft,home,xbox"
 Xbox Series S,2020-11-10,hardware,"microsoft,home,xbox"
+
 PCエンジン,1987-10-30,hardware,"nec,home,pce"
 PC-FX,1994-12-23,hardware,"nec,home,pcfx"
 3DO,1994-03-20,hardware,"3do,home"
@@ -57,29 +58,42 @@ PC-FX,1994-12-23,hardware,"nec,home,pcfx"
 スーパーマリオブラザーズ2,1986-06-03,software,"nintendo","fcdc"
 スーパーマリオブラザーズ3,1988-10-23,software,"nintendo","fc"
 スーパーマリオランド,1989-04-21,software,"nintendo","gb"
-ドクターマリオ,1990-07-27,software,"nintendo","fc,gb"
 スーパーマリオUSA,1992-09-14,software,"nintendo","fc"
 スーパーマリオワールド,1990-11-21,software,"nintendo","sfc"
-マリオペイント,1992-07-14,software,"nintendo","sfc"
-スーパーマリオカート,1992-08-27,software,"nintendo","sfc"
 スーパーマリオランド2 6つの金貨,1992-10-21,software,"nintendo","gb"
 スーパーマリオコレクション,1993-07-14,software,"nintendo","sfc"
 スーパーマリオ64,1996-06-23,software,"nintendo","n64"
-スーパーマリオRPG,1996-03-09,software,"nintendo","sfc"
 スーパーマリオサンシャイン,2002-07-19,software,"nintendo","gc"
 スーパーマリオギャラクシー,2007-11-01,software,"nintendo","wii"
 New スーパーマリオブラザーズ Wii,2009-12-03,software,"nintendo","wii"
 スーパーマリオギャラクシー2,2010-05-27,software,"nintendo","wii"
 New スーパーマリオブラザーズ U,2012-12-18,software,"nintendo","wiiu"
-スーパーマリオメーカー,2015-09-10,software,"nintendo","wiiu"
 スーパーマリオ オデッセイ,2017-10-27,software,"nintendo","switch"
-スーパーマリオメーカー2,2019-06-28,software,"nintendo","switch"
 スーパーマリオブラザーズ ワンダー,2023-10-20,software,"nintendo","switch"
 
-ワリオの森,1994-02-19,software,"nintendo","fc"
-マリオとワリオ,1993-08-27,software,"nintendo","sfc",2
-マリオのピクロス,1995-03-14,software,"nintendo","gb"
-マリオのスーパーピクロス,1995-09-14,software,"nintendo","sfc"
+スーパーマリオカート,1992-08-27,software,"nintendo","sfc"
+マリオカート64,1996-12-14,software,"nintendo","n64"
+マリオカートアドバンス,2001-07-21,software,"nintendo","gba",3
+マリオカート ダブルダッシュ!!,2003-11-07,software,"nintendo","gc",3
+マリオカートDS,2005-11-14,software,"nintendo","nds",3
+マリオカートWii,2008-04-10,software,"nintendo","wii"
+マリオカート7,2011-12-01,software,"nintendo","3ds",3
+マリオカート8,2014-05-29,software,"nintendo","wiiu"
+マリオカート ワールド,2025-06-05,software,"nintendo","switch2"
+
+マリオペイント,1992-07-14,software,"nintendo","sfc"
+スーパーマリオメーカー,2015-09-10,software,"nintendo","wiiu"
+スーパーマリオメーカー2,2019-06-28,software,"nintendo","switch"
+
+スーパーマリオRPG,1996-03-09,software,"nintendo","sfc"
+
+ドクターマリオ,1990-07-27,software,"nintendo","fc,gb",2
+マリオのピクロス,1995-03-14,software,"nintendo","gb",2
+マリオのスーパーピクロス,1995-09-14,software,"nintendo","sfc",2
+
+ワリオの森,1994-02-19,software,"nintendo","fc",2
+マリオとワリオ,1993-08-27,software,"nintendo","sfc",3
+スーパーマリオランド3 ワリオランド,1994-01-21,software,"nintendo","gb",3
 
 ヨッシーのたまご,1991-12-14,software,"nintendo","fc,gb"
 ヨッシーのクッキー,1992-11-21,software,"nintendo","fc,gb"
@@ -87,7 +101,7 @@ New スーパーマリオブラザーズ U,2012-12-18,software,"nintendo","wiiu"
 ヨッシークラフトワールド,2019-03-29,software,"nintendo","switch"
 
 ゼルダの伝説,1986-02-21,software,"nintendo","fcdc"
-リンクの冒険,1987-01-14,software,"nintendo","fcdc",2
+リンクの冒険,1987-01-14,software,"nintendo","fcdc",3
 ゼルダの伝説 神々のトライフォース,1991-11-21,software,"nintendo","sfc"
 ゼルダの伝説 夢をみる島,1993-06-06,software,"nintendo","gb"
 ゼルダの伝説 時のオカリナ,1998-11-21,software,"nintendo","n64"
@@ -99,10 +113,10 @@ New スーパーマリオブラザーズ U,2012-12-18,software,"nintendo","wiiu"
 
 星のカービィ,1992-04-27,software,"nintendo","gb"
 星のカービィ夢の泉の物語,1993-03-23,software,"nintendo","fc"
-カービィのピンボール,1993-11-27,software,"nintendo","gb"
-カービィボウル,1994-09-21,software,"nintendo","sfc"
+カービィのピンボール,1993-11-27,software,"nintendo","gb",2
+カービィボウル,1994-09-21,software,"nintendo","sfc",2
 星のカービィ スーパーデラックス,1996-03-21,software,"nintendo","sfc"
-毛糸のカービィ,2010-10-14,software,"nintendo","wii"
+毛糸のカービィ,2010-10-14,software,"nintendo","wii",2
 星のカービィ ディスカバリー,2022-03-25,software,"nintendo","switch"
 
 ドンキーコング,1983-07-15,software,"nintendo","fc"
@@ -112,53 +126,53 @@ MOTHER,1989-07-27,software,"nintendo","fc"
 MOTHER2 ギーグの逆襲,1994-08-27,software,"nintendo","sfc"
 MOTHER3,2006-04-20,software,"nintendo","gba"
 
-アラビアンドリーム シェラザード,1987-09-03,software,"culturebrain","fc"
-スーパーチャイニーズワールド,1991-12-28,software,"culturebrain","sfc"
-スーパーチャイニーズワールド2 宇宙一武闘大会,1993-10-29,software,"culturebrain","sfc",2
-スーパーチャイニーズワールド3 〜超次元大作戦〜,1995-12-22,software,"culturebrain","sfc",2
+アラビアンドリーム シェラザード,1987-09-03,software,"culturebrain","fc",2
+スーパーチャイニーズワールド,1991-12-28,software,"culturebrain","sfc",2
+スーパーチャイニーズワールド2 宇宙一武闘大会,1993-10-29,software,"culturebrain","sfc",3
+スーパーチャイニーズワールド3 〜超次元大作戦〜,1995-12-22,software,"culturebrain","sfc",3
 
 アイスクライマー,1985-01-30,software,"nintendo","fc"
 テトリス,1988-12-22,software,"nintendo","fc"
-テトリスフラッシュ,1993-09-21,software,"nintendo","fc",2
+テトリスフラッシュ,1993-09-21,software,"nintendo","fc",3
 ジョイメカファイト,1993-05-21,software,"nintendo","fc"
 F-ZERO,1990-11-21,software,"nintendo","sfc"
 シムシティ,1991-04-26,software,"nintendo","sfc"
-ジェリーボーイ,1991-09-13,software,"gamefreak","sfc"
+ジェリーボーイ,1991-09-13,software,"gamefreak","sfc",2
 スターフォックス,1993-02-21,software,"nintendo","sfc"
-パネルでポン,1995-10-27,software,"nintendo","sfc",2
-BUSHI青龍伝〜二人の勇者〜,1997-01-17,software,"gamefreak","sfc",2
-すってはっくん,1998-08-01,software,"nintendo","sfc"
+パネルでポン,1995-10-27,software,"nintendo","sfc",3
+BUSHI青龍伝〜二人の勇者〜,1997-01-17,software,"gamefreak","sfc",3
+すってはっくん,1998-08-01,software,"nintendo","sfc",2
 
 ポケットモンスター 赤・緑,1996-02-27,software,"nintendo","gb"
-ポケットモンスター 青,1996-10-15,software,"nintendo","gb"
+ポケットモンスター 青,1996-10-15,software,"nintendo","gb",3
 ポケットモンスター ピカチュウ,1998-09-12,software,"nintendo","gb"
 ポケットモンスター 金・銀,1999-11-21,software,"nintendo","gb,gbc"
-ポケットモンスター クリスタルバージョン,2000-12-14,software,"nintendo","gbc"
+ポケットモンスター クリスタルバージョン,2000-12-14,software,"nintendo","gbc",3
 ポケットモンスター ルビー・サファイア,2002-11-21,software,"pokemon","gba"
-ポケットモンスター ファイアレッド・リーフグリーン,2004-01-29,software,"pokemon","gba"
-ポケットモンスター エメラルド,2004-09-16,software,"pokemon","gba"
+ポケットモンスター ファイアレッド・リーフグリーン,2004-01-29,software,"pokemon","gba",3
+ポケットモンスター エメラルド,2004-09-16,software,"pokemon","gba",3
 ポケットモンスター ダイヤモンド・パール,2006-09-28,software,"pokemon","nds"
-ポケットモンスター プラチナ,2008-09-13,software,"pokemon","nds"
-ポケットモンスター ハートゴールド・ソウルシルバー,2010-02-04,software,"pokemon","nds"
+ポケットモンスター プラチナ,2008-09-13,software,"pokemon","nds",3
+ポケットモンスター ハートゴールド・ソウルシルバー,2010-02-04,software,"pokemon","nds",3
 ポケットモンスター ブラック・ホワイト,2010-09-18,software,"pokemon","nds"
 ポケットモンスター ブラック2・ホワイト2,2012-06-23,software,"pokemon","nds"
 ポケットモンスター X・Y,2013-10-12,software,"pokemon","3ds"
-ポケットモンスター オメガルビー・アルファサファイア,2014-11-21,software,"pokemon","3ds"
+ポケットモンスター オメガルビー・アルファサファイア,2014-11-21,software,"pokemon","3ds",3
 ポケットモンスター サン・ムーン,2016-11-18,software,"pokemon","3ds"
-ポケットモンスター ウルトラサン・ウルトラムーン,2017-11-17,software,"pokemon","3ds"
+ポケットモンスター ウルトラサン・ウルトラムーン,2017-11-17,software,"pokemon","3ds",3
 ポケットモンスター Let's Go! ピカチュウ・Let's Go! イーブイ,2018-11-16,software,"pokemon","switch"
 ポケットモンスター ソード・シールド,2019-11-15,software,"pokemon","switch"
-ポケットモンスター ブリリアントダイヤモンド・シャイニングパール,2021-11-19,software,"pokemon","switch"
+ポケットモンスター ブリリアントダイヤモンド・シャイニングパール,2021-11-19,software,"pokemon","switch",2
 ポケモンレジェンズ アルセウス,2022-01-28,software,"pokemon","switch"
 ポケットモンスター スカーレット・バイオレット,2022-11-18,software,"pokemon","switch"
 ポケモンレジェンズ Z-A,2025-10-16,software,"pokemon","switch"
-ポケモン不思議のダンジョン 赤の救助隊,2005-11-17,software,"pokemon","gba"
-ポケモン不思議のダンジョン 青の救助隊,2005-11-17,software,"pokemon","nds"
-ポケモン不思議のダンジョン 時の探検隊・闇の探検隊,2007-09-13,software,"pokemon","nds"
-ポケモン不思議のダンジョン 空の探検隊,2009-04-18,software,"pokemon","nds"
-ポケモン不思議のダンジョン マグナゲートと∞迷宮,2012-11-23,software,"pokemon","3ds"
-ポケモン超不思議のダンジョン,2015-09-17,software,"pokemon","3ds"
-ポケモン不思議のダンジョン 救助隊DX,2020-03-06,software,"pokemon","switch"
+ポケモン不思議のダンジョン 赤の救助隊,2005-11-17,software,"pokemon","gba",2
+ポケモン不思議のダンジョン 青の救助隊,2005-11-17,software,"pokemon","nds",2
+ポケモン不思議のダンジョン 時の探検隊・闇の探検隊,2007-09-13,software,"pokemon","nds",2
+ポケモン不思議のダンジョン 空の探検隊,2009-04-18,software,"pokemon","nds",2
+ポケモン不思議のダンジョン マグナゲートと∞迷宮,2012-11-23,software,"pokemon","3ds",2
+ポケモン超不思議のダンジョン,2015-09-17,software,"pokemon","3ds",2
+ポケモン不思議のダンジョン 救助隊DX,2020-03-06,software,"pokemon","switch",2
 ポケモンGO,2016-07-22,software,"pokemon","ios,android"
 
 ドラゴンクエスト,1986-05-27,software,"enix","fc"
@@ -177,21 +191,21 @@ BUSHI青龍伝〜二人の勇者〜,1997-01-17,software,"gamefreak","sfc",2
 ドラゴンクエストIII そして伝説へ…,1996-12-06,software,"enix","sfc"
 
 トルネコの大冒険 不思議のダンジョン,1993-09-19,software,"enix","sfc"
-トルネコの大冒険2 不思議のダンジョン,1999-09-15,software,"enix","ps1"
-トルネコの大冒険3 不思議のダンジョン,2002-10-31,software,"enix","ps2"
-ドラゴンクエスト 少年ヤンガスと不思議のダンジョン,2006-04-20,software,"square-enix","ps2"
+トルネコの大冒険2 不思議のダンジョン,1999-09-15,software,"enix","ps1",2
+トルネコの大冒険3 不思議のダンジョン,2002-10-31,software,"enix","ps2",2
+ドラゴンクエスト 少年ヤンガスと不思議のダンジョン,2006-04-20,software,"square-enix","ps2",2
 
 ドラゴンクエストモンスターズ テリーのワンダーランド,1998-09-25,software,"enix","gb"
 ドラゴンクエストモンスターズ2 マルタのふしぎな鍵,2001-03-09,software,"enix","gb,gbc"
 ドラゴンクエストモンスターズ3 魔族の王子とエルフの旅,2023-12-01,software,"square-enix","switch"
-ドラゴンクエストモンスターズ ジョーカー,2006-12-28,software,"square-enix","nds",2
-ドラゴンクエストモンスターズ ジョーカー2,2010-04-28,software,"square-enix","nds",2
-ドラゴンクエストモンスターズ ジョーカー3,2016-03-24,software,"square-enix","3ds",2
-ドラゴンクエストモンスターズ キャラバンハート,2003-03-29,software,"enix","gba"
+ドラゴンクエストモンスターズ ジョーカー,2006-12-28,software,"square-enix","nds",3
+ドラゴンクエストモンスターズ ジョーカー2,2010-04-28,software,"square-enix","nds",3
+ドラゴンクエストモンスターズ ジョーカー3,2016-03-24,software,"square-enix","3ds",3
+ドラゴンクエストモンスターズ キャラバンハート,2003-03-29,software,"enix","gba",2
 
-スライムもりもりドラゴンクエスト 衝撃のしっぽ団,2003-11-14,software,"square-enix","gba"
-スライムもりもりドラゴンクエスト2 大戦車としっぽ団,2005-12-01,software,"square-enix","nds"
-スライムもりもりドラゴンクエスト3 大海賊としっぽ団,2011-11-02,software,"square-enix","3ds"
+スライムもりもりドラゴンクエスト 衝撃のしっぽ団,2003-11-14,software,"square-enix","gba",2
+スライムもりもりドラゴンクエスト2 大戦車としっぽ団,2005-12-01,software,"square-enix","nds",2
+スライムもりもりドラゴンクエスト3 大海賊としっぽ団,2011-11-02,software,"square-enix","3ds",2
 
 ドラゴンクエストヒーローズ 闇竜と世界樹の城,2015-02-26,software,"square-enix","ps4,ps3"
 ドラゴンクエストヒーローズII 双子の王と予言の終わり,2016-05-27,software,"square-enix","ps4,ps3,psvita"
@@ -202,30 +216,30 @@ BUSHI青龍伝〜二人の勇者〜,1997-01-17,software,"gamefreak","sfc",2
 スターオーシャン,1996-07-19,software,"enix","sfc"
 
 アクトレイザー,1990-12-16,software,"enix","sfc"
-アクトレイザー2 沈黙への聖戦,1993-10-29,software,"enix","sfc",2
+アクトレイザー2 沈黙への聖戦,1993-10-29,software,"enix","sfc",3
 
-魔法陣グルグル,1995-04-21,software,"enix","sfc"
-魔法陣グルグル2,1996-04-12,software,"enix","sfc"
-ミスティックアーク,1995-07-14,software,"enix","sfc"
+魔法陣グルグル,1995-04-21,software,"enix","sfc",2
+魔法陣グルグル2,1996-04-12,software,"enix","sfc",2
+ミスティックアーク,1995-07-14,software,"enix","sfc",2
 天地創造,1995-10-20,software,"enix","sfc"
 
 不思議のダンジョン2 風来のシレン,1995-12-01,software,"chunsoft","sfc"
-風来のシレン2 鬼襲来!シレン城!,2000-09-27,software,"chunsoft","n64"
-風来のシレン3 からくり屋敷の眠り姫,2008-06-05,software,"chunsoft","wii"
-風来のシレン4 神の眼と悪魔のヘソ,2010-02-25,software,"chunsoft","nds"
-風来のシレン5 フォーチュンタワーと運命のダイス,2010-12-09,software,"chunsoft","nds"
+風来のシレン2 鬼襲来!シレン城!,2000-09-27,software,"chunsoft","n64",2
+風来のシレン3 からくり屋敷の眠り姫,2008-06-05,software,"chunsoft","wii",2
+風来のシレン4 神の眼と悪魔のヘソ,2010-02-25,software,"chunsoft","nds",2
+風来のシレン5 フォーチュンタワーと運命のダイス,2010-12-09,software,"chunsoft","nds",2
 風来のシレン6 とぐろ島探検録,2024-01-25,software,"spike-chunsoft","switch"
-風来のシレンGB 月影村の怪物,1996-11-22,software,"chunsoft","gb"
-風来のシレンGB2 砂漠の魔城,2001-07-27,software,"chunsoft","gbc"
-風来のシレン外伝 女剣士アスカ見参!,2002-02-07,software,"chunsoft","dc"
+風来のシレンGB 月影村の怪物,1996-11-22,software,"chunsoft","gb",2
+風来のシレンGB2 砂漠の魔城,2001-07-27,software,"chunsoft","gbc",2
+風来のシレン外伝 女剣士アスカ見参!,2002-02-07,software,"chunsoft","dc",2
 
 弟切草,1992-03-07,software,"chunsoft","sfc"
 かまいたちの夜,1994-11-25,software,"chunsoft","sfc"
 
-チョコボの不思議なダンジョン,1997-12-23,software,"square","ps1"
-チョコボの不思議なダンジョン2,1998-12-23,software,"square","ps1"
-チョコボの不思議なダンジョン 時忘れの迷宮,2007-12-13,software,"square-enix","wii"
-チョコボの不思議なダンジョン エブリバディ!,2019-03-20,software,"square-enix","switch,ps4"
+チョコボの不思議なダンジョン,1997-12-23,software,"square","ps1",2
+チョコボの不思議なダンジョン2,1998-12-23,software,"square","ps1",2
+チョコボの不思議なダンジョン 時忘れの迷宮,2007-12-13,software,"square-enix","wii",2
+チョコボの不思議なダンジョン エブリバディ!,2019-03-20,software,"square-enix","switch,ps4",2
 
 ファイナルファンタジー,1987-12-18,software,"square","fc"
 ファイナルファンタジーII,1988-12-17,software,"square","fc"
@@ -248,21 +262,21 @@ BUSHI青龍伝〜二人の勇者〜,1997-01-17,software,"gamefreak","sfc",2
 ファイナルファンタジーXV,2016-11-29,software,"square-enix","ps4"
 ファイナルファンタジーXVI,2023-06-22,software,"square-enix","ps5"
 
-ファイナルファンタジーUSA ミスティッククエスト,1993-09-10,software,"square","sfc"
+ファイナルファンタジーUSA ミスティッククエスト,1993-09-10,software,"square","sfc",2
 ファイナルファンタジータクティクス,1997-06-20,software,"square","ps1"
-ファイナルファンタジータクティクスアドバンス,2003-02-14,software,"square-enix","gba"
-ファイナルファンタジータクティクス A2 封穴のグリモア,2007-10-25,software,"square-enix","nds"
+ファイナルファンタジータクティクスアドバンス,2003-02-14,software,"square-enix","gba",3
+ファイナルファンタジータクティクス A2 封穴のグリモア,2007-10-25,software,"square-enix","nds",3
 ファイナルファンタジータクティクス - イヴァリース クロニクルズ,2025-09-30,software,"square-enix","multi"
-ファイナルファンタジー・クリスタルクロニクル,2003-08-08,software,"square-enix","gc"
-ファイナルファンタジー・クリスタルクロニクル クリスタルベアラー,2009-11-12,software,"square-enix","wii"
-ダージュ オブ ケルベロス ファイナルファンタジーVII,2006-01-26,software,"square-enix","ps2"
-クライシス コア ファイナルファンタジーVII,2007-09-13,software,"square-enix","psp"
+ファイナルファンタジー・クリスタルクロニクル,2003-08-08,software,"square-enix","gc",2
+ファイナルファンタジー・クリスタルクロニクル クリスタルベアラー,2009-11-12,software,"square-enix","wii",2
+ダージュ オブ ケルベロス ファイナルファンタジーVII,2006-01-26,software,"square-enix","ps2",2
+クライシス コア ファイナルファンタジーVII,2007-09-13,software,"square-enix","psp",2
 ディシディア ファイナルファンタジー,2008-12-28,software,"square-enix","psp"
 ファイナルファンタジー零式,2011-10-27,software,"square-enix","psp"
 
-魔界塔士 Sa・Ga,1989-12-15,software,"square","gb"
-Sa・Ga2 秘宝伝説,1990-12-14,software,"square","gb"
-時空の覇者 Sa・Ga3,1991-12-13,software,"square","gb"
+魔界塔士 Sa・Ga,1989-12-15,software,"square","gb",2
+Sa・Ga2 秘宝伝説,1990-12-14,software,"square","gb",2
+時空の覇者 Sa・Ga3,1991-12-13,software,"square","gb",2
 ロマンシング サ・ガ,1992-01-28,software,"square","sfc"
 ロマンシング サ・ガ2,1993-12-10,software,"square","sfc"
 ロマンシング サ・ガ3,1995-11-11,software,"square","sfc"
@@ -274,12 +288,12 @@ Sa・Ga2 秘宝伝説,1990-12-14,software,"square","gb"
 サガ エメラルド ビヨンド,2024-04-25,software,"square-enix","multi"
 ロマンシング サガ2 リベンジオブザセブン,2024-10-24,software,"square-enix","multi"
 
-聖剣伝説 ～ファイナルファンタジー外伝～,1991-06-28,software,"square","gb"
+聖剣伝説 ～ファイナルファンタジー外伝～,1991-06-28,software,"square","gb",2
 聖剣伝説2,1993-08-06,software,"square","sfc"
 聖剣伝説3,1995-09-30,software,"square","sfc"
 聖剣伝説 LEGEND OF MANA,1999-07-15,software,"square","ps1"
 聖剣伝説4,2006-12-21,software,"square-enix","ps2"
-聖剣伝説コレクション,2017-06-01,software,"square-enix","switch"
+聖剣伝説コレクション,2017-06-01,software,"square-enix","switch",2
 聖剣伝説2 SECRET of MANA,2018-02-15,software,"square-enix","ps4"
 聖剣伝説3 TRIALS of MANA,2020-04-24,software,"square-enix","multi"
 聖剣伝説 VISIONS of MANA,2024-08-29,software,"square-enix","multi"
@@ -294,7 +308,7 @@ Sa・Ga2 秘宝伝説,1990-12-14,software,"square","gb"
 クロノ・クロス,1999-11-18,software,"square","ps1"
 
 ブレイブリーデフォルト フライングフェアリー,2012-10-11,software,"square-enix","3ds"
-ブレイブリーデフォルト フォーザ・シークウェル,2013-12-05,software,"square-enix","3ds"
+ブレイブリーデフォルト フォーザ・シークウェル,2013-12-05,software,"square-enix","3ds",2
 ブレイブリーセカンド エンドレイヤー,2015-04-23,software,"square-enix","3ds"
 ブレイブリーデフォルトII,2021-02-26,software,"square-enix","switch"
 
@@ -307,19 +321,19 @@ OCTOPATH TRAVELER II,2023-02-24,software,"square-enix","multi"
 半熟英雄 ああ、世界よ半熟なれ…!!,1992-12-19,software,"square","sfc"
 フロントミッション,1995-02-24,software,"square","sfc"
 バハムートラグーン,1996-02-09,software,"square","sfc"
-ルドラの秘宝,1996-04-05,software,"square","sfc"
-トレジャーハンターG,1996-05-24,software,"square","sfc"
-エアガイツ,1998-12-17,software,"square","ps1"
-ブレイヴフェンサー 武蔵伝,1998-07-16,software,"square","ps1"
-ベイグラントストーリー,2000-02-10,software,"square","ps1"
+ルドラの秘宝,1996-04-05,software,"square","sfc",3
+トレジャーハンターG,1996-05-24,software,"square","sfc",3
+エアガイツ,1998-12-17,software,"square","ps1",2
+ブレイヴフェンサー 武蔵伝,1998-07-16,software,"square","ps1",2
+ベイグラントストーリー,2000-02-10,software,"square","ps1",2
 バウンサー,2000-12-23,software,"square","ps2"
 
-デジタル・デビル物語 女神転生,1987-09-11,software,"atlus,namco","fc",2
-デジタル・デビル物語 女神転生II,1990-04-06,software,"atlus,namco","fc",2
-旧約・女神転生,1995-03-31,software,"atlus","sfc",2
+デジタル・デビル物語 女神転生,1987-09-11,software,"atlus,namco","fc",3
+デジタル・デビル物語 女神転生II,1990-04-06,software,"atlus,namco","fc",3
+旧約・女神転生,1995-03-31,software,"atlus","sfc",3
 
 真・女神転生,1992-10-30,software,"atlus","sfc"
-真・女神転生II,1994-03-18,software,"atlus","sfc",2
+真・女神転生II,1994-03-18,software,"atlus","sfc"
 真・女神転生III-NOCTURNE,2003-02-20,software,"atlus","ps2"
 真・女神転生III-NOCTURNE マニアクス,2004-01-29,software,"atlus","ps2",2
 真・女神転生IV,2013-05-23,software,"atlus","3ds"
@@ -327,68 +341,68 @@ OCTOPATH TRAVELER II,2023-02-24,software,"square-enix","multi"
 真・女神転生V,2021-11-11,software,"atlus","switch"
 真・女神転生V Vengeance,2024-06-14,software,"atlus","multi"
 
-真・女神転生if...,1994-10-28,software,"atlus","sfc",2
-真・女神転生 NINE,2002-12-05,software,"atlus","xbox"
-真・女神転生 STRANGE JOURNEY,2009-10-08,software,"atlus","nds"
-真・女神転生 DEEP STRANGE JOURNEY,2017-10-26,software,"atlus","3ds"
-真・女神転生デビルサマナー,1995-12-25,software,"atlus","ss"
-デビルサマナー ソウルハッカーズ,1997-11-13,software,"atlus","ss"
-ソウルハッカーズ2,2022-08-25,software,"atlus","multi"
-デビルサマナー 葛葉ライドウ 対 超力兵団,2006-03-02,software,"atlus","ps2"
-デビルサマナー 葛葉ライドウ 対 アバドン王,2008-10-23,software,"atlus","ps2"
+真・女神転生if...,1994-10-28,software,"atlus","sfc"
+真・女神転生 NINE,2002-12-05,software,"atlus","xbox",2
+真・女神転生 STRANGE JOURNEY,2009-10-08,software,"atlus","nds",2
+真・女神転生 DEEP STRANGE JOURNEY,2017-10-26,software,"atlus","3ds",2
+真・女神転生デビルサマナー,1995-12-25,software,"atlus","ss",2
+デビルサマナー ソウルハッカーズ,1997-11-13,software,"atlus","ss",2
+ソウルハッカーズ2,2022-08-25,software,"atlus","multi",2
+デビルサマナー 葛葉ライドウ 対 超力兵団,2006-03-02,software,"atlus","ps2",2
+デビルサマナー 葛葉ライドウ 対 アバドン王,2008-10-23,software,"atlus","ps2",2
 RAIDOU Remastered: 超力兵団奇譚,2025-06-19,software,"atlus","multi"
 
-DIGITAL DEVIL SAGA アバタール・チューナー,2004-07-15,software,"atlus","ps2"
-DIGITAL DEVIL SAGA アバタール・チューナー2,2005-01-27,software,"atlus","ps2"
+DIGITAL DEVIL SAGA アバタール・チューナー,2004-07-15,software,"atlus","ps2",2
+DIGITAL DEVIL SAGA アバタール・チューナー2,2005-01-27,software,"atlus","ps2",2
 
-女神異聞録デビルサバイバー,2009-01-15,software,"atlus","nds"
-デビルサバイバー オーバークロック,2011-09-01,software,"atlus","3ds"
-デビルサバイバー2,2011-07-28,software,"atlus","nds"
-デビルサバイバー2 ブレイクレコード,2015-01-29,software,"atlus","3ds"
+女神異聞録デビルサバイバー,2009-01-15,software,"atlus","nds",2
+デビルサバイバー オーバークロック,2011-09-01,software,"atlus","3ds",2
+デビルサバイバー2,2011-07-28,software,"atlus","nds",2
+デビルサバイバー2 ブレイクレコード,2015-01-29,software,"atlus","3ds",2
 
 女神異聞録ペルソナ,1996-09-20,software,"atlus","ps1"
 ペルソナ2 罪,1999-06-24,software,"atlus","ps1"
 ペルソナ2 罰,2000-06-29,software,"atlus","ps1"
 ペルソナ3,2006-07-13,software,"atlus","ps2"
 ペルソナ3 フェス,2007-04-19,software,"atlus","ps2"
-ペルソナ3 ポータブル,2009-11-01,software,"atlus","psp",2
-ペルソナ3 ダンシング・ムーンナイト,2018-05-24,software,"atlus","ps4,psvita",2
+ペルソナ3 ポータブル,2009-11-01,software,"atlus","psp",3
+ペルソナ3 ダンシング・ムーンナイト,2018-05-24,software,"atlus","ps4,psvita",3
 ペルソナ3 リロード,2024-02-02,software,"atlus","multi"
 ペルソナ4,2008-07-10,software,"atlus","ps2"
 ペルソナ4 ザ・ゴールデン,2012-06-14,software,"atlus","psvita"
-ペルソナ4 ジ・アルティメット イン マヨナカアリーナ,2012-03-01,software,"atlus,arcsys","arcade"
-ペルソナ4 ジ・アルティマックス ウルトラスープレックスホールド,2013-11-28,software,"atlus,arcsys","arcade"
-ペルソナ4 ダンシング・オールナイト,2015-06-25,software,"atlus","psvita"
+ペルソナ4 ジ・アルティメット イン マヨナカアリーナ,2012-03-01,software,"atlus,arcsys","arcade",2
+ペルソナ4 ジ・アルティマックス ウルトラスープレックスホールド,2013-11-28,software,"atlus,arcsys","arcade",2
+ペルソナ4 ダンシング・オールナイト,2015-06-25,software,"atlus","psvita",2
 ペルソナ5,2016-09-15,software,"atlus","ps4,ps3"
-ペルソナ5 ダンシング・スターナイト,2018-05-24,software,"atlus","ps4,psvita",2
+ペルソナ5 ダンシング・スターナイト,2018-05-24,software,"atlus","ps4,psvita",3
 ペルソナ5 ザ・ロイヤル,2019-10-31,software,"atlus","ps4"
-ペルソナ5 スクランブル ザ ファントム ストライカーズ,2020-02-20,software,"atlus","ps4,switch"
-ペルソナ5 タクティカ,2023-11-17,software,"atlus","multi",2
-ペルソナQ シャドウ オブ ザ ラビリンス,2014-06-03,software,"atlus","3ds"
-ペルソナQ2 ニュー シネマ ラビリンス,2018-11-29,software,"atlus","3ds",2
+ペルソナ5 スクランブル ザ ファントム ストライカーズ,2020-02-20,software,"atlus","ps4,switch",2
+ペルソナ5 タクティカ,2023-11-17,software,"atlus","multi",3
+ペルソナQ シャドウ オブ ザ ラビリンス,2014-06-03,software,"atlus","3ds",2
+ペルソナQ2 ニュー シネマ ラビリンス,2018-11-29,software,"atlus","3ds",3
 
-世界樹と不思議のダンジョン,2015-03-05,software,"atlus","3ds"
-世界樹と不思議のダンジョン2,2017-08-31,software,"atlus","3ds"
+世界樹と不思議のダンジョン,2015-03-05,software,"atlus","3ds",2
+世界樹と不思議のダンジョン2,2017-08-31,software,"atlus","3ds",2
 
 豪血寺一族,1993-11-00,software,"atlus","arcade"
 
-ドラゴンボール 神龍の謎,1986-11-27,software,"bandai","fc"
-ドラゴンボールZ 強襲!サイヤ人,1990-10-27,software,"bandai","fc"
-ドラゴンボールZ 激闘天下一武道会,1992-12-29,software,"bandai","fc,datach"
-ドラゴンボールZ 超サイヤ伝説,1992-01-25,software,"bandai","sfc"
+ドラゴンボール 神龍の謎,1986-11-27,software,"bandai","fc",2
+ドラゴンボールZ 強襲!サイヤ人,1990-10-27,software,"bandai","fc",2
+ドラゴンボールZ 激闘天下一武道会,1992-12-29,software,"bandai","fc,datach",2
+ドラゴンボールZ 超サイヤ伝説,1992-01-25,software,"bandai","sfc",2
 ドラゴンボールZ 超武闘伝,1993-03-20,software,"bandai","sfc"
 ドラゴンボールZ 超武闘伝2,1993-12-17,software,"bandai","sfc"
-ドラゴンボールZ 超武闘伝3,1994-09-29,software,"bandai","sfc",2
-ドラゴンボールZ HYPER DIMENSION,1996-03-29,software,"bandai","sfc",2
-聖闘士星矢 黄金伝説,1987-08-10,software,"bandai","fc"
+ドラゴンボールZ 超武闘伝3,1994-09-29,software,"bandai","sfc",3
+ドラゴンボールZ HYPER DIMENSION,1996-03-29,software,"bandai","sfc",3
+聖闘士星矢 黄金伝説,1987-08-10,software,"bandai","fc",2
 ファミコンジャンプ 英雄列伝,1989-02-25,software,"bandai","fc"
 ファミコンジャンプII 最強の7人,1991-12-02,software,"bandai","fc"
-SDガンダムワールド ガチャポン戦士2,1989-06-25,software,"bandai","fc"
-SDガンダム外伝 ナイトガンダム物語,1990-08-11,software,"bandai","fc"
-SDガンダム外伝 ナイトガンダム物語 大いなる遺産,1991-12-21,software,"bandai","sfc"
-まじかる☆タルるートくん,1991-03-21,software,"bandai","fc"
-まじかる☆タルるートくん2,1992-06-19,software,"bandai","fc",2
-まじかる☆タルるートくん MAGIC ADVENTURE,1992-03-28,software,"bandai","sfc"
+SDガンダムワールド ガチャポン戦士2,1989-06-25,software,"bandai","fc",2
+SDガンダム外伝 ナイトガンダム物語,1990-08-11,software,"bandai","fc",2
+SDガンダム外伝 ナイトガンダム物語 大いなる遺産,1991-12-21,software,"bandai","sfc",2
+まじかる☆タルるートくん,1991-03-21,software,"bandai","fc",2
+まじかる☆タルるートくん2,1992-06-19,software,"bandai","fc",3
+まじかる☆タルるートくん MAGIC ADVENTURE,1992-03-28,software,"bandai","sfc",2
 
 テイルズ オブ ファンタジア,1995-12-15,software,"namco","sfc"
 テイルズ オブ デスティニー,1997-12-23,software,"namco","ps1"
@@ -412,129 +426,129 @@ SDガンダム外伝 ナイトガンダム物語 大いなる遺産,1991-12-21,s
 
 パックマン,1984-11-02,software,"namco","fc"
 マッピー,1984-11-14,software,"namco","fc"
-マッピーランド,1986-11-26,software,"namco","fc",2
-マッピーキッズ,1989-12-22,software,"namco","fc"
-時空勇伝デビアス,1987-11-27,software,"namco","fc"
-ワギャンランド,1989-02-09,software,"namco","fc"
-ワギャンランド2,1990-12-14,software,"namco","fc",2
-ワギャンランド3,1992-12-08,software,"namco","fc",2
-スーパーワギャンランド,1991-12-13,software,"namco","sfc"
-スーパーワギャンランド2,1993-03-25,software,"namco","sfc",2
-ワギャンパラダイス,1994-12-16,software,"namco","sfc",2
+マッピーランド,1986-11-26,software,"namco","fc",3
+マッピーキッズ,1989-12-22,software,"namco","fc",2
+時空勇伝デビアス,1987-11-27,software,"namco","fc",2
+ワギャンランド,1989-02-09,software,"namco","fc",2
+ワギャンランド2,1990-12-14,software,"namco","fc",3
+ワギャンランド3,1992-12-08,software,"namco","fc",3
+スーパーワギャンランド,1991-12-13,software,"namco","sfc",2
+スーパーワギャンランド2,1993-03-25,software,"namco","sfc",3
+ワギャンパラダイス,1994-12-16,software,"namco","sfc",3
 幽☆遊☆白書,1993-12-22,software,"namco","sfc"
 鉄拳,1994-12-00,software,"namco","arcade"
 
-メタルギア,1987-07-13,software,"konami","msx2"
-メタルギア2 ソリッドスネーク,1990-07-20,software,"konami","msx2"
+メタルギア,1987-07-13,software,"konami","msx2",2
+メタルギア2 ソリッドスネーク,1990-07-20,software,"konami","msx2",2
 メタルギアソリッド,1998-09-03,software,"konami","ps1"
 メタルギアソリッド2,2001-11-29,software,"konami","ps2"
 メタルギアソリッド3,2004-12-16,software,"konami","ps2"
-メタルギアソリッド ポータブル・オプス,2006-12-21,software,"konami","psp"
-メタルギアソリッド4,2008-06-12,software,"konami","ps3"
-メタルギアソリッド ピースウォーカー,2010-04-29,software,"konami","psp"
-メタルギア ライジング,2013-02-19,software,"konami","ps3"
-メタルギアソリッドV グラウンド・ゼロズ,2014-03-20,software,"konami","ps4"
-メタルギアソリッドV ファントムペイン,2015-09-02,software,"konami","ps4"
-METAL GEAR SOLID: MASTER COLLECTION Vol.1,2023-10-24,software,"konami","multi"
-METAL GEAR SOLID Δ,2025-08-28,software,"konami","multi"
+メタルギアソリッド ポータブル・オプス,2006-12-21,software,"konami","psp",2
+メタルギアソリッド4,2008-06-12,software,"konami","ps3",2
+メタルギアソリッド ピースウォーカー,2010-04-29,software,"konami","psp",2
+メタルギア ライジング,2013-02-19,software,"konami","ps3",2
+メタルギアソリッドV グラウンド・ゼロズ,2014-03-20,software,"konami","ps4",2
+メタルギアソリッドV ファントムペイン,2015-09-02,software,"konami","ps4",2
+METAL GEAR SOLID: MASTER COLLECTION Vol.1,2023-10-24,software,"konami","multi",2
+METAL GEAR SOLID Δ,2025-08-28,software,"konami","multi",2
 
-けっきょく南極大冒険,1985-04-22,software,"konami","fc"
-夢ペンギン物語,1991-01-25,software,"konami","fc"
+けっきょく南極大冒険,1985-04-22,software,"konami","fc",2
+夢ペンギン物語,1991-01-25,software,"konami","fc",2
 ツインビー,1985-01-04,software,"konami","fc"
-Pop'nツインビー,1993-03-26,software,"konami","sfc"
-ツインビー レインボーベルアドベンチャー,1994-01-07,software,"konami","sfc",2
+Pop'nツインビー,1993-03-26,software,"konami","sfc",2
+ツインビー レインボーベルアドベンチャー,1994-01-07,software,"konami","sfc",3
 グラディウス,1986-04-25,software,"konami","fc"
-モアイくん,1990-03-10,software,"konami","fc"
-コナミワイワイワールド,1988-01-14,software,"konami","fc",2
-ワイワイワールド2 SOS!!パセリ城,1991-01-05,software,"konami","fc"
-パロディウスだ!,1990-04-25,software,"konami","arcade"
-極上パロディウス 〜過去の栄光を求めて〜,1994-04-26,software,"konami","arcade"
-実況おしゃべりパロディウス,1995-12-15,software,"konami","sfc"
-セクシーパロディウス,1996-03-00,software,"konami","arcade"
+モアイくん,1990-03-10,software,"konami","fc",2
+コナミワイワイワールド,1988-01-14,software,"konami","fc",3
+ワイワイワールド2 SOS!!パセリ城,1991-01-05,software,"konami","fc",2
+パロディウスだ!,1990-04-25,software,"konami","arcade",2
+極上パロディウス 〜過去の栄光を求めて〜,1994-04-26,software,"konami","arcade",2
+実況おしゃべりパロディウス,1995-12-15,software,"konami","sfc",2
+セクシーパロディウス,1996-03-00,software,"konami","arcade",2
 対戦ぱずるだま,1994-07-00,software,"konami","arcade"
 
-がんばれゴエモン!からくり道中,1986-07-30,software,"konami","fc",2
-がんばれゴエモン2,1989-01-04,software,"konami","fc",2
-がんばれゴエモン外伝 きえた黄金キセル,1990-01-05,software,"konami","fc"
+がんばれゴエモン!からくり道中,1986-07-30,software,"konami","fc",3
+がんばれゴエモン2,1989-01-04,software,"konami","fc",3
+がんばれゴエモン外伝 きえた黄金キセル,1990-01-05,software,"konami","fc",2
 がんばれゴエモン〜ゆき姫救出絵巻〜,1991-07-19,software,"konami","sfc"
-がんばれゴエモン外伝2〜天下の財宝〜,1992-01-03,software,"konami","fc"
-がんばれゴエモン2 奇天烈将軍マッギネス,1993-12-20,software,"konami","sfc",2
-がんばれゴエモン3 獅子重禄兵衛のからくり卍固め,1994-12-16,software,"konami","sfc",2
-がんばれゴエモン きらきら道中〜僕がダンサーになった理由〜,1995-12-22,software,"konami","sfc",2
-がんばれゴエモン〜宇宙海賊アコギング〜,1996-03-22,software,"konami","ps1",2
-がんばれゴエモン〜ネオ桃山幕府のおどり〜,1997-08-07,software,"konami","n64",2
-がんばれゴエモン〜でろでろ道中 オバケてんこ盛り〜,1998-12-23,software,"konami","n64",2
-がんばれゴエモン〜来るなら恋! 綾繁一家の黒い影〜,1998-12-23,software,"konami","ps1",2
-ゴエモン もののけ双六,1999-12-25,software,"konami","n64",2
-冒険時代活劇ゴエモン,2000-12-21,software,"konami","ps2",2
-がんばれゴエモン〜大江戸大回転〜,2001-03-29,software,"konami","ps1",2
-がんばれゴエモン 東海道中 大江戸天狗り返しの巻,2005-06-23,software,"konami","nds",2
+がんばれゴエモン外伝2〜天下の財宝〜,1992-01-03,software,"konami","fc",2
+がんばれゴエモン2 奇天烈将軍マッギネス,1993-12-20,software,"konami","sfc",3
+がんばれゴエモン3 獅子重禄兵衛のからくり卍固め,1994-12-16,software,"konami","sfc",3
+がんばれゴエモン きらきら道中〜僕がダンサーになった理由〜,1995-12-22,software,"konami","sfc",3
+がんばれゴエモン〜宇宙海賊アコギング〜,1996-03-22,software,"konami","ps1",3
+がんばれゴエモン〜ネオ桃山幕府のおどり〜,1997-08-07,software,"konami","n64",3
+がんばれゴエモン〜でろでろ道中 オバケてんこ盛り〜,1998-12-23,software,"konami","n64",3
+がんばれゴエモン〜来るなら恋! 綾繁一家の黒い影〜,1998-12-23,software,"konami","ps1",3
+ゴエモン もののけ双六,1999-12-25,software,"konami","n64",3
+冒険時代活劇ゴエモン,2000-12-21,software,"konami","ps2",3
+がんばれゴエモン〜大江戸大回転〜,2001-03-29,software,"konami","ps1",3
+がんばれゴエモン 東海道中 大江戸天狗り返しの巻,2005-06-23,software,"konami","nds",3
 
-ドラえもん,1986-12-12,software,"hudson","fc"
+ドラえもん,1986-12-12,software,"hudson","fc",2
 ボンバーマン,1985-12-20,software,"hudson","fc"
 スーパーボンバーマン,1993-04-28,software,"hudson","sfc"
 高橋名人の冒険島,1986-09-12,software,"hudson","fc"
-高橋名人のBUGってハニー,1987-06-05,software,"hudson","fc",2
-高橋名人の冒険島II,1991-04-26,software,"hudson","fc",2
-高橋名人の冒険島III,1992-07-31,software,"hudson","fc",2
-高橋名人の冒険島IV,1994-06-24,software,"hudson","fc",2
-高橋名人の大冒険島,1992-01-11,software,"hudson","sfc",2
-高橋名人の大冒険島II,1995-01-03,software,"hudson","sfc",2
+高橋名人のBUGってハニー,1987-06-05,software,"hudson","fc",3
+高橋名人の冒険島II,1991-04-26,software,"hudson","fc",3
+高橋名人の冒険島III,1992-07-31,software,"hudson","fc",3
+高橋名人の冒険島IV,1994-06-24,software,"hudson","fc",3
+高橋名人の大冒険島,1992-01-11,software,"hudson","sfc",3
+高橋名人の大冒険島II,1995-01-03,software,"hudson","sfc",3
 桃太郎伝説,1987-10-26,software,"hudson","fc"
 桃太郎電鉄,1988-12-02,software,"hudson","fc"
-魔神英雄伝ワタル外伝,1990-03-23,software,"hudson","fc"
+魔神英雄伝ワタル外伝,1990-03-23,software,"hudson","fc",2
 
 カトちゃんケンちゃん,1987-11-30,software,"hudson","pce"
 PC原人,1989-12-15,software,"hudson","pce"
-天外魔境 ZIRIA,1989-06-30,software,"hudson","pce",2
-天外魔境II 卍MARU,1992-03-26,software,"hudson","pce",2
-天外魔境 風雲カブキ伝,1993-07-10,software,"hudson","pce",2
-銀河お嬢様伝説ユナ,1992-10-23,software,"hudson","pce",2
+天外魔境 ZIRIA,1989-06-30,software,"hudson","pce",3
+天外魔境II 卍MARU,1992-03-26,software,"hudson","pce",3
+天外魔境 風雲カブキ伝,1993-07-10,software,"hudson","pce",3
+銀河お嬢様伝説ユナ,1992-10-23,software,"hudson","pce",3
 
-へべれけ,1991-09-20,software,"sunsoft","fc"
-ギミック!,1992-01-31,software,"sunsoft","fc"
-レミングス,1991-12-18,software,"sunsoft","sfc"
+へべれけ,1991-09-20,software,"sunsoft","fc",2
+ギミック!,1992-01-31,software,"sunsoft","fc",2
+レミングス,1991-12-18,software,"sunsoft","sfc",2
 
 す〜ぱ〜ぷよぷよ,1993-12-10,software,"compile","sfc"
-す〜ぱ〜なぞぷよ ルルーのルー,1995-05-26,software,"compile","sfc"
+す〜ぱ〜なぞぷよ ルルーのルー,1995-05-26,software,"compile","sfc",2
 す〜ぱ〜ぷよぷよ通,1995-12-08,software,"compile","sfc"
 
-キャッスルエクセレント,1986-11-28,software,"ascii","fc"
-忍者らホイ! 痛快うんがちょこ忍法伝!!,1990-08-08,software,"ascii","fc"
-RPGツクール SUPER DANTE,1995-03-31,software,"ascii","sfc"
-RPGツクール2,1996-01-31,software,"ascii","sfc"
-音楽ツクールかなでーる,1996-04-12,software,"ascii","sfc"
-サウンドノベルツクール,1996-05-31,software,"ascii","sfc"
+キャッスルエクセレント,1986-11-28,software,"ascii","fc",2
+忍者らホイ! 痛快うんがちょこ忍法伝!!,1990-08-08,software,"ascii","fc",2
+RPGツクール SUPER DANTE,1995-03-31,software,"ascii","sfc",2
+RPGツクール2,1996-01-31,software,"ascii","sfc",2
+音楽ツクールかなでーる,1996-04-12,software,"ascii","sfc",2
+サウンドノベルツクール,1996-05-31,software,"ascii","sfc",2
 
 熱血高校ドッジボール部,1988-07-26,software,"technos","fc"
 
-トランスフォーマー コンボイの謎,1986-12-05,software,"takara","fc"
+トランスフォーマー コンボイの謎,1986-12-05,software,"takara","fc",2
 
-サンサーラ・ナーガ,1990-03-23,software,"victor","fc"
-サンサーラ・ナーガ2,1994-07-15,software,"victor","sfc"
+サンサーラ・ナーガ,1990-03-23,software,"victor","fc",2
+サンサーラ・ナーガ2,1994-07-15,software,"victor","sfc",2
 
-ドラえもん ギガゾンビの逆襲,1990-09-14,software,"epoch","fc"
-バーコードバトラー戦記〜スーパー戦士出撃せよ!〜,1993-05-14,software,"epoch","sfc"
+ドラえもん ギガゾンビの逆襲,1990-09-14,software,"epoch","fc",2
+バーコードバトラー戦記〜スーパー戦士出撃せよ!〜,1993-05-14,software,"epoch","sfc",2
 
-改造町人シュビビンマン,1989-03-18,software,"mesaya","pce",2
-改造町人シュビビンマン2 -新たなる敵-,1991-04-27,software,"mesaya","pce",2
-改造町人シュビビンマン3 -異界のプリンセス-,1992-02-28,software,"mesaya","pce",2
+改造町人シュビビンマン,1989-03-18,software,"mesaya","pce",3
+改造町人シュビビンマン2 -新たなる敵-,1991-04-27,software,"mesaya","pce",3
+改造町人シュビビンマン3 -異界のプリンセス-,1992-02-28,software,"mesaya","pce",3
 らんま1/2 町内激闘篇,1992-03-27,software,"mesaya","sfc"
-らんま1/2 爆烈乱闘篇,1992-12-25,software,"mesaya","sfc",2
+らんま1/2 爆烈乱闘篇,1992-12-25,software,"mesaya","sfc",3
 
-奇々怪界-謎の黒マント-,1992-12-22,software,"natsume","sfc",2
-奇々怪界-月夜草子,1994-06-17,software,"natsume","sfc",2
+奇々怪界-謎の黒マント-,1992-12-22,software,"natsume","sfc",3
+奇々怪界-月夜草子,1994-06-17,software,"natsume","sfc",3
 
-負けるな!魔剣道,1993-01-22,software,"datam","sfc"
+負けるな!魔剣道,1993-01-22,software,"datam","sfc",2
 負けるな!魔剣道2 決めろ!妖怪総理大臣,1995-03-17,software,"datam","sfc",2
 
-絵描衛門,1991-09-13,software,"athena","fc",2
-デザエモン,1994-09-30,software,"athena","sfc"
+絵描衛門,1991-09-13,software,"athena","fc",3
+デザエモン,1994-09-30,software,"athena","sfc",2
 
 ソニック・ザ・ヘッジホッグ,1991-07-26,software,"sega","md"
-ガンスターヒーローズ,1993-09-10,software,"sega,treasure","md",2
+ガンスターヒーローズ,1993-09-10,software,"sega,treasure","md",3
 
-タントアール,1993-06-00,software,"sega","arcade"
+タントアール,1993-06-00,software,"sega","arcade",2
 
 バーチャファイター,1993-12-00,software,"sega","arcade"
 バーチャファイター2,1994-11-00,software,"sega","arcade"
@@ -568,8 +582,8 @@ SAMURAI SPIRITS 2 〜アスラ斬魔伝〜,1998-10-16,software,"snk","arcade"
 サムライスピリッツ天下一剣客伝,2005-09-14,software,"snk","arcade"
 サムライスピリッツ閃,2008-04-14,software,"snk","arcade"
 SAMURAI SPIRITS,2019-06-27,software,"snk","multi"
-真説サムライスピリッツ,1997-06-27,software,"snk","ngcd,ps1,ss"
-剣客異聞録 甦りし蒼紅の刃 サムライスピリッツ新章,1999-12-22,software,"snk","ps1"
+真説サムライスピリッツ,1997-06-27,software,"snk","ngcd,ps1,ss",2
+剣客異聞録 甦りし蒼紅の刃 サムライスピリッツ新章,1999-12-22,software,"snk","ps1",2
 
 THE KING OF FIGHTERS '94,1994-08-25,software,"snk","arcade"
 THE KING OF FIGHTERS '95,1995-07-25,software,"snk","arcade"
@@ -611,8 +625,8 @@ SNK VS. CAPCOM SVC CHAOS,2003-07-24,software,"snk","arcade"
 モンスターハンターライズ,2021-03-26,software,"capcom","switch"
 モンスターハンターライズ サンブレイク,2022-06-30,software,"capcom","switch"
 モンスターハンターワイルズ,2025-02-28,software,"capcom","ps5,steam"
-モンスターハンターストーリーズ,2016-10-08,software,"capcom","3ds"
-モンスターハンターストーリーズ2,2021-07-09,software,"capcom","switch"
+モンスターハンターストーリーズ,2016-10-08,software,"capcom","3ds",2
+モンスターハンターストーリーズ2,2021-07-09,software,"capcom","switch",2
 モンスターハンターNow,2023-09-14,software,"capcom","ios,android"
 
 ストリートファイターII,1991-02-14,software,"capcom","arcade"
@@ -648,22 +662,22 @@ MARVEL vs. CAPCOM 2,2000-03-10,software,"capcom","arcade"
 CAPCOM vs. SNK,2000-08-18,software,"capcom","arcade"
 CAPCOM vs. SNK 2,2001-08-03,software,"capcom","arcade"
 
-魔界村,1986-06-13,software,"capcom","fc",2
+魔界村,1986-06-13,software,"capcom","fc",3
 超魔界村,1991-10-04,software,"capcom","sfc"
 
 ロックマン,1987-12-17,software,"capcom","fc"
-ロックマン2 Dr.ワイリーの謎,1988-12-24,software,"capcom","fc",2
-ロックマン3 Dr.ワイリーの最期!?,1990-09-28,software,"capcom","fc",2
-ロックマン4 新たなる野望!!,1991-12-06,software,"capcom","fc",2
-ロックマン5 ブルースの罠!?,1992-12-04,software,"capcom","fc",2
-ロックマン6 史上最大の戦い!!,1993-11-05,software,"capcom","fc",2
+ロックマン2 Dr.ワイリーの謎,1988-12-24,software,"capcom","fc",3
+ロックマン3 Dr.ワイリーの最期!?,1990-09-28,software,"capcom","fc",3
+ロックマン4 新たなる野望!!,1991-12-06,software,"capcom","fc",3
+ロックマン5 ブルースの罠!?,1992-12-04,software,"capcom","fc",3
+ロックマン6 史上最大の戦い!!,1993-11-05,software,"capcom","fc",3
 ロックマンX,1993-12-17,software,"capcom","sfc"
-ロックマン7 宿命の対決!,1995-03-24,software,"capcom","sfc",2
+ロックマン7 宿命の対決!,1995-03-24,software,"capcom","sfc",3
 
 ファイナルファイト,1990-12-21,software,"capcom","sfc"
 ファイナルファイト2,1993-05-22,software,"capcom","sfc"
 
-ミッキーのマジカルアドベンチャー,1992-11-20,software,"capcom","sfc"
+ミッキーのマジカルアドベンチャー,1992-11-20,software,"capcom","sfc",2
 
 GUILTY GEAR X,2000-07-19,software,"arcsys","arcade"
 GUILTY GEAR XX,2002-05-23,software,"arcsys","arcade"
@@ -680,7 +694,7 @@ GUILTY GEAR XX,2002-05-23,software,"arcsys","arcade"
 パズルボブル,1994-12-21,software,"taito","arcade"
 サイキックフォース,1995-10-00,software,"taito","arcade"
 
-キャプテン翼,1988-04-28,software,"tecmo","fc"
+キャプテン翼,1988-04-28,software,"tecmo","fc",2
 DEAD OR ALIVE,1996-11-26,software,"tecmo","arcade"
 
 東京ディズニーランド,1983-04-15,news,"japan"

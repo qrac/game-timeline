@@ -25,11 +25,12 @@ const defaultOptions: Options = {
   categoryList: [],
   tagList: [],
   colorList: [],
-  lankList: [1],
+  lankList: [],
   startYear: 1983,
   endYear: 2025,
   omitEmptyYears: false,
-  visibleLank: 1,
+  visibleLank: 2,
+  lankNote: "1=有名作品のみ, 2=個人的な注目作品含む, 3=全件表示",
 }
 
 export default function App() {
@@ -97,7 +98,7 @@ export default function App() {
 
       const itemList = csvToItemList(parsedItems)
       const lankList = getLankList(itemList)
-      const visibleLank = lankList[0]
+      const visibleLank = lankList.at(-1)
       const categoryIds = getTermIds(itemList, "category", visibleLank)
       const tagIds = getTermIds(itemList, "tags", visibleLank)
       const labelIds = getTermIds(itemList, "labels", visibleLank)
@@ -120,6 +121,7 @@ export default function App() {
         startYear,
         endYear,
         visibleLank,
+        lankNote: "",
       })
     }
     reader.readAsText(file)
@@ -159,6 +161,7 @@ export default function App() {
   useEffect(() => {
     const setup = async () => {
       const timestamp = Date.now()
+      const { visibleLank } = options
 
       const itemsData = await fetchFile(`/assets/items.csv?t=${timestamp}`)
       const termsData = await fetchFile(`/assets/terms.csv?t=${timestamp}`)
@@ -168,7 +171,6 @@ export default function App() {
       const itemList = csvToItemList(parsedItems)
       const termList = csvToTermList(parsedTerms)
       const lankList = getLankList(itemList)
-      const visibleLank = lankList[0]
       const categoryIds = getTermIds(itemList, "category", visibleLank)
       const tagIds = getTermIds(itemList, "tags", visibleLank)
       const labelIds = getTermIds(itemList, "labels", visibleLank)
