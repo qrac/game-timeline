@@ -198,15 +198,18 @@ export function getYearList(itemList: Item[]): number[] {
 export function filterItemList(
   itemList: Item[],
   categoryList: Term[],
-  tagList: Term[]
+  tagList: Term[],
+  visibleLank: number
 ): Item[] {
+  const lankedItemList = itemList.filter((item) => item.lank <= visibleLank)
+
   const activeCategoryFilter = categoryList?.some((term) => term.filter)
   const activeTagFilter = tagList?.some((term) => term.filter)
   const activeFilter = activeCategoryFilter || activeTagFilter
 
-  if (!activeFilter) return itemList
+  if (!activeFilter) return lankedItemList
 
-  return itemList.filter((item) => {
+  return lankedItemList.filter((item) => {
     const categoryMatched =
       !activeCategoryFilter ||
       categoryList.some((term) => term.id === item.category && term.filter)

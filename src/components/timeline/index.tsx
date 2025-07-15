@@ -19,8 +19,13 @@ export function ComponentTimeline({
   activeTimeline: boolean
   //ref: React.Ref<HTMLDivElement>
 }) {
-  const { itemList, categoryList, tagList } = options
-  const filteredItemList = filterItemList(itemList, categoryList, tagList)
+  const { itemList, categoryList, tagList, visibleLank } = options
+  const filteredItemList = filterItemList(
+    itemList,
+    categoryList,
+    tagList,
+    visibleLank
+  )
   const yearList = getYearList(filteredItemList)
   const { startYear, endYear, omitEmptyYears } = options
   const itemStartYear = Math.min(...yearList)
@@ -43,20 +48,12 @@ export function ComponentTimeline({
               {visibleYearList.map((year) => {
                 const mainItemList = filteredItemList
                   .filter((item) => {
-                    return (
-                      item.year === year &&
-                      item.category !== "news" &&
-                      item.lank <= options.visibleLank
-                    )
+                    return item.year === year && item.category !== "news"
                   })
                   .sort((a, b) => a.timestamp - b.timestamp)
                 const subItemList = filteredItemList
                   .filter((item) => {
-                    return (
-                      item.year === year &&
-                      item.category === "news" &&
-                      item.lank <= options.visibleLank
-                    )
+                    return item.year === year && item.category === "news"
                   })
                   .sort((a, b) => a.timestamp - b.timestamp)
                 const emptyMain = mainItemList.length === 0
