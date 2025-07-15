@@ -35,21 +35,21 @@ export function ComponentHeader({
           <div className="header-buttons">
             {/*<button
               type="button"
-              className="button is-plain is-secondary"
+              className="button is-plain is-primary"
               onClick={runGenerate}
             >
               画像化
             </button>*/}
             <button
               type="button"
-              className="button is-outline is-secondary is-square"
+              className="button is-outline is-primary is-square"
               onClick={runInfo}
             >
               <FiInfo className="header-button-icon" />
             </button>
             <button
               type="button"
-              className="button is-outline is-secondary is-square"
+              className="button is-outline is-primary is-square"
               onClick={runSetting}
             >
               <FiSettings className="header-button-icon" />
