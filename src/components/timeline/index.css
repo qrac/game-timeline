@@ -1,5 +1,4 @@
 .timeline {
-  --timeline-default-offset: 16px;
   --timeline-bar-offset: 24px;
   --timeline-bar-width: 4px;
   --timeline-year-font-size: 1.5rem;
@@ -7,17 +6,18 @@
 }
 
 .timeline {
+  padding-bottom: 40vh;
   background-color: var(--theme-bg-2);
 }
 
 .timeline-container {
   max-width: var(--pj-app-max-width);
   margin: 0 auto;
-  padding-top: var(--timeline-default-offset);
-  padding-right: var(--timeline-default-offset);
-  padding-bottom: var(--timeline-default-offset);
+  padding-top: var(--pj-timeline-offset);
+  padding-right: var(--pj-timeline-offset);
+  padding-bottom: var(--pj-timeline-offset);
   padding-left: calc(
-    var(--timeline-default-offset) - var(--timeline-bar-offset) / 6
+    var(--pj-timeline-offset) - var(--timeline-bar-offset) / 6
   );
   background-color: var(--theme-bg-2);
   transition: opacity 0.4s ease-in-out, translate 0.4s ease-in-out,
@@ -149,12 +149,12 @@
 .timeline-blank {
   display: grid;
   place-items: center;
-  min-height: 70vh;
-  margin-top: calc(var(--timeline-default-offset) * -1);
-  margin-right: calc(var(--timeline-default-offset) * -1);
-  margin-bottom: calc(var(--timeline-default-offset) * -1);
+  min-height: 50vh;
+  margin-top: calc(var(--pj-timeline-offset) * -1);
+  margin-right: calc(var(--pj-timeline-offset) * -1);
+  margin-bottom: calc(var(--pj-timeline-offset) * -1);
   margin-left: calc(
-    (var(--timeline-default-offset) - var(--timeline-bar-offset) / 6) * -1
+    (var(--pj-timeline-offset) - var(--timeline-bar-offset) / 6) * -1
   );
   padding: 20px;
 }
