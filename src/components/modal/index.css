@@ -321,7 +321,11 @@
 }
 
 .modal-field-tagcloud > .button.is-outline.is-active {
-  background-color: #f0f9fc;
+  background-color: color-mix(
+    in srgb,
+    var(--theme-primary) 15%,
+    transparent 75%
+  );
   border-color: var(--theme-primary);
 }
 
