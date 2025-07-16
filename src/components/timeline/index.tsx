@@ -91,30 +91,26 @@ export function ComponentTimeline({
   }
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (isScrollingRef.current) return
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      if (isScrollingRef.current) return
 
-        const visible = entries.filter((entry) => entry.isIntersecting)
-        if (visible.length === 0) return
-        const topMost = visible.reduce((prev, curr) =>
-          prev.boundingClientRect.top < curr.boundingClientRect.top
-            ? prev
-            : curr
-        )
-        const yearStr = topMost.target.getAttribute("id")
-        const year = yearStr ? Number(yearStr) : null
-        if (year && year !== currentYear) {
-          setCurrentYear(year)
-          setInputYear(year)
-        }
-      },
-      {
-        root: null,
-        rootMargin: `-${scrollOffset}px 0px -40% 0px`,
-        threshold: 0,
+      const visible = entries.filter((entry) => entry.isIntersecting)
+      if (visible.length === 0) return
+      const topMost = visible.reduce((prev, curr) =>
+        prev.boundingClientRect.top < curr.boundingClientRect.top ? prev : curr
+      )
+      const yearStr = topMost.target.getAttribute("id")
+      const year = yearStr ? Number(yearStr) : null
+      if (year && year !== currentYear) {
+        setCurrentYear(year)
+        setInputYear(year)
       }
-    )
+    }
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: `-${scrollOffset}px 0px -40% 0px`,
+      threshold: 0,
+    })
     visibleYearList.forEach((year) => {
       const el = yearRefs.current.get(year)
       if (el) {
