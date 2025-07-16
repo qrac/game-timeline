@@ -1,0 +1,11 @@
+.check {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 4px 4px 2px;
+}
+
+.check .text {
+  font-size: 0.875rem;
+}

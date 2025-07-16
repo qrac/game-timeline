@@ -1,13 +1,7 @@
-import type { Options } from "../../types"
+import type { Setting } from "../../types"
 
-export function ComponentVariable({
-  options,
-  scrollbarWidth,
-}: {
-  options: Options
-  scrollbarWidth: number
-}) {
-  const { colorList } = options
+export function ComponentVariable({ setting }: { setting: Setting }) {
+  const { colorList, scrollbarWidth } = setting
   const colorCss = colorList
     .map((color) => {
       return `.is-accent-${color.id} { --pj-color-accent: ${color.color}; }`

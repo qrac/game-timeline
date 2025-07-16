@@ -282,51 +282,10 @@
   }
 }
 
-.modal-field-check {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 4px 4px 2px;
-}
-
-.modal-field-check .text {
-  font-size: 0.875rem;
-}
-
-.modal-field-tagcloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.modal-field-tagcloud > .button {
-  justify-content: flex-start;
-  padding: 0.5em 0.625em;
-}
-
 @media (width <= 600px) {
-  .modal-field-tagcloud > .button {
+  .modal-container.is-mobile-sidebar .tagcloud > .button {
     flex: 0 0 100%;
   }
-}
-
-.modal-field-tagcloud > .button .text {
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-feature-settings: "palt";
-  letter-spacing: 0.0125em;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.modal-field-tagcloud > .button.is-outline.is-active {
-  background-color: color-mix(
-    in srgb,
-    var(--theme-primary) 15%,
-    transparent 75%
-  );
-  border-color: var(--theme-primary);
 }
 
 .modal-field-buttons {

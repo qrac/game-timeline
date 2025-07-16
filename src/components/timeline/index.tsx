@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 
-import type { Options } from "../../types"
+import type { Setting } from "../../types"
 import { ComponentItem } from "../item"
 import {
   filterItemList,
@@ -11,23 +11,23 @@ import {
 import "./index.css"
 
 export function ComponentTimeline({
-  options,
+  setting,
   activeTimeline,
 }: //ref,
 {
-  options: Options
+  setting: Setting
   activeTimeline: boolean
   //ref: React.Ref<HTMLDivElement>
 }) {
-  const { itemList, categoryList, tagList, visibleLank } = options
+  const { itemList, categoryList, tagList, currentLank } = setting
   const filteredItemList = filterItemList(
     itemList,
     categoryList,
     tagList,
-    visibleLank
+    currentLank
   )
   const yearList = getYearList(filteredItemList)
-  const { startYear, endYear, omitEmptyYears } = options
+  const { startYear, endYear, omitEmptyYears } = setting
   const itemStartYear = Math.min(...yearList)
   const itemEndYear = Math.max(...yearList)
   const maxStartYear = Math.max(startYear, itemStartYear)

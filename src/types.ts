@@ -23,7 +23,7 @@ export type Color = {
   color: string
 }
 
-export type Options = {
+export type Setting = {
   itemList: Item[]
   termList: Term[]
   lankList: number[]
@@ -33,6 +33,7 @@ export type Options = {
   startYear: number
   endYear: number
   omitEmptyYears: boolean
-  visibleLank: number
+  currentLank: number
   lankNote: string
+  scrollbarWidth: number
 }

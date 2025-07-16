@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 
-import { Item, Term, Color, Options } from "./types"
+import { Setting } from "./types"
 import { ComponentVariable } from "./components/variable"
 import { ComponentHeader } from "./components/header"
 import { ComponentTimeline } from "./components/timeline"
@@ -19,7 +19,7 @@ import {
 } from "./utils"
 import "./app.css"
 
-const defaultOptions: Options = {
+const defaultSetting: Setting = {
   itemList: [],
   termList: [],
   categoryList: [],
@@ -29,13 +29,13 @@ const defaultOptions: Options = {
   startYear: 1983,
   endYear: 2025,
   omitEmptyYears: false,
-  visibleLank: 2,
+  currentLank: 2,
   lankNote: "1=有名作品のみ, 2=個性派作品含む, 3=全件表示",
+  scrollbarWidth: 0,
 }
 
 export default function App() {
-  const [options, setOptions] = useState<Options>(defaultOptions)
-  const [scrollbarWidth, setScrollbarWidth] = useState(0)
+  const [setting, setSetting] = useState<Setting>(defaultSetting)
   const [activeTimeline, setActiveTimeline] = useState(false)
   const [activeModal, setActiveModal] = useState<string | null>(null)
   //const [imageData, setImageData] = useState<string | null>(null)
@@ -61,27 +61,27 @@ export default function App() {
     setActiveModal(null)
   }
 
-  const changeOptions = (newOptions: Partial<Options>) => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      ...newOptions,
+  const changeSetting = (newSetting: Partial<Setting>) => {
+    setSetting((prevSetting) => ({
+      ...prevSetting,
+      ...newSetting,
     }))
   }
-  const changeVisibleLank = (visibleLank: number) => {
-    const { itemList, termList } = options
+  const changeCurrentLank = (currentLank: number) => {
+    const { itemList, termList } = setting
 
-    const categoryIds = getTermIds(itemList, "category", visibleLank)
-    const tagIds = getTermIds(itemList, "tags", visibleLank)
-    const labelIds = getTermIds(itemList, "labels", visibleLank)
+    const categoryIds = getTermIds(itemList, "category", currentLank)
+    const tagIds = getTermIds(itemList, "tags", currentLank)
+    const labelIds = getTermIds(itemList, "labels", currentLank)
     const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
     const categoryList = resolveTermList(categoryIds, termList)
     const tagList = resolveTermList(tagLabelIds, termList)
 
-    changeOptions({
+    changeSetting({
       categoryList: categoryList,
       tagList: tagList,
-      visibleLank,
+      currentLank,
     })
   }
 
@@ -92,16 +92,16 @@ export default function App() {
     const reader = new FileReader()
 
     reader.onload = (event) => {
-      const { termList } = options
+      const { termList } = setting
       const itemsData = event.target?.result as string
       const parsedItems = parseCsv(itemsData)
 
       const itemList = csvToItemList(parsedItems)
       const lankList = getLankList(itemList)
-      const visibleLank = lankList.at(-1)
-      const categoryIds = getTermIds(itemList, "category", visibleLank)
-      const tagIds = getTermIds(itemList, "tags", visibleLank)
-      const labelIds = getTermIds(itemList, "labels", visibleLank)
+      const currentLank = lankList.at(-1)
+      const categoryIds = getTermIds(itemList, "category", currentLank)
+      const tagIds = getTermIds(itemList, "tags", currentLank)
+      const labelIds = getTermIds(itemList, "labels", currentLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
       const categoryList = resolveTermList(categoryIds, termList)
@@ -112,7 +112,7 @@ export default function App() {
       const startYear = Math.min(...yearList)
       const endYear = Math.max(...yearList)
 
-      changeOptions({
+      changeSetting({
         itemList,
         lankList,
         categoryList,
@@ -120,7 +120,7 @@ export default function App() {
         colorList,
         startYear,
         endYear,
-        visibleLank,
+        currentLank,
         lankNote: "",
       })
     }
@@ -134,21 +134,21 @@ export default function App() {
     const reader = new FileReader()
 
     reader.onload = (event) => {
-      const { itemList, visibleLank } = options
+      const { itemList, currentLank } = setting
       const termsData = event.target?.result as string
       const parsedTerms = parseCsv(termsData)
 
       const termList = csvToTermList(parsedTerms)
-      const categoryIds = getTermIds(itemList, "category", visibleLank)
-      const tagIds = getTermIds(itemList, "tags", visibleLank)
-      const labelIds = getTermIds(itemList, "labels", visibleLank)
+      const categoryIds = getTermIds(itemList, "category", currentLank)
+      const tagIds = getTermIds(itemList, "tags", currentLank)
+      const labelIds = getTermIds(itemList, "labels", currentLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
       const categoryList = resolveTermList(categoryIds, termList)
       const tagList = resolveTermList(tagLabelIds, termList)
       const colorList = getColorList(termList)
 
-      changeOptions({
+      changeSetting({
         termList,
         categoryList,
         tagList,
@@ -161,7 +161,7 @@ export default function App() {
   useEffect(() => {
     const setup = async () => {
       const timestamp = Date.now()
-      const { visibleLank } = options
+      const { currentLank } = setting
 
       const itemsData = await fetchFile(`/assets/items.csv?t=${timestamp}`)
       const termsData = await fetchFile(`/assets/terms.csv?t=${timestamp}`)
@@ -171,9 +171,9 @@ export default function App() {
       const itemList = csvToItemList(parsedItems)
       const termList = csvToTermList(parsedTerms)
       const lankList = getLankList(itemList)
-      const categoryIds = getTermIds(itemList, "category", visibleLank)
-      const tagIds = getTermIds(itemList, "tags", visibleLank)
-      const labelIds = getTermIds(itemList, "labels", visibleLank)
+      const categoryIds = getTermIds(itemList, "category", currentLank)
+      const tagIds = getTermIds(itemList, "tags", currentLank)
+      const labelIds = getTermIds(itemList, "labels", currentLank)
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
       const categoryList = resolveTermList(categoryIds, termList)
       const tagList = resolveTermList(tagLabelIds, termList)
@@ -183,7 +183,9 @@ export default function App() {
       const startYear = Math.min(...yearList)
       const endYear = Math.max(...yearList)
 
-      changeOptions({
+      const scrollbarWidth = window.innerWidth - document.body.clientWidth
+
+      changeSetting({
         itemList,
         termList,
         lankList,
@@ -192,16 +194,15 @@ export default function App() {
         colorList,
         startYear,
         endYear,
-        visibleLank,
+        scrollbarWidth,
       })
-      setScrollbarWidth(window.innerWidth - document.body.clientWidth)
       setActiveTimeline(true)
     }
     setup()
   }, [])
   return (
     <div className="app">
-      <ComponentVariable options={options} scrollbarWidth={scrollbarWidth} />
+      <ComponentVariable setting={setting} />
       <div className="app-main">
         <ComponentHeader
           //runGenerate={runGenerate}
@@ -209,7 +210,7 @@ export default function App() {
           runSetting={runSetting}
         />
         <ComponentTimeline
-          options={options}
+          setting={setting}
           activeTimeline={activeTimeline}
           //ref={timelineRef}
         />
@@ -218,9 +219,9 @@ export default function App() {
         activeModal={activeModal}
         closeModal={closeModal}
         //imageData={imageData}
-        options={options}
-        changeOptions={changeOptions}
-        changeVisibleLank={changeVisibleLank}
+        setting={setting}
+        changeSetting={changeSetting}
+        changeCurrentLank={changeCurrentLank}
         uploadItems={uploadItems}
         uploadTerms={uploadTerms}
       />

@@ -130,9 +130,9 @@ export function csvToTermList(parsedCsv: { [key: string]: string }[]): Term[] {
 export function getTermIds(
   itemList: Item[],
   property: keyof Item,
-  visibleLank: number
+  currentLank: number
 ): string[] {
-  const filteredItemList = itemList.filter((item) => item.lank <= visibleLank)
+  const filteredItemList = itemList.filter((item) => item.lank <= currentLank)
 
   const values: string[] = []
 
@@ -199,9 +199,9 @@ export function filterItemList(
   itemList: Item[],
   categoryList: Term[],
   tagList: Term[],
-  visibleLank: number
+  currentLank: number
 ): Item[] {
-  const lankedItemList = itemList.filter((item) => item.lank <= visibleLank)
+  const lankedItemList = itemList.filter((item) => item.lank <= currentLank)
 
   const activeCategoryFilter = categoryList?.some((term) => term.filter)
   const activeTagFilter = tagList?.some((term) => term.filter)

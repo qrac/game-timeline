@@ -2,7 +2,10 @@ import { useEffect, useRef } from "react"
 import { clsx } from "clsx"
 import { FiX, FiDownload, FiUpload } from "react-icons/fi"
 
-import type { Term, Options } from "../../types"
+import type { Setting } from "../../types"
+import { ComponentSelect } from "../select"
+import { ComponentCheck } from "../check"
+import { ComponentTagcloud } from "../tagcloud"
 import { getYearList } from "../../utils"
 import "./index.css"
 
@@ -12,18 +15,18 @@ export function ComponentModal({
   activeModal,
   closeModal,
   //imageData,
-  options,
-  changeOptions,
-  changeVisibleLank,
+  setting,
+  changeSetting,
+  changeCurrentLank,
   uploadItems,
   uploadTerms,
 }: {
   activeModal: string | null
   closeModal: () => void
   //imageData: string | null
-  options: Options
-  changeOptions: (newOptions: Partial<Options>) => void
-  changeVisibleLank: (visibleLank: number) => void
+  setting: Setting
+  changeSetting: (newSetting: Partial<Setting>) => void
+  changeCurrentLank: (currentLank: number) => void
   uploadItems: (e: React.ChangeEvent<HTMLInputElement>) => void
   uploadTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
@@ -40,18 +43,18 @@ export function ComponentModal({
   return (
     <aside className={clsx("modal", activeModal && "is-active")}>
       <div className="modal-background" onClick={closeModal} />
-      {/*<Generate
+      {/*<ModalGenerate
         activeModal={activeModal}
         closeModal={closeModal}
         imageData={imageData}
       />*/}
-      <Info activeModal={activeModal} closeModal={closeModal} />
-      <Setting
+      <ModalInfo activeModal={activeModal} closeModal={closeModal} />
+      <ModalSetting
         activeModal={activeModal}
         closeModal={closeModal}
-        options={options}
-        changeOptions={changeOptions}
-        changeVisibleLank={changeVisibleLank}
+        setting={setting}
+        changeSetting={changeSetting}
+        changeCurrentLank={changeCurrentLank}
         uploadItems={uploadItems}
         uploadTerms={uploadTerms}
       />
@@ -59,7 +62,7 @@ export function ComponentModal({
   )
 }
 
-function Container({
+function ModalContainer({
   modalId,
   activeModal,
   children,
@@ -81,7 +84,7 @@ function Container({
   )
 }
 
-function Header({
+function ModalHeader({
   title,
   closeModal,
 }: {
@@ -104,80 +107,7 @@ function Header({
   )
 }
 
-function Select({
-  value,
-  onChange,
-  list,
-}: {
-  value: string | number
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
-  list: (string | number)[]
-}) {
-  return (
-    <div className="select">
-      <select value={value} onChange={onChange}>
-        {list.map((item) => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
-    </div>
-  )
-}
-
-function Check({
-  checked,
-  onChange,
-  text,
-}: {
-  checked: boolean
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  text: string
-}) {
-  return (
-    <label className="modal-field-check">
-      <input
-        className="input"
-        type="checkbox"
-        checked={checked}
-        onChange={onChange}
-      />
-      <span className="checkbox" />
-      <span className="text">{text}</span>
-    </label>
-  )
-}
-
-function Tagcloud({
-  list,
-  onToggle,
-}: {
-  list: Term[]
-  onToggle: (id: string) => void
-}) {
-  return (
-    <div className="modal-field-tagcloud">
-      {list.map((term, index) => (
-        <label
-          key={index}
-          className={clsx("button is-outline", term.filter && "is-active")}
-        >
-          <input
-            className="input"
-            type="checkbox"
-            checked={term.filter}
-            onChange={() => onToggle(term.id)}
-          />
-          <span className="checkbox" />
-          <span className="text">{term.name}</span>
-        </label>
-      ))}
-    </div>
-  )
-}
-
-/*function Generate({
+/*function ModalGenerate({
   activeModal,
   closeModal,
   imageData,
@@ -187,8 +117,8 @@ function Tagcloud({
   imageData: string | null
 }) {
   return (
-    <Container modalId="generate" activeModal={activeModal}>
-      <Header title="画像化" closeModal={closeModal} />
+    <ModalContainer modalId="generate" activeModal={activeModal}>
+      <ModalHeader title="画像化" closeModal={closeModal} />
       <div className="modal-contents">
         <div className="modal-generate-viewer">
           {imageData ? (
@@ -221,7 +151,7 @@ function Tagcloud({
   )
 }*/
 
-function Info({
+function ModalInfo({
   activeModal,
   closeModal,
 }: {
@@ -248,8 +178,8 @@ function Info({
     },
   ]
   return (
-    <Container modalId="info" activeModal={activeModal}>
-      <Header title="概要" closeModal={closeModal} />
+    <ModalContainer modalId="info" activeModal={activeModal}>
+      <ModalHeader title="概要" closeModal={closeModal} />
       <div className="modal-contents">
         <div className="modal-docs">
           <p>
@@ -286,24 +216,24 @@ function Info({
           </ul>
         </div>
       </div>
-    </Container>
+    </ModalContainer>
   )
 }
 
-function Setting({
+function ModalSetting({
   activeModal,
   closeModal,
-  options,
-  changeOptions,
-  changeVisibleLank,
+  setting,
+  changeSetting,
+  changeCurrentLank,
   uploadItems,
   uploadTerms,
 }: {
   activeModal: string | null
   closeModal: () => void
-  options: Options
-  changeOptions: (newOptions: Partial<Options>) => void
-  changeVisibleLank: (visibleLank: number) => void
+  setting: Setting
+  changeSetting: (newSetting: Partial<Setting>) => void
+  changeCurrentLank: (currentLank: number) => void
   uploadItems: (e: React.ChangeEvent<HTMLInputElement>) => void
   uploadTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
@@ -315,9 +245,9 @@ function Setting({
     startYear,
     endYear,
     omitEmptyYears,
-    visibleLank,
+    currentLank,
     lankNote,
-  } = options
+  } = setting
   const yearList = getYearList(itemList)
 
   const uploadItemsRef = useRef<HTMLInputElement>(null)
@@ -330,43 +260,43 @@ function Setting({
     uploadTermsRef.current?.click()
   }
   return (
-    <Container modalId="setting" activeModal={activeModal}>
-      <Header title="設定" closeModal={closeModal} />
+    <ModalContainer modalId="setting" activeModal={activeModal}>
+      <ModalHeader title="設定" closeModal={closeModal} />
       <div className="modal-contents">
         <div className="modal-fields">
           <div className="modal-field">
             <h3 className="modal-field-title">表示する年</h3>
             <div className="modal-field-selects">
-              <Select
+              <ComponentSelect
                 value={startYear}
                 onChange={(e) => {
-                  changeOptions({ startYear: Number(e.target.value) })
+                  changeSetting({ startYear: Number(e.target.value) })
                 }}
                 list={yearList}
               />
               <p>to</p>
-              <Select
+              <ComponentSelect
                 value={endYear}
                 onChange={(e) => {
-                  changeOptions({ endYear: Number(e.target.value) })
+                  changeSetting({ endYear: Number(e.target.value) })
                 }}
                 list={yearList}
               />
             </div>
-            <Check
+            <ComponentCheck
               checked={omitEmptyYears}
               onChange={(e) => {
-                changeOptions({ omitEmptyYears: e.target.checked })
+                changeSetting({ omitEmptyYears: e.target.checked })
               }}
               text="データのない年を省略"
             />
           </div>
           <div className="modal-field">
             <h3 className="modal-field-title">表示する情報量</h3>
-            <Select
-              value={visibleLank}
+            <ComponentSelect
+              value={currentLank}
               onChange={(e) => {
-                changeVisibleLank(Number(e.target.value))
+                changeCurrentLank(Number(e.target.value))
               }}
               list={lankList}
             />
@@ -376,10 +306,10 @@ function Setting({
           {categoryList.length > 0 && (
             <div className="modal-field">
               <h3 className="modal-field-title">カテゴリーフィルター</h3>
-              <Tagcloud
+              <ComponentTagcloud
                 list={categoryList}
                 onToggle={(id) => {
-                  changeOptions({
+                  changeSetting({
                     categoryList: categoryList.map((term) =>
                       term.id === id ? { ...term, filter: !term.filter } : term
                     ),
@@ -392,10 +322,10 @@ function Setting({
           {tagList.length > 0 && (
             <div className="modal-field">
               <h3 className="modal-field-title">タグフィルター</h3>
-              <Tagcloud
+              <ComponentTagcloud
                 list={tagList}
                 onToggle={(id) => {
-                  changeOptions({
+                  changeSetting({
                     tagList: tagList.map((term) =>
                       term.id === id ? { ...term, filter: !term.filter } : term
                     ),
@@ -462,6 +392,6 @@ function Setting({
           </div>
         </div>
       </div>
-    </Container>
+    </ModalContainer>
   )
 }
