@@ -1,4 +1,11 @@
+import { useState, useRef, useEffect } from "react"
 import { clsx } from "clsx"
+import {
+  BiArrowToLeft,
+  BiMinusCircle,
+  BiPlusCircle,
+  BiArrowToRight,
+} from "react-icons/bi"
 
 import type { Setting } from "../../types"
 import { ComponentItem } from "../item"
@@ -7,6 +14,7 @@ import {
   getYearList,
   getYearListFromEdges,
   filterYearList,
+  scrollToY,
 } from "../../utils"
 import "./index.css"
 
@@ -19,7 +27,14 @@ export function ComponentTimeline({
   activeTimeline: boolean
   //ref: React.Ref<HTMLDivElement>
 }) {
-  const { itemList, categoryList, tagList, currentLank } = setting
+  const {
+    itemList,
+    categoryList,
+    tagList,
+    currentLank,
+    visibleController,
+    scrollOffset,
+  } = setting
   const filteredItemList = filterItemList(
     itemList,
     categoryList,
@@ -35,6 +50,118 @@ export function ComponentTimeline({
   const visibleYearList = omitEmptyYears
     ? filterYearList(yearList, maxStartYear, minEndYear)
     : getYearListFromEdges(maxStartYear, minEndYear)
+
+  const [currentYear, setCurrentYear] = useState<number | null>(null)
+  const [inputYear, setInputYear] = useState<number | "">(currentYear)
+  const yearRefs = useRef<Map<number, HTMLDivElement>>(new Map())
+  const isScrollingRef = useRef(false)
+
+  const scrollToYear = (year: number) => {
+    const el = yearRefs.current.get(year)
+    if (el) {
+      const rect = el.getBoundingClientRect()
+      const offsetTop = window.pageYOffset + rect.top
+      const targetY = offsetTop - scrollOffset
+
+      isScrollingRef.current = true
+
+      scrollToY(targetY, 500)
+
+      setCurrentYear(year)
+      setInputYear(year)
+
+      setTimeout(() => {
+        isScrollingRef.current = false
+      }, 500)
+    }
+  }
+
+  const changeInputYear = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value
+    const num = Number(val)
+
+    if (val === "") {
+      setInputYear("")
+    } else {
+      setInputYear(num)
+      if (visibleYearList.includes(num)) {
+        scrollToYear(num)
+      }
+    }
+  }
+
+  useEffect(() => {
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      if (isScrollingRef.current) return
+
+      const sorted = entries
+        .map((entry) => {
+          const year = Number(entry.target.getAttribute("id"))
+          const rect = entry.boundingClientRect
+          return {
+            year,
+            top: rect.top,
+            bottom: rect.bottom,
+            isVisible: entry.isIntersecting,
+          }
+        })
+        .sort((a, b) => a.year - b.year)
+
+      const viewportHeight = window.innerHeight
+
+      // 「最初に下から出ていった見出し」のインデックスを探す
+      const index = sorted.findIndex(
+        (entry) => entry.bottom < viewportHeight - scrollOffset
+      )
+
+      // index が1以上なら、その前の年を採用
+      if (index > 0) {
+        const year = sorted[index - 1].year
+        if (year !== currentYear && visibleYearList.includes(year)) {
+          setCurrentYear(year)
+          setInputYear(year)
+        }
+      } else {
+        // 先頭の年を表示中（または最初に戻った）
+        const first = sorted[0]
+        if (first && first.isVisible && first.year !== currentYear) {
+          setCurrentYear(first.year)
+          setInputYear(first.year)
+        }
+      }
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isScrollingRef.current) return
+
+        const visible = entries.filter((entry) => entry.isIntersecting)
+        if (visible.length === 0) return
+        const topMost = visible.reduce((prev, curr) =>
+          prev.boundingClientRect.top < curr.boundingClientRect.top
+            ? prev
+            : curr
+        )
+        const yearStr = topMost.target.getAttribute("id")
+        const year = yearStr ? Number(yearStr) : null
+        if (year && year !== currentYear) {
+          setCurrentYear(year)
+          setInputYear(year)
+        }
+      },
+      {
+        root: null,
+        rootMargin: `-${scrollOffset}px 0px -40% 0px`,
+        threshold: 0,
+      }
+    )
+    visibleYearList.forEach((year) => {
+      const el = yearRefs.current.get(year)
+      if (el) {
+        observer.observe(el)
+      }
+    })
+    return () => observer.disconnect()
+  }, [visibleYearList, scrollOffset])
   return (
     <main className="timeline">
       <div
@@ -65,7 +192,13 @@ export function ComponentTimeline({
                 }
                 return (
                   <div className="timeline-year" key={year}>
-                    <h2 className="timeline-year-title">
+                    <h2
+                      className="timeline-year-title"
+                      id={year.toString()}
+                      ref={(el) => {
+                        if (el) yearRefs.current.set(year, el)
+                      }}
+                    >
                       <span className="timeline-year-title-text">{year}</span>
                     </h2>
                     {!emptyItems && (
@@ -116,6 +249,50 @@ export function ComponentTimeline({
           <div className="timeline-blank">表示するデータがないよ！</div>
         )}
       </div>
+
+      {visibleController && (
+        <div className="timeline-controller">
+          <div className="timeline-controls">
+            <button
+              className="button is-melt"
+              onClick={() => scrollToYear(visibleYearList[0])}
+            >
+              <BiArrowToLeft className="timeline-control-icon" />
+            </button>
+            <button
+              className="button is-melt"
+              onClick={() => {
+                const idx = visibleYearList.indexOf(currentYear)
+                if (idx > 0) scrollToYear(visibleYearList[idx - 1])
+              }}
+            >
+              <BiMinusCircle className="timeline-control-icon" />
+            </button>
+            <input
+              type="number"
+              className="input is-inside is-center is-year"
+              value={inputYear ?? ""}
+              onChange={changeInputYear}
+            />
+            <button
+              className="button is-melt"
+              onClick={() => {
+                const idx = visibleYearList.indexOf(currentYear)
+                if (idx < visibleYearList.length - 1)
+                  scrollToYear(visibleYearList[idx + 1])
+              }}
+            >
+              <BiPlusCircle className="timeline-control-icon" />
+            </button>
+            <button
+              className="button is-melt"
+              onClick={() => scrollToYear(visibleYearList.at(-1)!)}
+            >
+              <BiArrowToRight className="timeline-control-icon" />
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   )
 }

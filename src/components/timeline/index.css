@@ -6,7 +6,6 @@
 }
 
 .timeline {
-  padding-bottom: 40vh;
   background-color: var(--theme-bg-2);
 }
 
@@ -149,7 +148,7 @@
 .timeline-blank {
   display: grid;
   place-items: center;
-  min-height: 50vh;
+  min-height: 70vh;
   margin-top: calc(var(--pj-timeline-offset) * -1);
   margin-right: calc(var(--pj-timeline-offset) * -1);
   margin-bottom: calc(var(--pj-timeline-offset) * -1);
@@ -157,4 +156,46 @@
     (var(--pj-timeline-offset) - var(--timeline-bar-offset) / 6) * -1
   );
   padding: 20px;
+}
+
+.timeline-controller {
+  position: fixed;
+  bottom: calc(var(--pj-timeline-offset) * 1.5);
+  left: 50%;
+  height: var(--pj-controller-height);
+  background: var(--theme-bg-1);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.3);
+  translate: -50% 0;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.timeline-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.timeline-controls > .button,
+.timeline-controls > .input {
+  flex: none;
+  border-radius: 0;
+}
+
+.timeline-controls > .button {
+  width: var(--pj-controller-height);
+  height: var(--pj-controller-height);
+  padding: 0;
+}
+
+.timeline-controls > .input {
+  width: 5em;
+  padding-right: 0;
+  padding-left: 0;
+  height: var(--pj-controller-height);
+}
+
+.timeline-control-icon {
+  width: 20px;
+  height: 20px;
 }

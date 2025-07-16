@@ -16,6 +16,7 @@ import {
   getColorList,
   getLankList,
   getYearList,
+  getCssVarPx,
 } from "./utils"
 import "./app.css"
 
@@ -31,7 +32,9 @@ const defaultSetting: Setting = {
   omitEmptyYears: false,
   currentLank: 2,
   lankNote: "1=有名作品のみ, 2=個性派作品含む, 3=全件表示",
+  visibleController: true,
   scrollbarWidth: 0,
+  scrollOffset: 0,
 }
 
 export default function App() {
@@ -184,6 +187,9 @@ export default function App() {
       const endYear = Math.max(...yearList)
 
       const scrollbarWidth = window.innerWidth - document.body.clientWidth
+      const headerHeight = getCssVarPx("--pj-header-height")
+      const timelineOffset = getCssVarPx("--pj-timeline-offset")
+      const scrollOffset = headerHeight + timelineOffset
 
       changeSetting({
         itemList,
@@ -195,6 +201,7 @@ export default function App() {
         startYear,
         endYear,
         scrollbarWidth,
+        scrollOffset,
       })
       setActiveTimeline(true)
     }

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import { clsx } from "clsx"
-import { FiX, FiDownload, FiUpload } from "react-icons/fi"
+import { BiX, BiChevronRight, BiDownload, BiUpload } from "react-icons/bi"
 
 import type { Setting } from "../../types"
 import { ComponentSelect } from "../select"
@@ -100,7 +100,8 @@ function ModalHeader({
           className="button is-melt is-square"
           onClick={closeModal}
         >
-          <FiX />
+          <BiX className="modal-header-button-icon is-close" />
+          <BiChevronRight className="modal-header-button-icon is-back" />
         </button>
       </div>
     </div>
@@ -142,7 +143,7 @@ function ModalHeader({
             )}
             download="game-timeline.png"
           >
-            <FiDownload />
+            <BiDownload />
             <span className="text">画像を保存</span>
           </a>
         </div>
@@ -247,6 +248,7 @@ function ModalSetting({
     omitEmptyYears,
     currentLank,
     lankNote,
+    visibleController,
   } = setting
   const yearList = getYearList(itemList)
 
@@ -283,16 +285,26 @@ function ModalSetting({
                 list={yearList}
               />
             </div>
-            <ComponentCheck
-              checked={omitEmptyYears}
-              onChange={(e) => {
-                changeSetting({ omitEmptyYears: e.target.checked })
-              }}
-              text="データのない年を省略"
-            />
+            <div className="modal-field-checks">
+              <ComponentCheck
+                checked={omitEmptyYears}
+                onChange={(e) => {
+                  changeSetting({ omitEmptyYears: e.target.checked })
+                }}
+                text="データのない年を省略"
+              />
+              <ComponentCheck
+                checked={!visibleController}
+                onChange={(e) => {
+                  changeSetting({ visibleController: !e.target.checked })
+                }}
+                text="移動ボタン類を隠す"
+              />
+            </div>
           </div>
+
           <div className="modal-field">
-            <h3 className="modal-field-title">表示する情報量</h3>
+            <h3 className="modal-field-title">情報量</h3>
             <ComponentSelect
               value={currentLank}
               onChange={(e) => {
@@ -343,14 +355,14 @@ function ModalSetting({
                 className="button is-outline is-square"
                 download
               >
-                <FiDownload />
+                <BiDownload className="modal-field-button-icon" />
               </a>
               <button
                 type="button"
                 className="button is-plain is-primary"
                 onClick={handleUploadItems}
               >
-                <FiUpload />
+                <BiUpload className="modal-field-button-icon" />
                 <span className="text">ブラウザで開く</span>
               </button>
               <input
@@ -371,14 +383,14 @@ function ModalSetting({
                 className="button is-outline is-square"
                 download
               >
-                <FiDownload />
+                <BiDownload className="modal-field-button-icon" />
               </a>
               <button
                 type="button"
                 className="button is-plain is-primary"
                 onClick={handleUploadTerms}
               >
-                <FiUpload />
+                <BiUpload className="modal-field-button-icon" />
                 <span className="text">ブラウザで開く</span>
               </button>
               <input

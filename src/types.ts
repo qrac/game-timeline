@@ -35,5 +35,7 @@ export type Setting = {
   omitEmptyYears: boolean
   currentLank: number
   lankNote: string
+  visibleController: boolean
   scrollbarWidth: number
+  scrollOffset: number
 }

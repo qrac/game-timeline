@@ -1,3 +1,4 @@
+import { BiErrorCircle, BiCog } from "react-icons/bi"
 import { FiInfo, FiSettings } from "react-icons/fi"
 
 import "./index.css"
@@ -33,6 +34,20 @@ export function ComponentHeader({
             <span className="header-title-text">ゲーム年表</span>
           </h1>
           <div className="header-buttons">
+            <button
+              type="button"
+              className="button is-melt is-circle"
+              onClick={runInfo}
+            >
+              <BiErrorCircle className="header-button-icon" />
+            </button>
+            <button
+              type="button"
+              className="button is-melt is-circle"
+              onClick={runSetting}
+            >
+              <BiCog className="header-button-icon" />
+            </button>
             {/*<button
               type="button"
               className="button is-plain is-primary"
@@ -40,20 +55,6 @@ export function ComponentHeader({
             >
               画像化
             </button>*/}
-            <button
-              type="button"
-              className="button is-outline is-primary is-square"
-              onClick={runInfo}
-            >
-              <FiInfo className="header-button-icon" />
-            </button>
-            <button
-              type="button"
-              className="button is-outline is-primary is-square"
-              onClick={runSetting}
-            >
-              <FiSettings className="header-button-icon" />
-            </button>
           </div>
         </div>
       </div>

@@ -242,3 +242,30 @@ export function filterYearList(
 ): number[] {
   return yearList.filter((year) => year >= startYear && year <= endYear)
 }
+
+export function getCssVarPx(name: string): number {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(
+    name
+  )
+  return parseInt(value.trim().replace("px", ""), 10) || 0
+}
+
+export function scrollToY(targetY: number, duration: number = 500) {
+  const startY = window.pageYOffset
+  const distance = targetY - startY
+  const startTime = performance.now()
+
+  function easeInOutCubic(t: number) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+  }
+  function step(currentTime: number) {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    const ease = easeInOutCubic(progress)
+    window.scrollTo(0, startY + distance * ease)
+    if (progress < 1) {
+      requestAnimationFrame(step)
+    }
+  }
+  requestAnimationFrame(step)
+}
