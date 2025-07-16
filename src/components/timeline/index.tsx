@@ -91,45 +91,6 @@ export function ComponentTimeline({
   }
 
   useEffect(() => {
-    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-      if (isScrollingRef.current) return
-
-      const sorted = entries
-        .map((entry) => {
-          const year = Number(entry.target.getAttribute("id"))
-          const rect = entry.boundingClientRect
-          return {
-            year,
-            top: rect.top,
-            bottom: rect.bottom,
-            isVisible: entry.isIntersecting,
-          }
-        })
-        .sort((a, b) => a.year - b.year)
-
-      const viewportHeight = window.innerHeight
-
-      // 「最初に下から出ていった見出し」のインデックスを探す
-      const index = sorted.findIndex(
-        (entry) => entry.bottom < viewportHeight - scrollOffset
-      )
-
-      // index が1以上なら、その前の年を採用
-      if (index > 0) {
-        const year = sorted[index - 1].year
-        if (year !== currentYear && visibleYearList.includes(year)) {
-          setCurrentYear(year)
-          setInputYear(year)
-        }
-      } else {
-        // 先頭の年を表示中（または最初に戻った）
-        const first = sorted[0]
-        if (first && first.isVisible && first.year !== currentYear) {
-          setCurrentYear(first.year)
-          setInputYear(first.year)
-        }
-      }
-    }
     const observer = new IntersectionObserver(
       (entries) => {
         if (isScrollingRef.current) return
