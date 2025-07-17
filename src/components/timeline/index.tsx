@@ -207,49 +207,59 @@ export function ComponentTimeline({
         )}
       </div>
 
-      {visibleController && (
-        <div className="timeline-controller">
-          <div className="timeline-controls">
-            <button
-              className="button is-melt"
-              onClick={() => scrollToYear(visibleYearList[0])}
-            >
-              <BiArrowToLeft className="timeline-control-icon" />
-            </button>
-            <button
-              className="button is-melt"
-              onClick={() => {
-                const idx = visibleYearList.indexOf(currentYear)
-                if (idx > 0) scrollToYear(visibleYearList[idx - 1])
-              }}
-            >
-              <BiMinusCircle className="timeline-control-icon" />
-            </button>
-            <input
-              type="number"
-              className="input is-inside is-center is-year"
-              value={inputYear ?? ""}
-              onChange={changeInputYear}
-            />
-            <button
-              className="button is-melt"
-              onClick={() => {
-                const idx = visibleYearList.indexOf(currentYear)
-                if (idx < visibleYearList.length - 1)
-                  scrollToYear(visibleYearList[idx + 1])
-              }}
-            >
-              <BiPlusCircle className="timeline-control-icon" />
-            </button>
-            <button
-              className="button is-melt"
-              onClick={() => scrollToYear(visibleYearList.at(-1)!)}
-            >
-              <BiArrowToRight className="timeline-control-icon" />
-            </button>
-          </div>
+      <div
+        className={clsx(
+          "timeline-spacer",
+          visibleController && activeTimeline && "is-active"
+        )}
+      />
+
+      <div
+        className={clsx(
+          "timeline-controller",
+          visibleController && activeTimeline && "is-active"
+        )}
+      >
+        <div className="timeline-controls">
+          <button
+            className="button is-melt"
+            onClick={() => scrollToYear(visibleYearList[0])}
+          >
+            <BiArrowToLeft className="timeline-control-icon" />
+          </button>
+          <button
+            className="button is-melt"
+            onClick={() => {
+              const idx = visibleYearList.indexOf(currentYear)
+              if (idx > 0) scrollToYear(visibleYearList[idx - 1])
+            }}
+          >
+            <BiMinusCircle className="timeline-control-icon" />
+          </button>
+          <input
+            type="number"
+            className="input is-inside is-center is-year"
+            value={inputYear ?? ""}
+            onChange={changeInputYear}
+          />
+          <button
+            className="button is-melt"
+            onClick={() => {
+              const idx = visibleYearList.indexOf(currentYear)
+              if (idx < visibleYearList.length - 1)
+                scrollToYear(visibleYearList[idx + 1])
+            }}
+          >
+            <BiPlusCircle className="timeline-control-icon" />
+          </button>
+          <button
+            className="button is-melt"
+            onClick={() => scrollToYear(visibleYearList.at(-1)!)}
+          >
+            <BiArrowToRight className="timeline-control-icon" />
+          </button>
         </div>
-      )}
+      </div>
     </main>
   )
 }
