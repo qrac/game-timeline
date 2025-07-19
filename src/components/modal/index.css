@@ -33,7 +33,7 @@
 
 .modal-container {
   position: relative;
-  max-width: calc(var(--pj-app-max-width, 540px) - 200px);
+  max-width: calc(var(--pj-app-max-width, 540px) - 140px);
   max-height: 70vh;
   width: calc(100vw - 100px);
   margin-bottom: 5vh;
