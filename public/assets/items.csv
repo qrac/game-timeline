@@ -916,15 +916,33 @@ PHS,1995-07-01,news,"japan"
 ゆりかもめ東京臨海新交通臨海線,1995-11-01,news,"japan"
 地下鉄サリン事件,1995-03-20,news,"japan"
 プリント倶楽部（プリクラ）,1995-07-00,news,"japan"
+ルーズソックス,1996-00-00,news,"japan"
+アムラー,1996-00-00,news,"japan"
+O157,1996-00-00,news,"japan"
+東京ビッグサイト,1996-04-00,news,"japan"
 携帯1000万台突破,1996-04-06,news,"japan"
+海の日,1996-07-20,news,"japan"
 消費税5%,1997-04-01,news,"japan"
 郵便番号7桁,1998-02-02,news,"japan"
+2000年問題,1999-00-00,news,"japan"
+携帯電話・PHSの電話番号11桁化,1999-01-01,news,"japan"
 2000円札,2000-07-19,news,"japan"
+イチロー 日本人初の大リーガー野手,2000-11-10,news,"japan"
 BSデジタル放送,2000-12-01,news,"japan"
+ローライズ・ジーンズ,2001-00-00,news,"japan"
 USJ,2001-03-31,news,"japan"
 東京ディズニーシー,2001-09-04,news,"japan"
 住基ネット,2002-08-05,news,"japan"
+オレオレ詐欺,2003-00-00,news,"japan"
+六本木ヒルズ,2003-04-25,news,"japan"
 地上デジタル放送,2003-12-01,news,"japan"
+ロリータファッション,2004-00-00,news,"japan"
+鳥インフルエンザ,2004-01-12,news,"japan"
+クール・ビズ,2005-06-01,news,"japan"
+ライブドア事件,2006-01-23,news,"japan"
+表参道ヒルズ,2006-02-11,news,"japan"
+携帯電話の番号ポータビリティ制度,2006-10-24,news,"japan"
+オネエブーム,2007-00-00,news,"japan"
 東日本大震災,2011-03-11,news,"japan"
 東京スカイツリー,2012-05-22,news,"japan"
 消費税8%,2014-04-01,news,"japan"
@@ -938,8 +956,11 @@ USJ,2001-03-31,news,"japan"
 
 EU,1993-11-01,news,"world"
 米同時多発テロ,2001-09-11,news,"world"
+ベッカム,2002-00-00,news,"world"
 ユーロ,2002-01-01,news,"world"
 イラク戦争,2003-03-20,news,"world"
+ヨン様,2004-00-00,news,"world"
+ジローラモ,2005-00-00,news,"world"
 
 セガ ハード撤退,2001-03-31,news,"sega"
 SNK 破産,2001-10-30,news,"snk"
@@ -956,9 +977,12 @@ SDガンダム カードダス,1988-07-00,news,"toy,japan,bandai"
 ドラゴンボール カードダス,1988-11-00,news,"toy,japan,bandai"
 バーコードバトラー,1991-00-00,news,"toy,japan,epoch"
 バーコードバトラーⅡ,1992-00-00,news,"toy,japan,epoch"
-たまごっち,1996-11-23,news,"toy,japan,bandai"
-
 日清ラ王,1992-09-12,news,"food,japan"
+たまごっち,1996-11-23,news,"toy,japan,bandai"
+ファービー,1999-05-29,news,"toy,japan"
+ベイブレード,1999-07-00,news,"toy,japan,takara"
+チョコエッグ,1999-09-00,news,"food,japan"
+甲虫王者ムシキング,2003-01-21,news,"toy,japan,sega"
 
 Yahoo! JAPAN,1996-04-01,news,"service,japan"
 楽天市場,1997-05-01,news,"service,japan"
@@ -979,6 +1003,8 @@ Windows 10,2015-07-29,news,"digital,world,microsoft"
 Windows 11,2021-10-05,news,"digital,world,microsoft"
 
 MD（ミニディスク）,1992-10-22,news,"digital,japan,sony"
+アイボ,1999-05-11,news,"digital,japan,sony"
+iMac,1998-08-29,news,"digital,world,apple"
 iPod,2001-10-23,news,"digital,world,apple"
 iPhone 3G,2008-07-11,news,"digital,world,apple"
 iPad,2010-05-28,news,"digital,world,apple"
@@ -987,11 +1013,37 @@ Appleシリコン M1,2020-11-11,news,"digital,world,apple"
 Mr.Children / innocent world,1994-06-01,news,"music,japan"
 篠原涼子 / 恋しさと せつなさと 心強さと,1994-07-21,news,"music,japan"
 B'z / LOVE PHANTOM,1995-10-11,news,"music,japan"
+globe / DEPARTURES,1996-01-01,news,"music,japan"
+宇多田ヒカル / Automatic,1998-12-09,news,"music,japan"
+だんご３兄弟,1999-03-03,news,"music,japan"
+モーニング娘。 / LOVEマシーン,1999-09-09,news,"music,japan"
+サザンオールスターズ / TSUNAMI,2000-01-26,news,"music,japan"
+マツケンサンバ,2004-07-07,news,"music,japan"
 AKB48,2005-12-08,news,"music,japan"
+
+ONE PIECE,1997-07-22,news,"manga,japan"
+HUNTER×HUNTER,1998-03-16,news,"manga,japan"
+ヒカルの碁,1999-01-00,news,"manga,japan"
+NARUTO -ナルト-,1999-09-21,news,"manga,japan"
+DEATH NOTE,2003-12-00,news,"manga,japan"
 
 映画 AKIRA,1988-07-16,news,"film,japan"
 映画 老人Z,1991-09-14,news,"film,japan"
 映画 ストリートファイターII MOVIE,1994-08-06,news,"film,japan"
+映画 GHOST IN THE SHELL / 攻殻機動隊,1995-11-18,news,"film,japan"
+映画 MEMORIES,1995-12-23,news,"film,japan",,2
+映画 スプリガン,1998-09-05,news,"film,japan"
+映画 踊る大捜査線 THE MOVIE,1998-10-31,news,"film,japan"
+映画 バトル・ロワイアル,2000-12-16,news,"film,japan"
+映画 ファイナルファンタジー,2001-09-15,news,"film,japan"
+映画 千年女優,2002-09-14,news,"film,japan",,2
+映画 座頭市,2003-09-06,news,"film,japan",,2
+映画 世界の中心で、愛をさけぶ,2004-05-08,news,"film,japan"
+映画 マインド・ゲーム,2004-08-07,news,"film,japan",,2
+映画 電車男,2005-06-04,news,"film,japan"
+映画 ブレイブ・ストーリー,2006-07-08,news,"film,japan"
+映画 パプリカ,2006-11-25,news,"film,japan",,2
+映画 ヱヴァンゲリヲン新劇場版:序,2007-09-01,news,"film,japan"
 映画 君の名は。,2016-08-26,news,"film,japan"
 
 映画 風の谷のナウシカ,1984-03-11,news,"film,japan,ghibli"
@@ -1044,8 +1096,17 @@ AKB48,2005-12-08,news,"music,japan"
 映画 バック・トゥ・ザ・フューチャー PART2,1989-12-09,news,"film,world"
 映画 バック・トゥ・ザ・フューチャー PART3,1990-07-06,news,"film,world"
 映画 ジュラシック・パーク,1993-07-17,news,"film,world"
+映画 トイ・ストーリー,1996-03-23,news,"film,world"
+映画 ミッション:インポッシブル,1996-07-13,news,"film,world"
 映画 タイタニック,1997-12-20,news,"film,world"
+映画 アルマゲドン,1998-12-12,news,"film,world"
 映画 マトリックス,1999-09-11,news,"film,world"
+映画 シックス・センス,1999-10-30,news,"film,world"
+映画 ハリー・ポッターと賢者の石,2001-12-01,news,"film,world"
+映画 ロード・オブ・ザ・リング,2002-03-02,news,"film,world"
+映画 パイレーツ・オブ・カリビアン 呪われた海賊たち,2003-08-02,news,"film,world"
+映画 ラストサムライ,2003-12-06,news,"film,world"
+映画 ファインディング・ニモ,2003-12-06,news,"film,world"
 
 アニメ キャプテン翼,1983-10-13,news,"anime"
 アニメ ダーティペア,1985-07-15,news,"anime",,2
@@ -1087,6 +1148,29 @@ AKB48,2005-12-08,news,"music,japan"
 アニメ 美少女戦士セーラームーンS,1994-03-19,news,"anime"
 アニメ モンタナ・ジョーンズ,1994-04-02,news,"anime",,2
 アニメ 魔法陣グルグル,1994-10-13,news,"anime",,2
+アニメ NINKU -忍空-,1995-01-14,news,"anime",,2
+アニメ 空想科学世界ガリバーボーイ,1995-02-08,news,"anime",,2
+アニメ 美少女戦士セーラームーンSuperS,1995-03-04,news,"anime",,2
+アニメ スレイヤーズ,1995-04-07,news,"anime",,2
+アニメ ぼのぼの,1995-04-20,news,"anime",,2
+アニメ 新世紀エヴァンゲリオン,1995-10-04,news,"anime"
+アニメ 名探偵コナン,1996-01-08,news,"anime"
+アニメ るろうに剣心 -明治剣客浪漫譚-,1996-01-10,news,"anime",,2
+アニメ ドラゴンボールGT,1996-02-07,news,"anime",,2
+アニメ 地獄先生ぬ〜べ〜,1996-04-13,news,"anime",,2
+アニメ セイバーマリオネットJ,1996-10-01,news,"anime",,2
 アニメ ポケモン,1997-04-01,news,"anime,pokemon"
+アニメ 金田一少年の事件簿,1997-04-07,news,"anime",,2
+アニメ セクシーコマンドー外伝 すごいよ!!マサルさん,1998-01-05,news,"anime",,2
+アニメ カウボーイビバップ,1998-04-03,news,"anime"
+アニメ カードキャプターさくら,1998-04-07,news,"anime",,2
+アニメ MASTERキートン,1998-10-05,news,"anime",,2
+アニメ ふたりはプリキュア,2004-02-01,news,"anime"
+アニメ MONSTER,2004-04-06,news,"anime",,2
+アニメ サムライチャンプルー,2004-05-19,news,"anime",,2
+アニメ 交響詩篇エウレカセブン,2005-04-17,news,"anime"
+アニメ 銀魂,2006-04-04,news,"anime"
+アニメ 天元突破グレンラガン,2007-04-01,news,"anime",,2
 
 家なき子,1994-04-16,news,"drama"
+ロングバケーション,1996-04-15,news,"drama"
