@@ -33,7 +33,7 @@
 
 .modal-container {
   position: relative;
-  max-width: calc(var(--pj-app-max-width, 600px) - 200px);
+  max-width: calc(var(--pj-app-max-width, 540px) - 200px);
   max-height: 70vh;
   width: calc(100vw - 100px);
   margin-bottom: 5vh;
@@ -44,7 +44,7 @@
     display 0.2s allow-discrete;
 }
 
-@media (width <= 600px) {
+@media (width <= 540px) {
   .modal-container.is-mobile-sidebar {
     max-width: none;
     max-height: none;
@@ -71,7 +71,7 @@
   }
 }
 
-@media (width <= 600px) {
+@media (width <= 540px) {
   .modal-container.is-mobile-sidebar:not(.is-active) {
     translate: 75vw 0;
   }
@@ -98,7 +98,7 @@
   z-index: 10;
 }
 
-@media (width <= 600px) {
+@media (width <= 540px) {
   .modal-container.is-mobile-sidebar .modal-header {
     justify-content: flex-start;
   }
@@ -130,7 +130,7 @@
   display: none;
 }
 
-@media (width <= 600px) {
+@media (width <= 540px) {
   .modal-container.is-mobile-sidebar .modal-header-button-icon.is-close {
     display: none;
   }
@@ -145,7 +145,7 @@
   overflow-y: auto;
 }
 
-@media (width <= 600px) {
+@media (width <= 540px) {
   .modal-container.is-mobile-sidebar .modal-contents {
     max-height: 100vh;
     padding-bottom: 40vh;
@@ -289,7 +289,7 @@
   flex: 1 0;
 }
 
-@media (width > 600px) {
+@media (width > 540px) {
   .modal-field-selects > .select > select {
     text-align: center;
   }
@@ -300,13 +300,13 @@
   text-align: center;
 }
 
-@media (width <= 600px) {
+@media (width <= 540px) {
   .modal-container.is-mobile-sidebar .modal-field-selects > * {
     flex: 0 0 100%;
   }
 }
 
-@media (width <= 600px) {
+@media (width <= 540px) {
   .modal-container.is-mobile-sidebar .tagcloud > .button {
     flex: 0 0 100%;
   }
