@@ -202,10 +202,12 @@ MOTHER3,2006-04-20,software,"nintendo","gba"
 スーパーチャイニーズワールド2 宇宙一武闘大会,1993-10-29,software,"culturebrain","sfc",3
 スーパーチャイニーズワールド3 〜超次元大作戦〜,1995-12-22,software,"culturebrain","sfc",3
 
-アイスクライマー,1985-01-30,software,"nintendo","fc"
+クルクルランド,1984-11-22,software,"nintendo","fc",2
+バルーンファイト,1985-01-22,software,"nintendo","fc",2
+アイスクライマー,1985-01-30,software,"nintendo","fc",2
 テトリス,1988-12-22,software,"nintendo","fc"
 テトリスフラッシュ,1993-09-21,software,"nintendo","fc",3
-ジョイメカファイト,1993-05-21,software,"nintendo","fc"
+ジョイメカファイト,1993-05-21,software,"nintendo","fc",2
 F-ZERO,1990-11-21,software,"nintendo","sfc"
 シムシティ,1991-04-26,software,"nintendo","sfc"
 ジェリーボーイ,1991-09-13,software,"gamefreak","sfc",2
@@ -554,6 +556,11 @@ SDガンダム外伝 ナイトガンダム物語 大いなる遺産,1991-12-21,s
 まじかる☆タルるートくん,1991-03-21,software,"bandai","fc",2
 まじかる☆タルるートくん2,1992-06-19,software,"bandai","fc",3
 まじかる☆タルるートくん MAGIC ADVENTURE,1992-03-28,software,"bandai","sfc",2
+クレヨンしんちゃん オラとシロはお友達だよ,1993-04-09,software,"bandai","gb",3
+クレヨンしんちゃん2 オラとわんぱくごっこだゾ,1993-10-22,software,"bandai","gb",3
+クレヨンしんちゃん3 オラのごきげんアスレチック,1994-03-26,software,"bandai","gb",2
+クレヨンしんちゃん4 オラのいたずら大変身,1994-08-26,software,"bandai","gb",2
+クレヨンしんちゃん オラのごきげんコレクション,1996-12-20,software,"bandai","gb",3
 
 サモンナイト,2000-01-06,software,"banpresto","ps1"
 サモンナイト2,2001-08-02,software,"banpresto","ps1",3
@@ -613,12 +620,12 @@ Pop'nツインビー,1993-03-26,software,"konami","sfc",2
 ツインビー レインボーベルアドベンチャー,1994-01-07,software,"konami","sfc",3
 グラディウス,1986-04-25,software,"konami","fc"
 モアイくん,1990-03-10,software,"konami","fc",2
-コナミワイワイワールド,1988-01-14,software,"konami","fc",3
+コナミワイワイワールド,1988-01-14,software,"konami","fc",2
 ワイワイワールド2 SOS!!パセリ城,1991-01-05,software,"konami","fc",2
-パロディウスだ!,1990-04-25,software,"konami","arcade",2
-極上パロディウス 〜過去の栄光を求めて〜,1994-04-26,software,"konami","arcade",2
+パロディウスだ! 〜神話からお笑いへ〜,1992-07-03,software,"konami","sfc",2
+極上パロディウス 〜過去の栄光を求めて〜,1994-11-25,software,"konami","sfc",2
 実況おしゃべりパロディウス,1995-12-15,software,"konami","sfc",2
-セクシーパロディウス,1996-03-00,software,"konami","arcade",2
+セクシーパロディウス,1996-11-01,software,"konami","ps1,ss",2
 対戦ぱずるだま,1994-07-00,software,"konami","arcade"
 
 がんばれゴエモン!からくり道中,1986-07-30,software,"konami","fc",3
@@ -889,10 +896,24 @@ GUILTY GEAR XX,2002-05-23,software,"arcsys","arcade"
 DEAD OR ALIVE,1996-11-26,software,"tecmo","arcade"
 モンスターファーム,1997-07-24,software,"tecmo","ps1"
 
+ロードランナー,1983-10-13,software,"brøderbund","pc",2
+
 東京ディズニーランド,1983-04-15,news,"japan"
+東京ドーム,1988-03-18,news,"japan"
 平成元年,1989-01-08,news,"japan"
 消費税3%,1989-04-01,news,"japan"
+バブル崩壊,1990-03-27,news,"japan"
+ジュリアナ東京,1991-05-15,news,"japan"
+ハウステンボス,1992-03-25,news,"japan"
+Jリーグ,1993-00-00,news,"japan"
+福岡ドーム,1993-04-02,news,"japan"
+レインボーブリッジ,1993-08-26,news,"japan"
+イチロー,1994-04-07,news,"japan"
+松本サリン事件,1994-06-27,news,"japan"
+コギャル,1995-00-00,news,"japan"
 阪神・淡路大震災,1995-01-17,news,"japan"
+PHS,1995-07-01,news,"japan"
+ゆりかもめ東京臨海新交通臨海線,1995-11-01,news,"japan"
 地下鉄サリン事件,1995-03-20,news,"japan"
 プリント倶楽部（プリクラ）,1995-07-00,news,"japan"
 携帯1000万台突破,1996-04-06,news,"japan"
@@ -927,11 +948,17 @@ SNKプレイモア,2003-07-01,news,"snk"
 バンダイとナムコ 経営統合,2006-03-31,news,"bandai,namco,bandai-namco,japan"
 SNK（商号変更）,2016-12-01,news,"snk"
 
+キン肉マン消しゴム,1983-00-00,news,"toy,japan,bandai"
+トランスフォーマー,1985-06-00,news,"toy,japan,takara"
+ビックリマンチョコ 天使VS悪魔,1985-08-00,news,"food,japan"
+ミニ四駆ブーム,1988-00-00,news,"toy,japan"
 SDガンダム カードダス,1988-07-00,news,"toy,japan,bandai"
 ドラゴンボール カードダス,1988-11-00,news,"toy,japan,bandai"
 バーコードバトラー,1991-00-00,news,"toy,japan,epoch"
 バーコードバトラーⅡ,1992-00-00,news,"toy,japan,epoch"
 たまごっち,1996-11-23,news,"toy,japan,bandai"
+
+日清ラ王,1992-09-12,news,"food,japan"
 
 Yahoo! JAPAN,1996-04-01,news,"service,japan"
 楽天市場,1997-05-01,news,"service,japan"
@@ -951,28 +978,115 @@ Windows 8,2012-10-26,news,"digital,world,microsoft"
 Windows 10,2015-07-29,news,"digital,world,microsoft"
 Windows 11,2021-10-05,news,"digital,world,microsoft"
 
+MD（ミニディスク）,1992-10-22,news,"digital,japan,sony"
 iPod,2001-10-23,news,"digital,world,apple"
 iPhone 3G,2008-07-11,news,"digital,world,apple"
 iPad,2010-05-28,news,"digital,world,apple"
 Appleシリコン M1,2020-11-11,news,"digital,world,apple"
 
+Mr.Children / innocent world,1994-06-01,news,"music,japan"
+篠原涼子 / 恋しさと せつなさと 心強さと,1994-07-21,news,"music,japan"
+B'z / LOVE PHANTOM,1995-10-11,news,"music,japan"
 AKB48,2005-12-08,news,"music,japan"
 
 映画 AKIRA,1988-07-16,news,"film,japan"
+映画 老人Z,1991-09-14,news,"film,japan"
+映画 ストリートファイターII MOVIE,1994-08-06,news,"film,japan"
 映画 君の名は。,2016-08-26,news,"film,japan"
+
 映画 風の谷のナウシカ,1984-03-11,news,"film,japan,ghibli"
 映画 天空の城ラピュタ,1986-08-02,news,"film,japan,ghibli"
 映画 となりのトトロ,1988-04-16,news,"film,japan,ghibli"
+映画 火垂るの墓,1988-04-16,news,"film,japan,ghibli"
 映画 魔女の宅急便,1989-07-29,news,"film,japan,ghibli"
+映画 おもひでぽろぽろ,1991-07-20,news,"film,japan,ghibli"
+映画 紅の豚,1992-07-18,news,"film,japan,ghibli"
+映画 平成狸合戦ぽんぽこ,1994-07-16,news,"film,japan,ghibli"
+映画 耳をすませば,1995-07-15,news,"film,japan,ghibli"
 映画 もののけ姫,1997-07-12,news,"film,japan,ghibli"
 映画 千と千尋の神隠し,2001-07-20,news,"film,japan,ghibli"
+映画 猫の恩返し,2002-07-20,news,"film,japan,ghibli"
 映画 ハウルの動く城,2004-11-20,news,"film,japan,ghibli"
+映画 ゲド戦記,2006-07-29,news,"film,japan,ghibli"
 映画 崖の上のポニョ,2008-07-19,news,"film,japan,ghibli"
+映画 借りぐらしのアリエッティ,2010-07-17,news,"film,japan,ghibli"
+映画 コクリコ坂から,2011-07-16,news,"film,japan,ghibli"
 映画 風立ちぬ,2013-07-20,news,"film,japan,ghibli"
-映画 君たちはどう生きるか,2023-07-14,news,"film,ghibli"
+映画 かぐや姫の物語,2013-11-23,news,"film,japan,ghibli"
+映画 思い出のマーニー,2014-07-19,news,"film,japan,ghibli"
+映画 君たちはどう生きるか,2023-07-14,news,"film,japan,ghibli"
+
+映画 ドラえもん のび太の海底鬼岩城,1983-03-12,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太の魔界大冒険,1984-03-17,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太の宇宙小戦争,1985-03-16,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太と鉄人兵団,1986-03-15,news,"film,japan,doraemon"
+映画 ドラえもん のび太と竜の騎士,1987-03-14,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太のパラレル西遊記,1988-03-12,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太の日本誕生,1989-03-11,news,"film,japan,doraemon"
+映画 ドラえもん のび太とアニマル惑星,1990-03-10,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太のドラビアンナイト,1991-03-09,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太と雲の王国,1992-03-07,news,"film,japan,doraemon"
+映画 ドラえもん のび太とブリキの迷宮,1993-03-06,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太と夢幻三剣士,1994-03-12,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太の創世日記,1995-03-04,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太と銀河超特急,1996-03-02,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太のねじ巻き都市冒険記,1997-03-08,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太の南海大冒険,1998-03-07,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太の宇宙漂流記,1999-03-06,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太の太陽王伝説,2000-03-11,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太と翼の勇者たち,2001-03-10,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太とロボット王国,2002-03-09,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太とふしぎ風使い,2003-03-08,news,"film,japan,doraemon",,2
+映画 ドラえもん のび太のワンニャン時空伝,2004-03-06,news,"film,japan,doraemon",,2
+
 映画 ゴーストバスターズ,1984-12-02,news,"film,world"
 映画 バック・トゥ・ザ・フューチャー,1985-12-07,news,"film,world"
+映画 バック・トゥ・ザ・フューチャー PART2,1989-12-09,news,"film,world"
+映画 バック・トゥ・ザ・フューチャー PART3,1990-07-06,news,"film,world"
+映画 ジュラシック・パーク,1993-07-17,news,"film,world"
 映画 タイタニック,1997-12-20,news,"film,world"
 映画 マトリックス,1999-09-11,news,"film,world"
 
+アニメ キャプテン翼,1983-10-13,news,"anime"
+アニメ ダーティペア,1985-07-15,news,"anime",,2
+アニメ ドラゴンボール,1986-02-26,news,"anime"
+アニメ 聖闘士星矢,1986-10-11,news,"anime"
+アニメ エスパー魔美,1987-04-07,news,"anime"
+アニメ ミスター味っ子,1987-10-08,news,"anime",,2
+アニメ ビックリマン,1987-10-11,news,"anime",,2
+アニメ 魔神英雄伝ワタル,1988-04-15,news,"anime",,2
+アニメ 鎧伝サムライトルーパー,1988-04-30,news,"anime",,2
+アニメ 魔動王グランゾート,1989-04-07,news,"anime",,2
+アニメ らんま1/2,1989-04-15,news,"anime",,2
+アニメ ドラゴンボールZ,1989-04-26,news,"anime"
+アニメ ダッシュ!四駆郎,1989-10-03,news,"anime",,2
+アニメ ドラゴンクエスト,1989-12-02,news,"anime",,2
+アニメ ちびまる子ちゃん,1990-01-07,news,"anime"
+アニメ 魔神英雄伝ワタル2,1990-03-09,news,"anime",,2
+アニメ ふしぎの海のナディア,1990-04-13,news,"anime"
+アニメ 魔法のエンジェルスイートミント,1990-05-02,news,"anime",,2
+アニメ まじかる☆タルるートくん,1990-09-02,news,"anime",,2
+アニメ きんぎょ注意報!,1991-01-12,news,"anime",,2
+アニメ 新世紀GPXサイバーフォーミュラ,1991-03-15,news,"anime",,2
+アニメ 絶対無敵ライジンオー,1991-04-03,news,"anime",,2
+アニメ 少年アシベ,1991-04-04,news,"anime",,2
+アニメ OH!MYコンブ,1991-05-04,news,"anime",,2
+アニメ ゲンジ通信あげだま,1991-10-04,news,"anime",,2
+アニメ ドラゴンクエスト ダイの大冒険,1991-10-17,news,"anime",,2
+アニメ 美少女戦士セーラームーン,1992-03-07,news,"anime"
+アニメ クレヨンしんちゃん,1992-04-13,news,"anime"
+アニメ 幽☆遊☆白書,1992-10-10,news,"anime"
+アニメ 南国少年パプワくん,1992-10-10,news,"anime",,2
+アニメ 美少女戦士セーラームーンR,1993-03-06,news,"anime"
+アニメ ピングー,1993-04-05,news,"anime"
+アニメ 剣勇伝説YAIBA,1993-04-09,news,"anime",,2
+アニメ 忍たま乱太郎,1993-04-10,news,"anime"
+アニメ GS美神,1993-04-11,news,"anime",,2
+アニメ ジャングルの王者ターちゃん,1993-10-14,news,"anime",,2
+アニメ SLAM DUNK,1993-10-16,news,"anime"
+アニメ 美少女戦士セーラームーンS,1994-03-19,news,"anime"
+アニメ モンタナ・ジョーンズ,1994-04-02,news,"anime",,2
+アニメ 魔法陣グルグル,1994-10-13,news,"anime",,2
 アニメ ポケモン,1997-04-01,news,"anime,pokemon"
+
+家なき子,1994-04-16,news,"drama"

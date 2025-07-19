@@ -49,6 +49,7 @@ pce,PCエンジン,PCE
 pcfx,PC-FX,PC-FX
 ws,ワンダースワン,WS
 wsc,ワンダースワンカラー,WSC
+pc,PC,PC
 win,Windows,Win,#285778
 mac,Mac,Mac,#556AD0
 ios,iOS,iOS,#080808
@@ -105,15 +106,18 @@ taito,タイトー,TAITO
 tecmo,テクモ,TECMO
 nec,NEC,NEC
 3do,3DO,3DO
+brøderbund,ブローダーバンド,Brøderbund
 
 japan,日本,JAPAN
 world,世界,WORLD
+food,食品,FOOD
 toy,おもちゃ,TOY
 service,サービス,SERVICE
 digital,デジタル,DIGITAL
 music,音楽,MUSIC
 film,映画,FILM
 anime,アニメ,ANIME
+drama,ドラマ,DRAMA
 
 google,Google,Google
 amazon,Amazon,Amazon

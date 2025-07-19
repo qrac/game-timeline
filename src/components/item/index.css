@@ -32,7 +32,8 @@
   font-weight: 600;
   font-feature-settings: "palt";
   letter-spacing: 0.0125em;
-  word-break: auto-phrase;
+  word-break: keep-all;
+  overflow-wrap: break-word;
   line-height: 1.125;
   text-box-trim: trim-both;
 }
