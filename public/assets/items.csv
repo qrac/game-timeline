@@ -454,6 +454,9 @@ CHAOS RINGS III,2016-04-07,software,"square-enix","ios,android",2
 ベイグラントストーリー,2000-02-10,software,"square","ps1",2
 バウンサー,2000-12-23,software,"square","ps2"
 
+FANTASIAN,2021-04-02,software,"mistwalker","apple-arcade",2
+FANTASIAN Neo Dimension,2024-12-05,software,"mistwalker,square-enix","multi",2
+
 デジタル・デビル物語 女神転生,1987-09-11,software,"atlus,namco","fc",3
 デジタル・デビル物語 女神転生II,1990-04-06,software,"atlus,namco","fc",3
 旧約・女神転生,1995-03-31,software,"atlus","sfc",3
@@ -614,6 +617,7 @@ SDガンダム外伝 ナイトガンダム物語 大いなる遺産,1991-12-21,s
 ワギャンパラダイス,1994-12-16,software,"namco","sfc",3
 幽☆遊☆白書,1993-12-22,software,"namco","sfc"
 鉄拳,1994-12-00,software,"namco","arcade"
+7 〜モールモースの騎兵隊〜,2000-12-21,software,"namco","ps2",2
 
 メタルギア,1987-07-13,software,"konami","msx2",2
 メタルギア2 ソリッドスネーク,1990-07-20,software,"konami","msx2",2
@@ -918,6 +922,9 @@ DEAD OR ALIVE,1996-11-26,software,"tecmo","arcade"
 
 STEINS;GATE,2009-10-15,software,"5pb","xbox360",2
 
+天穂のサクナヒメ,2020-11-12,software,"edelweiss","multi",2
+
+アングリーバード,2009-12-00,software,"rovio","ios"
 おさわり探偵 なめこ栽培キット,2011-06-30,software,"beeworks","ios,android"
 パズル&ドラゴンズ,2012-02-20,software,"gungho","ios,android"
 モンスターストライク,2015-12-17,software,"mixi","ios,android"
@@ -941,7 +948,7 @@ Jリーグ,1993-00-00,news,"japan"
 PHS,1995-07-01,news,"japan"
 ゆりかもめ,1995-11-01,news,"japan"
 地下鉄サリン事件,1995-03-20,news,"japan"
-プリント倶楽部（プリクラ）,1995-07-00,news,"japan"
+プリクラ,1995-07-00,news,"japan"
 ルーズソックス,1996-00-00,news,"japan"
 アムラー,1996-00-00,news,"japan"
 O157,1996-00-00,news,"japan"
@@ -950,6 +957,7 @@ O157,1996-00-00,news,"japan"
 海の日,1996-07-20,news,"japan"
 消費税5%,1997-04-01,news,"japan"
 郵便番号7桁,1998-02-02,news,"japan"
+ノストラダムスの大予言,1999-00-00,news,"japan"
 2000年問題,1999-00-00,news,"japan"
 携帯電話・PHSの電話番号11桁化,1999-01-01,news,"japan"
 2000円札,2000-07-19,news,"japan"
@@ -968,14 +976,15 @@ USJ,2001-03-31,news,"japan"
 ライブドア事件,2006-01-23,news,"japan"
 表参道ヒルズ,2006-02-11,news,"japan"
 ナンバーポータビリティ,2006-10-24,news,"japan"
-オネエブーム,2007-00-00,news,"japan"
+オネエ,2007-00-00,news,"japan"
 桜島 中規模噴火,2009-04-09,news,"japan"
 食べるラー油,2009-08-00,news,"japan"
 民主勝利 政権交代,2009-09-16,news,"japan"
 もしドラ,2009-12-04,news,"japan"
-K-POPブーム,2010-00-00,news,"japan"
-イクメンブーム,2010-00-00,news,"japan"
+K-POP,2010-00-00,news,"japan"
+イクメン,2010-00-00,news,"japan"
 熱中症,2010-00-00,news,"japan"
+山ガール,2010-00-00,news,"japan"
 龍馬伝（福山雅治）,2010-01-03,news,"japan"
 羽田空港 国際線,2010-10-21,news,"japan"
 東日本大震災,2011-03-11,news,"japan"
@@ -985,6 +994,7 @@ iPS細胞,2012-00-00,news,"japan"
 渋谷ヒカリエ,2012-04-26,news,"japan"
 東京スカイツリー,2012-05-22,news,"japan"
 ふなっしー,2013-00-00,news,"japan"
+クッキークリッカー,2013-09-00,news,"japan"
 富士山 世界遺産,2013-06-22,news,"japan"
 STAP細胞,2014-00-00,news,"japan"
 壁ドン,2014-00-00,news,"japan"
@@ -995,13 +1005,30 @@ AKB48握手会傷害事件,2014-05-25,news,"japan"
 爆買い,2015-00-00,news,"japan"
 自撮り棒,2015-00-00,news,"japan"
 ふるさと納税 ワンストップ特例制度,2015-04-01,news,"japan"
-東京五輪エンブレム 酷似騒動,2015-07-00,news,"japan"
+東京五輪エンブレム騒動,2015-07-00,news,"japan"
 ドローン規制,2015-12-10,news,"japan"
+エモい,2016-00-00,news,"japan"
 マイナンバー,2016-01-01,news,"japan"
 熊本地震,2016-04-14,news,"japan"
+インスタ映え,2017-00-00,news,"japan"
+ハンドスピナー,2017-00-00,news,"japan"
+大谷翔平 メジャーリーグ,2018-00-00,news,"japan"
+タピオカ,2018-00-00,news,"japan"
+築地市場 移転,2018-10-06,news,"japan"
+ぴえん,2019-00-00,news,"japan"
+高級パン,2019-00-00,news,"japan"
 令和元年,2019-05-01,news,"japan"
 消費税10%,2019-10-01,news,"japan"
 新型コロナ（国内）,2020-01-15,news,"japan"
+Zoomの普及,2021-00-00,news,"japan"
+マリトッツォ,2021-00-00,news,"japan"
+SHEIN,2021-00-00,news,"japan"
+おじさん構文,2022-00-00,news,"japan"
+ちいかわ,2023-00-00,news,"japan"
+スイカゲーム,2023-00-00,news,"japan"
+ハッピーハッピーハッピー,2024-00-00,news,"japan"
+猫ミーム,2024-00-00,news,"japan"
+予言 日本の大災難,2025-07-05,news,"japan"
 
 EU,1993-11-01,news,"world"
 米同時多発テロ,2001-09-11,news,"world"
@@ -1010,6 +1037,8 @@ EU,1993-11-01,news,"world"
 イラク戦争,2003-03-20,news,"world"
 ヨン様,2004-00-00,news,"world"
 ジローラモ,2005-00-00,news,"world"
+e-Sports,2018-00-00,news,"world"
+ビッドコイン,2018-00-00,news,"world"
 
 セガ ハード撤退,2001-03-31,news,"sega"
 SNK 破産,2001-10-30,news,"snk"
@@ -1039,15 +1068,31 @@ iモード,1999-02-01,news,"service,japan"
 Suica,2001-11-18,news,"service,japan"
 Google検索,2000-08-03,news,"service,world,google"
 Amazon Japan,2000-11-01,news,"service,world,amazon"
+mixi,2004-03-03,news,"service,japan,mixi"
 YouTube,2007-06-19,news,"service,world,google"
+Twitter,2008-04-23,news,"service,world"
+Facebook,2008-05-19,news,"service,world"
 NAVERまとめ,2009-07-01,news,"service,world"
 LINE,2011-06-23,news,"service,japan"
+Hulu,2011-09-01,news,"service,world"
+メルカリ,2013-07-02,news,"service,japan"
+Instagram,2014-02-17,news,"service,world"
 AWA,2015-05-27,news,"service,japan"
 LINE MUSIC,2015-06-11,news,"service,japan"
 Apple Music,2015-06-30,news,"service,world,apple"
+Netflix,2015-09-01,news,"service,world"
+SNOW,2015-11-04,news,"service,japan"
+Mastodon,2016-03-16,news,"service,world"
 Spotify,2016-09-29,news,"service,world"
+TikTok,2017-10-00,news,"service,world"
+PayPay,2018-10-05,news,"service,japan"
+Misskey.io,2019-04-15,news,"service,japan"
 NAVERまとめ 終了,2020-09-30,news,"service,world"
 ChatGPT,2022-11-30,news,"service,world"
+Bluesky,2023-01-00,news,"service,world"
+Threads,2023-07-06,news,"service,world"
+X（旧Twitter）,2023-07-24,news,"service,world"
+mixi2,2024-12-16,news,"service,japan,mixi"
 
 Windows 95,1995-11-23,news,"digital,world,microsoft"
 Windows 98,1998-07-25,news,"digital,world,microsoft"
@@ -1060,12 +1105,17 @@ Windows 11,2021-10-05,news,"digital,world,microsoft"
 
 MD（ミニディスク）,1992-10-22,news,"digital,japan,sony"
 アイボ,1999-05-11,news,"digital,japan,sony"
+
 iMac,1998-08-29,news,"digital,world,apple"
 iPod,2001-10-23,news,"digital,world,apple"
 iPhone 3G,2008-07-11,news,"digital,world,apple"
 iPad,2010-05-28,news,"digital,world,apple"
 Apple Watch,2016-09-16,news,"digital,world,apple"
 Appleシリコン M1,2020-11-11,news,"digital,world,apple"
+
+Google Home,2017-10-06,news,"digital,world,google"
+
+Amazon Dash,2014-04-00,news,"digital,world,amazon"
 
 Mr.Children / innocent world,1994-06-01,news,"music,japan"
 篠原涼子 / 恋しさと せつなさと 心強さと,1994-07-21,news,"music,japan"
@@ -1078,12 +1128,16 @@ globe / DEPARTURES,1996-01-01,news,"music,japan"
 マツケンサンバ,2004-07-07,news,"music,japan"
 ゴールデンボンバー / 女々しくて,2009-10-21,news,"music,japan"
 AKB48 / ヘビーローテーション,2010-08-18,news,"music,japan"
+PPAP / ピコ太郎,2016-10-07,news,"music,japan"
+DA PUMP / U.S.A.,2018-06-06,news,"music,japan"
 
 ONE PIECE,1997-07-22,news,"manga,japan"
 HUNTER×HUNTER,1998-03-16,news,"manga,japan"
 ヒカルの碁,1999-01-00,news,"manga,japan"
 NARUTO -ナルト-,1999-09-21,news,"manga,japan"
 DEATH NOTE,2003-12-00,news,"manga,japan"
+
+FREEDOM,2006-11-24,news,"film,japan",,2
 
 映画 AKIRA,1988-07-16,news,"film,japan"
 映画 老人Z,1991-09-14,news,"film,japan"
@@ -1105,6 +1159,12 @@ DEATH NOTE,2003-12-00,news,"manga,japan"
 映画 ヱヴァンゲリヲン 新劇場版:破,2009-06-27,news,"film,japan"
 映画 サマーウォーズ,2009-08-01,news,"film,japan"
 映画 君の名は。,2016-08-26,news,"film,japan"
+映画 夜明け告げるルーのうた,2017-05-19,news,"film,japan",,2
+映画 ペンギン・ハイウェイ,2018-08-17,news,"film,japan",,2
+映画 ソニック・ザ・ムービー,2020-06-26,news,"film,japan",,2
+映画 雨を告げる漂流団地,2022-09-16,news,"film,japan",,2
+映画 ザ・スーパーマリオブラザーズ・ムービー,2023-04-28,news,"film,japan,nintendo"
+映画 ルックバック,2024-06-28,news,"film,japan"
 
 映画 風の谷のナウシカ,1984-03-11,news,"film,japan,ghibli"
 映画 天空の城ラピュタ,1986-08-02,news,"film,japan,ghibli"
@@ -1155,6 +1215,7 @@ DEATH NOTE,2003-12-00,news,"manga,japan"
 映画 バック・トゥ・ザ・フューチャー,1985-12-07,news,"film,world"
 映画 バック・トゥ・ザ・フューチャー PART2,1989-12-09,news,"film,world"
 映画 バック・トゥ・ザ・フューチャー PART3,1990-07-06,news,"film,world"
+映画 スーパーマリオ 魔界帝国の女神,1993-07-10,news,"film,world"
 映画 ジュラシック・パーク,1993-07-17,news,"film,world"
 映画 トイ・ストーリー,1996-03-23,news,"film,world"
 映画 ミッション:インポッシブル,1996-07-13,news,"film,world"
@@ -1169,6 +1230,7 @@ DEATH NOTE,2003-12-00,news,"manga,japan"
 映画 ファインディング・ニモ,2003-12-06,news,"film,world"
 映画 アバター,2009-12-23,news,"film,world"
 映画 アナと雪の女王,2013-03-14,news,"film,world"
+映画 リメンバー・ミー,2018-03-16,news,"film,world"
 
 アニメ キャプテン翼,1983-10-13,news,"anime"
 アニメ ダーティペア,1985-07-15,news,"anime",,2
@@ -1245,6 +1307,24 @@ DEATH NOTE,2003-12-00,news,"manga,japan"
 アニメ キルラキル,2013-10-04,news,"anime",,2
 アニメ 進撃の巨人,2013-04-07,news,"anime"
 アニメ ガッチャマン クラウズ インサイト,2015-07-00,news,"anime",,2
+アニメ けものフレンズ,2017-01-07,news,"anime"
+アニメ ハイスコアガール,2018-07-14,news,"anime",,2
+アニメ 鬼滅の刃,2019-04-06,news,"anime"
+アニメ 映像研には手を出すな!,2020-01-06,news,"anime",,2
+アニメ 呪術廻戦,2020-10-03,news,"anime"
+アニメ PUI PUI モルカー,2021-01-05,news,"anime"
+アニメ 地球外少年少女,2022-01-28,news,"anime",,2
+アニメ スプリガン,2022-06-18,news,"anime",,2
+アニメ 機動戦士ガンダム 水星の魔女,2022-10-02,news,"anime"
+アニメ 推しの子,2023-04-12,news,"anime"
+アニメ AIの遺電子,2023-07-08,news,"anime",,2
+アニメ 葬送のフリーレン,2023-09-29,news,"anime"
+アニメ PLUTO,2023-10-26,news,"anime",,2
+アニメ ダンジョン飯,2024-01-04,news,"anime",,2
+アニメ ダンダダン,2024-10-04,news,"anime"
+アニメ デッドデッドデーモンズデデデデデストラクション,2024-12-00,news,"anime",,2
+アニメ LAZARUS ラザロ,2025-04-06,news,"anime",,2
+アニメ 機動戦士Gundam GQuuuuuuX,2025-04-09,news,"anime"
 
 家なき子,1994-04-16,news,"drama"
 ロングバケーション,1996-04-15,news,"drama"

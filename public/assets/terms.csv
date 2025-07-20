@@ -54,6 +54,7 @@ win,Windows,Win,#285778
 mac,Mac,Mac,#556AD0
 ios,iOS,iOS,#080808
 android,Android,Android,#57BD6B
+apple-arcade,Apple Arcade,Apple Arcade,
 steam,Steam,Steam,#145F8F
 
 nintendo,任天堂,NINTENDO,#e70013
@@ -69,6 +70,7 @@ enix,エニックス,ENIX
 square,スクウェア,SQUARE
 square-enix,スクウェア・エニックス,SQUARE ENIX
 quest,クエスト,QUEST
+mistwalker,ミストウォーカー,MISTWALKER
 chunsoft,チュンソフト,CHUNSOFT
 spike,スパイク,SPIKE
 spike-chunsoft,スパイク・チュンソフト,SPIKE CHUNSOFT
@@ -108,6 +110,8 @@ tecmo,テクモ,TECMO
 nec,NEC,NEC
 3do,3DO,3DO
 5pb,5pb.,5pb.
+edelweiss,えーでるわいす,Edelweiss
+rovio,ロビオ,Rovio
 beeworks,ビーワークス,Beeworks
 gungho,ガンホー,GungHo
 mixi,MIXI,MIXI
