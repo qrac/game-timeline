@@ -916,6 +916,12 @@ GUILTY GEAR XX,2002-05-23,software,"arcsys","arcade"
 DEAD OR ALIVE,1996-11-26,software,"tecmo","arcade"
 モンスターファーム,1997-07-24,software,"tecmo","ps1"
 
+STEINS;GATE,2009-10-15,software,"5pb","xbox360",2
+
+おさわり探偵 なめこ栽培キット,2011-06-30,software,"beeworks","ios,android"
+パズル&ドラゴンズ,2012-02-20,software,"gungho","ios,android"
+モンスターストライク,2015-12-17,software,"mixi","ios,android"
+
 ロードランナー,1983-10-13,software,"brøderbund","pc",2
 
 東京ディズニーランド,1983-04-15,news,"japan"
@@ -964,11 +970,32 @@ USJ,2001-03-31,news,"japan"
 ナンバーポータビリティ,2006-10-24,news,"japan"
 オネエブーム,2007-00-00,news,"japan"
 桜島 中規模噴火,2009-04-09,news,"japan"
+食べるラー油,2009-08-00,news,"japan"
 民主勝利 政権交代,2009-09-16,news,"japan"
+もしドラ,2009-12-04,news,"japan"
+K-POPブーム,2010-00-00,news,"japan"
+イクメンブーム,2010-00-00,news,"japan"
+熱中症,2010-00-00,news,"japan"
+龍馬伝（福山雅治）,2010-01-03,news,"japan"
+羽田空港 国際線,2010-10-21,news,"japan"
 東日本大震災,2011-03-11,news,"japan"
+地デジ 完全移行,2011-07-24,news,"japan"
+きゃりーぱみゅぱみゅ,2012-00-00,news,"japan"
+iPS細胞,2012-00-00,news,"japan"
+渋谷ヒカリエ,2012-04-26,news,"japan"
 東京スカイツリー,2012-05-22,news,"japan"
+ふなっしー,2013-00-00,news,"japan"
+富士山 世界遺産,2013-06-22,news,"japan"
+STAP細胞,2014-00-00,news,"japan"
+壁ドン,2014-00-00,news,"japan"
+あべのハルカス,2014-03-07,news,"japan"
+AKB48握手会傷害事件,2014-05-25,news,"japan"
 消費税8%,2014-04-01,news,"japan"
 デング熱,2014-08-27,news,"japan"
+爆買い,2015-00-00,news,"japan"
+自撮り棒,2015-00-00,news,"japan"
+ふるさと納税 ワンストップ特例制度,2015-04-01,news,"japan"
+東京五輪エンブレム 酷似騒動,2015-07-00,news,"japan"
 ドローン規制,2015-12-10,news,"japan"
 マイナンバー,2016-01-01,news,"japan"
 熊本地震,2016-04-14,news,"japan"
@@ -1013,6 +1040,13 @@ Suica,2001-11-18,news,"service,japan"
 Google検索,2000-08-03,news,"service,world,google"
 Amazon Japan,2000-11-01,news,"service,world,amazon"
 YouTube,2007-06-19,news,"service,world,google"
+NAVERまとめ,2009-07-01,news,"service,world"
+LINE,2011-06-23,news,"service,japan"
+AWA,2015-05-27,news,"service,japan"
+LINE MUSIC,2015-06-11,news,"service,japan"
+Apple Music,2015-06-30,news,"service,world,apple"
+Spotify,2016-09-29,news,"service,world"
+NAVERまとめ 終了,2020-09-30,news,"service,world"
 ChatGPT,2022-11-30,news,"service,world"
 
 Windows 95,1995-11-23,news,"digital,world,microsoft"
@@ -1030,6 +1064,7 @@ iMac,1998-08-29,news,"digital,world,apple"
 iPod,2001-10-23,news,"digital,world,apple"
 iPhone 3G,2008-07-11,news,"digital,world,apple"
 iPad,2010-05-28,news,"digital,world,apple"
+Apple Watch,2016-09-16,news,"digital,world,apple"
 Appleシリコン M1,2020-11-11,news,"digital,world,apple"
 
 Mr.Children / innocent world,1994-06-01,news,"music,japan"
@@ -1041,7 +1076,8 @@ globe / DEPARTURES,1996-01-01,news,"music,japan"
 モーニング娘。 / LOVEマシーン,1999-09-09,news,"music,japan"
 サザンオールスターズ / TSUNAMI,2000-01-26,news,"music,japan"
 マツケンサンバ,2004-07-07,news,"music,japan"
-AKB48,2005-12-08,news,"music,japan"
+ゴールデンボンバー / 女々しくて,2009-10-21,news,"music,japan"
+AKB48 / ヘビーローテーション,2010-08-18,news,"music,japan"
 
 ONE PIECE,1997-07-22,news,"manga,japan"
 HUNTER×HUNTER,1998-03-16,news,"manga,japan"
@@ -1066,6 +1102,8 @@ DEATH NOTE,2003-12-00,news,"manga,japan"
 映画 ブレイブ・ストーリー,2006-07-08,news,"film,japan"
 映画 パプリカ,2006-11-25,news,"film,japan",,2
 映画 ヱヴァンゲリヲン 新劇場版:序,2007-09-01,news,"film,japan"
+映画 ヱヴァンゲリヲン 新劇場版:破,2009-06-27,news,"film,japan"
+映画 サマーウォーズ,2009-08-01,news,"film,japan"
 映画 君の名は。,2016-08-26,news,"film,japan"
 
 映画 風の谷のナウシカ,1984-03-11,news,"film,japan,ghibli"
@@ -1129,6 +1167,8 @@ DEATH NOTE,2003-12-00,news,"manga,japan"
 映画 パイレーツ・オブ・カリビアン 呪われた海賊たち,2003-08-02,news,"film,world"
 映画 ラストサムライ,2003-12-06,news,"film,world"
 映画 ファインディング・ニモ,2003-12-06,news,"film,world"
+映画 アバター,2009-12-23,news,"film,world"
+映画 アナと雪の女王,2013-03-14,news,"film,world"
 
 アニメ キャプテン翼,1983-10-13,news,"anime"
 アニメ ダーティペア,1985-07-15,news,"anime",,2
@@ -1193,8 +1233,18 @@ DEATH NOTE,2003-12-00,news,"manga,japan"
 アニメ 交響詩篇エウレカセブン,2005-04-17,news,"anime"
 アニメ 銀魂,2006-04-04,news,"anime"
 アニメ 天元突破グレンラガン,2007-04-01,news,"anime",,2
+アニメ 電脳コイル,2007-05-12,news,"anime",,2
 アニメ 夏目友人帳,2008-07-07,news,"anime",,2
 アニメ クプ〜!!まめゴマ!,2009-01-10,news,"anime",,2
+アニメ 四畳半神話大系,2010-04-23,news,"anime",,2
+アニメ 魔法少女まどか☆マギカ,2011-01-07,news,"anime"
+アニメ STEINS;GATE,2011-04-06,news,"anime",,2
+アニメ ギルティクラウン,2011-10-13,news,"anime",,2
+アニメ PSYCHO-PASS サイコパス,2012-10-11,news,"anime",,2
+アニメ ガッチャマン クラウズ,2013-07-00,news,"anime",,2
+アニメ キルラキル,2013-10-04,news,"anime",,2
+アニメ 進撃の巨人,2013-04-07,news,"anime"
+アニメ ガッチャマン クラウズ インサイト,2015-07-00,news,"anime",,2
 
 家なき子,1994-04-16,news,"drama"
 ロングバケーション,1996-04-15,news,"drama"
