@@ -56,7 +56,6 @@
   width: var(--timeline-year-bar-width);
   height: 100%;
   background-color: var(--theme-tx-2);
-  border-radius: 9999em;
   translate: -50% 0;
 }
 
@@ -73,6 +72,8 @@
   height: calc(
     100% - var(--pj-timeline-offset) + var(--timeline-year-bar-width)
   );
+  border-bottom-left-radius: 9999em;
+  border-bottom-right-radius: 9999em;
 }
 
 .timeline-year-title {
