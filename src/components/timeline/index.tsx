@@ -7,57 +7,34 @@ import {
   BiArrowToRight,
 } from "react-icons/bi"
 
-import type { Setting } from "../../types"
+import type { Setting, Item } from "../../types"
 import { ComponentItem } from "../item"
-import {
-  filterItemList,
-  getYearList,
-  getYearListFromEdges,
-  filterYearList,
-  scrollToY,
-} from "../../utils"
+import { scrollToY } from "../../utils"
 import "./index.css"
 
 export function ComponentTimeline({
   setting,
   activeTimeline,
-}: //ref,
-{
+  yearImageRefs,
+  filteredItemList,
+  filteredYearList,
+}: {
   setting: Setting
   activeTimeline: boolean
-  //ref: React.Ref<HTMLDivElement>
+  yearImageRefs: React.RefObject<Map<number, HTMLDivElement>>
+  filteredItemList: Item[]
+  filteredYearList: number[]
 }) {
-  const {
-    itemList,
-    categoryList,
-    tagList,
-    currentLank,
-    visibleController,
-    scrollOffset,
-  } = setting
-  const filteredItemList = filterItemList(
-    itemList,
-    categoryList,
-    tagList,
-    currentLank
-  )
-  const yearList = getYearList(filteredItemList)
-  const { startYear, endYear, omitEmptyYears } = setting
-  const itemStartYear = Math.min(...yearList)
-  const itemEndYear = Math.max(...yearList)
-  const maxStartYear = Math.max(startYear, itemStartYear)
-  const minEndYear = Math.min(endYear, itemEndYear)
-  const visibleYearList = omitEmptyYears
-    ? filterYearList(yearList, maxStartYear, minEndYear)
-    : getYearListFromEdges(maxStartYear, minEndYear)
+  const { tagList, omitEmptyYears, visibleController, scrollOffset } = setting
 
   const [currentYear, setCurrentYear] = useState<number | null>(null)
   const [inputYear, setInputYear] = useState<number | "">(currentYear)
-  const yearRefs = useRef<Map<number, HTMLDivElement>>(new Map())
+
+  const yearHeadingRefs = useRef<Map<number, HTMLDivElement>>(new Map())
   const isScrollingRef = useRef(false)
 
   const scrollToYear = (year: number) => {
-    const el = yearRefs.current.get(year)
+    const el = yearHeadingRefs.current.get(year)
     if (el) {
       const rect = el.getBoundingClientRect()
       const offsetTop = window.pageYOffset + rect.top
@@ -84,7 +61,7 @@ export function ComponentTimeline({
       setInputYear("")
     } else {
       setInputYear(num)
-      if (visibleYearList.includes(num)) {
+      if (filteredYearList.includes(num)) {
         scrollToYear(num)
       }
     }
@@ -111,23 +88,25 @@ export function ComponentTimeline({
       rootMargin: `-${scrollOffset}px 0px -40% 0px`,
       threshold: 0,
     })
-    visibleYearList.forEach((year) => {
-      const el = yearRefs.current.get(year)
+    filteredYearList.forEach((year) => {
+      const el = yearHeadingRefs.current.get(year)
       if (el) {
         observer.observe(el)
       }
     })
     return () => observer.disconnect()
-  }, [visibleYearList, scrollOffset])
+  }, [filteredYearList, scrollOffset])
   return (
     <main className="timeline">
       <div
         className={clsx("timeline-container", activeTimeline && "is-active")}
-        //ref={ref}
       >
         {filteredItemList.length > 0 ? (
           <div className="timeline-years">
-            {visibleYearList.map((year) => {
+            {filteredYearList.map((year, index) => {
+              const isFirstYear = index === 0
+              const isLastYear = index === filteredYearList.length - 1
+
               const mainItemList = filteredItemList
                 .filter((item) => {
                   return item.year === year && item.category !== "news"
@@ -146,12 +125,23 @@ export function ComponentTimeline({
                 return null
               }
               return (
-                <div className="timeline-year" key={year}>
+                <div
+                  className={clsx(
+                    "timeline-year",
+                    isFirstYear && "is-first",
+                    isLastYear && "is-last",
+                    emptyItems && "is-empty"
+                  )}
+                  key={year}
+                  ref={(el) => {
+                    if (el) yearImageRefs.current.set(year, el)
+                  }}
+                >
                   <h2
                     className="timeline-year-title"
                     id={year.toString()}
                     ref={(el) => {
-                      if (el) yearRefs.current.set(year, el)
+                      if (el) yearHeadingRefs.current.set(year, el)
                     }}
                   >
                     <span className="timeline-year-title-text">{year}</span>
@@ -221,15 +211,15 @@ export function ComponentTimeline({
         <div className="timeline-controls">
           <button
             className="button is-melt"
-            onClick={() => scrollToYear(visibleYearList[0])}
+            onClick={() => scrollToYear(filteredYearList[0])}
           >
             <BiArrowToLeft className="timeline-control-icon" />
           </button>
           <button
             className="button is-melt"
             onClick={() => {
-              const idx = visibleYearList.indexOf(currentYear)
-              if (idx > 0) scrollToYear(visibleYearList[idx - 1])
+              const idx = filteredYearList.indexOf(currentYear)
+              if (idx > 0) scrollToYear(filteredYearList[idx - 1])
             }}
           >
             <BiMinusCircle className="timeline-control-icon" />
@@ -243,16 +233,16 @@ export function ComponentTimeline({
           <button
             className="button is-melt"
             onClick={() => {
-              const idx = visibleYearList.indexOf(currentYear)
-              if (idx < visibleYearList.length - 1)
-                scrollToYear(visibleYearList[idx + 1])
+              const idx = filteredYearList.indexOf(currentYear)
+              if (idx < filteredYearList.length - 1)
+                scrollToYear(filteredYearList[idx + 1])
             }}
           >
             <BiPlusCircle className="timeline-control-icon" />
           </button>
           <button
             className="button is-melt"
-            onClick={() => scrollToYear(visibleYearList.at(-1)!)}
+            onClick={() => scrollToYear(filteredYearList.at(-1)!)}
           >
             <BiArrowToRight className="timeline-control-icon" />
           </button>

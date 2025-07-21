@@ -1,33 +1,37 @@
-//import { toPng } from "html-to-image"
+import { toPng } from "html-to-image"
 import Papa from "papaparse"
 
-import type { Item, Term, Color } from "./types"
+import type { Item, Term, Color, Setting } from "./types"
 
-/*export async function htmlToPng(element: HTMLElement): Promise<string | null> {
+export async function htmlToPng(element: HTMLElement): Promise<string | null> {
   try {
-    const originalPosition = element.style.position
-    const originalLeft = element.style.left
-    const originalTop = element.style.top
+    const clone = element.cloneNode(true) as HTMLElement
 
-    element.style.position = "fixed"
-    element.style.left = "0px"
-    element.style.top = "0px"
+    const wrapper = document.createElement("div")
+    wrapper.classList.add("timeline")
+    wrapper.style.position = "fixed"
+    wrapper.style.top = "0"
+    wrapper.style.left = "0"
+    wrapper.style.width = `${element.offsetWidth}px`
+    wrapper.style.zIndex = "-1"
+    wrapper.style.pointerEvents = "none"
+    wrapper.style.opacity = "0"
 
-    const dataUrl = await toPng(element, {
+    wrapper.appendChild(clone)
+    document.body.appendChild(wrapper)
+
+    const dataUrl = await toPng(clone, {
       cacheBust: true,
-      //backgroundColor: "white",
-      //pixelRatio: 2,
+      pixelRatio: 2,
     })
+    document.body.removeChild(wrapper)
 
-    element.style.position = originalPosition
-    element.style.left = originalLeft
-    element.style.top = originalTop
     return dataUrl
   } catch (error) {
     console.error("html-to-image error:", error)
     return null
   }
-}*/
+}
 
 export async function fetchFile(url: string): Promise<string> {
   try {
@@ -97,7 +101,6 @@ export function csvToItemList(parsedCsv: { [key: string]: string }[]): Item[] {
       const tags = strToArray(row.tags || "")
       const labels = strToArray(row.labels || "")
       const lank = row.lank ? Math.max(1, Math.floor(Number(row.lank))) : 1
-      //const visible = row.visible ? Boolean(row.visible) : true
 
       return {
         name,
@@ -195,12 +198,16 @@ export function getYearList(itemList: Item[]): number[] {
   return [...new Set(itemList.map((item) => item.year))].sort((a, b) => a - b)
 }
 
-export function filterItemList(
-  itemList: Item[],
-  categoryList: Term[],
-  tagList: Term[],
-  currentLank: number
-): Item[] {
+export function getCssVarPx(name: string): number {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(
+    name
+  )
+  return parseInt(value.trim().replace("px", ""), 10) || 0
+}
+
+export function filterItemList(setting: Setting): Item[] {
+  const { itemList, categoryList, tagList, currentLank } = setting
+
   const lankedItemList = itemList.filter((item) => item.lank <= currentLank)
 
   const activeCategoryFilter = categoryList?.some((term) => term.filter)
@@ -227,27 +234,20 @@ export function filterItemList(
   })
 }
 
-export function getYearListFromEdges(
-  startYear: number,
-  endYear: number
-): number[] {
-  const count = endYear - startYear + 1
-  return Array.from({ length: count }, (_, i) => startYear + i)
-}
+export function filterYearList(setting: Setting): number[] {
+  const { yearList, startYear, endYear, omitEmptyYears } = setting
 
-export function filterYearList(
-  yearList: number[],
-  startYear: number,
-  endYear: number
-): number[] {
-  return yearList.filter((year) => year >= startYear && year <= endYear)
-}
+  const itemStartYear = Math.min(...yearList)
+  const itemEndYear = Math.max(...yearList)
+  const maxStartYear = Math.max(startYear, itemStartYear)
+  const minEndYear = Math.min(endYear, itemEndYear)
 
-export function getCssVarPx(name: string): number {
-  const value = getComputedStyle(document.documentElement).getPropertyValue(
-    name
-  )
-  return parseInt(value.trim().replace("px", ""), 10) || 0
+  if (omitEmptyYears) {
+    return yearList.filter((year) => year >= maxStartYear && year <= minEndYear)
+  } else {
+    const count = minEndYear - maxStartYear + 1
+    return Array.from({ length: count }, (_, i) => maxStartYear + i)
+  }
 }
 
 export function scrollToY(targetY: number, duration: number = 500) {
@@ -268,4 +268,11 @@ export function scrollToY(targetY: number, duration: number = 500) {
     }
   }
   requestAnimationFrame(step)
+}
+
+export function checkAppleMobile(): boolean {
+  const agent = navigator.userAgent.toLowerCase()
+  const isPhone = /iphone|ipod/.test(agent)
+  const isPad = /ipad|macintosh/.test(agent) && "ontouchend" in document
+  return isPhone || isPad
 }

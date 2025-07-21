@@ -5,8 +5,11 @@ import { ComponentVariable } from "./components/variable"
 import { ComponentHeader } from "./components/header"
 import { ComponentTimeline } from "./components/timeline"
 import { ComponentModal } from "./components/modal"
+import { ComponentInfo } from "./components/info"
+import { ComponentBooth } from "./components/booth"
+import { ComponentSetting } from "./components/setting"
 import {
-  //htmlToPng,
+  htmlToPng,
   fetchFile,
   parseCsv,
   csvToItemList,
@@ -17,6 +20,9 @@ import {
   getLankList,
   getYearList,
   getCssVarPx,
+  filterItemList,
+  filterYearList,
+  checkAppleMobile,
 } from "./utils"
 import "./app.css"
 
@@ -27,6 +33,7 @@ const defaultSetting: Setting = {
   tagList: [],
   colorList: [],
   lankList: [],
+  yearList: [],
   startYear: 1983,
   endYear: 2025,
   omitEmptyYears: false,
@@ -35,33 +42,64 @@ const defaultSetting: Setting = {
   visibleController: true,
   scrollbarWidth: 0,
   scrollOffset: 0,
+  isAppleMobile: false,
 }
 
 export default function App() {
   const [setting, setSetting] = useState<Setting>(defaultSetting)
+
   const [activeTimeline, setActiveTimeline] = useState(false)
   const [activeModal, setActiveModal] = useState<string | null>(null)
-  //const [imageData, setImageData] = useState<string | null>(null)
-  //const timelineRef = useRef<HTMLDivElement>(null)
 
-  /*const runGenerate = async () => {
-    if (!timelineRef.current) return
-    setActiveModal("generate")
+  const [activeBulk, setActiveBulk] = useState(false)
+  const [bulkProgress, setBulkProgress] = useState<number>(0)
 
-    setTimeout(async () => {
-      const png = await htmlToPng(timelineRef.current)
-      setImageData(png)
-    }, 300)
-  }*/
-  const runInfo = () => {
-    setActiveModal("info")
-  }
-  const runSetting = () => {
-    setActiveModal("setting")
+  const [yearImages, setYearImages] = useState<{ [year: string]: string }>({})
+  const yearImageRefs = useRef<Map<number, HTMLDivElement>>(new Map())
+
+  const filteredItemList = filterItemList(setting)
+  const filteredYearList = filterYearList(setting)
+
+  const openModal = (modalId: string) => {
+    setActiveModal(modalId)
   }
   const closeModal = () => {
-    //setImageData(null)
     setActiveModal(null)
+  }
+
+  const createBulkImage = async () => {
+    setActiveBulk(true)
+    setBulkProgress(0)
+
+    const missingYears = filteredYearList.filter((year) => !yearImages[year])
+
+    const total = missingYears.length
+    const newYearImages: { [year: number]: string } = {}
+
+    for (let i = 0; i < missingYears.length; i++) {
+      const year = missingYears[i]
+      const element = yearImageRefs.current.get(year)
+      if (!element) continue
+
+      const png = await htmlToPng(element)
+      newYearImages[year] = png || ""
+
+      setYearImages((prev) => ({ ...prev, [year]: png }))
+      setBulkProgress(Math.round(((i + 1) / total) * 100))
+    }
+    setActiveBulk(false)
+  }
+
+  const createYearImage = async (year: number) => {
+    const png = await htmlToPng(yearImageRefs.current.get(year)!)
+    setYearImages((prev) => ({ ...prev, [year]: png }))
+  }
+  const deleteYearImage = (year: number) => {
+    setYearImages((prev) => {
+      const newScreenshots = { ...prev }
+      delete newScreenshots[year]
+      return newScreenshots
+    })
   }
 
   const changeSetting = (newSetting: Partial<Setting>) => {
@@ -69,7 +107,9 @@ export default function App() {
       ...prevSetting,
       ...newSetting,
     }))
+    setYearImages({})
   }
+
   const changeCurrentLank = (currentLank: number) => {
     const { itemList, termList } = setting
 
@@ -88,7 +128,7 @@ export default function App() {
     })
   }
 
-  const uploadItems = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeItems = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
 
@@ -121,6 +161,7 @@ export default function App() {
         categoryList,
         tagList,
         colorList,
+        yearList,
         startYear,
         endYear,
         currentLank,
@@ -130,7 +171,7 @@ export default function App() {
     reader.readAsText(file)
   }
 
-  const uploadTerms = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeTerms = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
 
@@ -161,77 +202,111 @@ export default function App() {
     reader.readAsText(file)
   }
 
+  const setup = async () => {
+    const timestamp = Date.now()
+    const { currentLank } = setting
+
+    const itemsData = await fetchFile(`/assets/items.csv?t=${timestamp}`)
+    const termsData = await fetchFile(`/assets/terms.csv?t=${timestamp}`)
+    const parsedItems = parseCsv(itemsData)
+    const parsedTerms = parseCsv(termsData)
+
+    const itemList = csvToItemList(parsedItems)
+    const termList = csvToTermList(parsedTerms)
+    const lankList = getLankList(itemList)
+    const categoryIds = getTermIds(itemList, "category", currentLank)
+    const tagIds = getTermIds(itemList, "tags", currentLank)
+    const labelIds = getTermIds(itemList, "labels", currentLank)
+    const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
+    const categoryList = resolveTermList(categoryIds, termList)
+    const tagList = resolveTermList(tagLabelIds, termList)
+    const colorList = getColorList(termList)
+
+    const yearList = getYearList(itemList)
+    const startYear = Math.min(...yearList)
+    const endYear = Math.max(...yearList)
+
+    const scrollbarWidth = window.innerWidth - document.body.clientWidth
+    const headerHeight = getCssVarPx("--pj-header-height")
+    const timelineOffset = getCssVarPx("--pj-timeline-offset")
+    const scrollOffset = headerHeight + timelineOffset
+    const isAppleMobile = checkAppleMobile()
+
+    changeSetting({
+      itemList,
+      termList,
+      lankList,
+      categoryList,
+      tagList,
+      colorList,
+      yearList,
+      startYear,
+      endYear,
+      scrollbarWidth,
+      scrollOffset,
+      isAppleMobile,
+    })
+    setActiveTimeline(true)
+  }
+
   useEffect(() => {
-    const setup = async () => {
-      const timestamp = Date.now()
-      const { currentLank } = setting
-
-      const itemsData = await fetchFile(`/assets/items.csv?t=${timestamp}`)
-      const termsData = await fetchFile(`/assets/terms.csv?t=${timestamp}`)
-      const parsedItems = parseCsv(itemsData)
-      const parsedTerms = parseCsv(termsData)
-
-      const itemList = csvToItemList(parsedItems)
-      const termList = csvToTermList(parsedTerms)
-      const lankList = getLankList(itemList)
-      const categoryIds = getTermIds(itemList, "category", currentLank)
-      const tagIds = getTermIds(itemList, "tags", currentLank)
-      const labelIds = getTermIds(itemList, "labels", currentLank)
-      const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
-      const categoryList = resolveTermList(categoryIds, termList)
-      const tagList = resolveTermList(tagLabelIds, termList)
-      const colorList = getColorList(termList)
-
-      const yearList = getYearList(itemList)
-      const startYear = Math.min(...yearList)
-      const endYear = Math.max(...yearList)
-
-      const scrollbarWidth = window.innerWidth - document.body.clientWidth
-      const headerHeight = getCssVarPx("--pj-header-height")
-      const timelineOffset = getCssVarPx("--pj-timeline-offset")
-      const scrollOffset = headerHeight + timelineOffset
-
-      changeSetting({
-        itemList,
-        termList,
-        lankList,
-        categoryList,
-        tagList,
-        colorList,
-        startYear,
-        endYear,
-        scrollbarWidth,
-        scrollOffset,
-      })
-      setActiveTimeline(true)
-    }
     setup()
   }, [])
   return (
     <div className="app">
       <ComponentVariable setting={setting} />
       <div className="app-main">
-        <ComponentHeader
-          //runGenerate={runGenerate}
-          runInfo={runInfo}
-          runSetting={runSetting}
-        />
+        <ComponentHeader openModal={openModal} />
         <ComponentTimeline
           setting={setting}
           activeTimeline={activeTimeline}
-          //ref={timelineRef}
+          yearImageRefs={yearImageRefs}
+          filteredItemList={filteredItemList}
+          filteredYearList={filteredYearList}
         />
       </div>
+
       <ComponentModal
-        activeModal={activeModal}
+        isActive={activeModal === "info"}
+        title="概要"
         closeModal={closeModal}
-        //imageData={imageData}
-        setting={setting}
-        changeSetting={changeSetting}
-        changeCurrentLank={changeCurrentLank}
-        uploadItems={uploadItems}
-        uploadTerms={uploadTerms}
-      />
+      >
+        <ComponentInfo />
+      </ComponentModal>
+
+      <ComponentModal
+        isActive={activeModal === "booth"}
+        isMobileSidebar
+        title="画像生成"
+        closeModal={closeModal}
+      >
+        <ComponentBooth
+          setting={setting}
+          activeBulk={activeBulk}
+          bulkProgress={bulkProgress}
+          filteredYearList={filteredYearList}
+          yearImages={yearImages}
+          createBulkImage={createBulkImage}
+          createYearImage={createYearImage}
+          deleteYearImage={deleteYearImage}
+        />
+      </ComponentModal>
+
+      <ComponentModal
+        isActive={activeModal === "setting"}
+        isMobileSidebar
+        title="設定"
+        closeModal={closeModal}
+      >
+        <ComponentSetting
+          setting={setting}
+          isMobileSidebar
+          changeSetting={changeSetting}
+          changeCurrentLank={changeCurrentLank}
+          changeItems={changeItems}
+          changeTerms={changeTerms}
+        />
+      </ComponentModal>
     </div>
   )
 }

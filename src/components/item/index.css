@@ -1,11 +1,11 @@
 .item {
   --item-bar-width: 4px;
-  --item-name-font-size: 0.9375rem;
+  --item-name-font-size: 0.875rem;
   --item-label-font-size: 0.625rem;
   --item-date-font-size: 0.75rem;
-  --item-hardware-name-font-size: 1.0625rem;
-  --item-news-name-font-size: 0.75rem;
-  --item-news-date-font-size: clamp(0.625rem, 1vw + 0.375rem, 0.75rem);
+  --item-hardware-name-font-size: 1rem;
+  --item-news-name-font-size: 0.6875rem;
+  --item-news-date-font-size: 0.625rem;
 }
 
 .item {
@@ -30,11 +30,9 @@
 .item-name {
   font-size: var(--item-name-font-size);
   font-weight: 600;
-  font-feature-settings: "palt";
-  letter-spacing: 0.0125em;
   word-break: keep-all;
   overflow-wrap: break-word;
-  line-height: 1.125;
+  line-height: 1.25;
   text-box-trim: trim-both;
 }
 
@@ -67,7 +65,6 @@
   color: var(--theme-tx-3);
   font-size: var(--item-date-font-size);
   font-weight: 500;
-  font-feature-settings: "palt";
   line-height: 1;
   white-space: nowrap;
 }

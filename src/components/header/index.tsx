@@ -1,16 +1,11 @@
-import { BiErrorCircle, BiCog } from "react-icons/bi"
-import { FiInfo, FiSettings } from "react-icons/fi"
+import { BiHelpCircle, BiImages, BiCog } from "react-icons/bi"
 
 import "./index.css"
 
 export function ComponentHeader({
-  //runGenerate,
-  runInfo,
-  runSetting,
+  openModal,
 }: {
-  //runGenerate: () => void
-  runInfo: () => void
-  runSetting: () => void
+  openModal: (modalId: string) => void
 }) {
   return (
     <header className="header">
@@ -37,24 +32,24 @@ export function ComponentHeader({
             <button
               type="button"
               className="button is-melt is-circle"
-              onClick={runInfo}
+              onClick={() => openModal("info")}
             >
-              <BiErrorCircle className="header-button-icon" />
+              <BiHelpCircle className="header-button-icon" />
             </button>
             <button
               type="button"
               className="button is-melt is-circle"
-              onClick={runSetting}
+              onClick={() => openModal("booth")}
+            >
+              <BiImages className="header-button-icon" />
+            </button>
+            <button
+              type="button"
+              className="button is-melt is-circle"
+              onClick={() => openModal("setting")}
             >
               <BiCog className="header-button-icon" />
             </button>
-            {/*<button
-              type="button"
-              className="button is-plain is-primary"
-              onClick={runGenerate}
-            >
-              画像化
-            </button>*/}
           </div>
         </div>
       </div>

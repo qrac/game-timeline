@@ -30,6 +30,7 @@ export type Setting = {
   categoryList: Term[]
   tagList: Term[]
   colorList: Color[]
+  yearList: number[]
   startYear: number
   endYear: number
   omitEmptyYears: boolean
@@ -38,4 +39,5 @@ export type Setting = {
   visibleController: boolean
   scrollbarWidth: number
   scrollOffset: number
+  isAppleMobile: boolean
 }

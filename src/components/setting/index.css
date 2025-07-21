@@ -1,0 +1,100 @@
+.setting-container > * + * {
+  margin-top: 1px;
+}
+
+.setting-container > * + *::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  width: calc(100% - 20px);
+  background-color: var(--theme-bd-1);
+  border-top: 1px solid var(--theme-bd-1);
+}
+
+.setting-field {
+  position: relative;
+  padding: 16px 20px;
+}
+
+.setting-field > * + * {
+  margin-top: 12px;
+}
+
+.setting-field-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-feature-settings: "palt";
+  letter-spacing: 0.0125em;
+}
+
+.setting-field-note {
+  color: var(--theme-tx-3);
+  font-size: 0.75rem;
+  font-feature-settings: "palt";
+  letter-spacing: 0.0125em;
+}
+
+.setting-field-selects {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background-color: var(--theme-bg-2);
+  border: 1px solid var(--theme-bd-1);
+  border-radius: 10px;
+}
+
+.setting-field-selects > .select {
+  flex: 1 0;
+}
+
+@media (width > 540px) {
+  .setting-field-selects > .select > select {
+    text-align: center;
+  }
+}
+
+.setting-field-selects > *:nth-child(2) {
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+@media (width <= 540px) {
+  .setting-container.is-mobile-sidebar .setting-field-selects > * {
+    flex: 0 0 100%;
+  }
+}
+
+@media (width <= 540px) {
+  .setting-container.is-mobile-sidebar .tagcloud > .button {
+    flex: 0 0 100%;
+  }
+}
+
+.setting-field-checks > * {
+  padding: 4px;
+}
+
+.setting-field-checks > * + * {
+  margin-top: 4px;
+}
+
+.setting-field-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.setting-field-buttons > .button:not(.is-square) {
+  flex: 1 0;
+}
+
+.setting-field-buttons > .button .text {
+  font-size: 0.875rem;
+}
+
+.setting-field-button-icon {
+  width: 20px;
+  height: 20px;
+}

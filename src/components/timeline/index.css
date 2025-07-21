@@ -30,10 +30,6 @@
   }
 }
 
-.timeline-years > * + * {
-  margin-top: -0.5rem;
-}
-
 .timeline-year {
   position: relative;
   padding-top: var(--pj-timeline-offset);
@@ -44,6 +40,10 @@
       var(--timeline-year-bar-offset)
   );
   background-color: var(--theme-bg-2);
+}
+
+.timeline-year:not(.is-first) {
+  padding-top: calc(var(--pj-timeline-offset) / 2);
 }
 
 .timeline-year-bar {
@@ -59,7 +59,7 @@
   translate: -50% 0;
 }
 
-.timeline-year:first-child .timeline-year-bar {
+.timeline-year.is-first .timeline-year-bar {
   top: calc(
     0px + var(--pj-timeline-offset) + var(--timeline-year-font-size) / 2
   );
@@ -68,7 +68,7 @@
   );
 }
 
-.timeline-year:last-child .timeline-year-bar {
+.timeline-year.is-last .timeline-year-bar {
   height: calc(
     100% - var(--pj-timeline-offset) + var(--timeline-year-bar-width)
   );
