@@ -233,7 +233,7 @@ export function ComponentTimeline({
           </button>
           <input
             type="number"
-            className="input is-center is-year"
+            className="input is-inside is-center is-year"
             value={inputYear ?? ""}
             onChange={changeInputYear}
           />
