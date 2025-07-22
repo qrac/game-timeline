@@ -108,7 +108,7 @@ export function ComponentHeader({
                   className="input"
                   placeholder="検索..."
                   value={setting.searchText || ""}
-                  onChange={(e) => changeSearchText(e.target.value.trim())}
+                  onChange={(e) => changeSearchText(e.target.value)}
                   ref={headerSearchRef}
                 />
                 {setting.searchText && (
