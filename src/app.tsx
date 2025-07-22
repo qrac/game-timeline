@@ -71,7 +71,7 @@ export default function App() {
       setSetting((prev) => ({ ...prev, headerHeight: 63 }))
     } else {
       headerSearchRef.current?.focus()
-      setSetting((prev) => ({ ...prev, headerHeight: 109 }))
+      setSetting((prev) => ({ ...prev, headerHeight: 113 }))
     }
   }
   const changeSearchText = (text: string) => {
