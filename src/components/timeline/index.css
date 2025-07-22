@@ -136,13 +136,13 @@
 }
 
 .timeline-year-column.is-separate.is-main > *:not(:last-child) {
-  margin-bottom: calc(0.75rem * 2 + 1px);
+  margin-bottom: calc(0.625rem * 2 + 1px);
 }
 
 .timeline-year-column.is-separate.is-main > *:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: calc(100% + 0.75rem);
+  top: calc(100% + 0.625rem);
   left: 14px;
   width: calc(100% - 14px);
   height: 0;
@@ -150,7 +150,7 @@
 }
 
 .timeline-year-column.is-separate.is-sub > *:not(:last-child) {
-  margin-bottom: calc(0.5rem * 2 + 1px);
+  margin-bottom: calc(0.375rem * 2 + 1px);
 }
 
 .timeline-year-column.is-separate.is-sub > *:not(:last-child)::after {
