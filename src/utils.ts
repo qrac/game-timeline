@@ -206,17 +206,17 @@ export function getCssVarPx(name: string): number {
 }
 
 export function filterItemList(setting: Setting): Item[] {
-  const { itemList, categoryList, tagList, currentLank } = setting
+  const { itemList, categoryList, tagList, currentLank, searchText } = setting
 
   const lankedItemList = itemList.filter((item) => item.lank <= currentLank)
 
   const activeCategoryFilter = categoryList?.some((term) => term.filter)
   const activeTagFilter = tagList?.some((term) => term.filter)
-  const activeFilter = activeCategoryFilter || activeTagFilter
+  const activeTermFilter = activeCategoryFilter || activeTagFilter
 
-  if (!activeFilter) return lankedItemList
+  if (!activeTermFilter && !searchText) return lankedItemList
 
-  return lankedItemList.filter((item) => {
+  const termFilteredItemList = lankedItemList.filter((item) => {
     const categoryMatched =
       !activeCategoryFilter ||
       categoryList.some((term) => term.id === item.category && term.filter)
@@ -232,6 +232,19 @@ export function filterItemList(setting: Setting): Item[] {
 
     return categoryMatched && tagMatched
   })
+
+  if (!searchText) return termFilteredItemList
+
+  const keywords = searchText
+    .split(",")
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0)
+
+  const searchedItemList = termFilteredItemList.filter((item) =>
+    keywords.some((keyword) => item.name.includes(keyword))
+  )
+
+  return searchedItemList
 }
 
 export function filterYearList(setting: Setting): number[] {

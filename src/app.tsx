@@ -39,26 +39,44 @@ const defaultSetting: Setting = {
   omitEmptyYears: false,
   currentLank: 2,
   lankNote: "1=有名作品のみ, 2=個性派作品含む, 3=全件表示",
+  searchText: "",
   visibleController: true,
   scrollbarWidth: 0,
-  scrollOffset: 0,
+  headerHeight: 63,
+  timelineOffset: 0,
   isAppleMobile: false,
 }
 
 export default function App() {
   const [setting, setSetting] = useState<Setting>(defaultSetting)
 
+  const [activeHeaderSearch, setActiveHeaderSearch] = useState(false)
+  const headerSearchRef = useRef<HTMLInputElement>(null)
+
   const [activeTimeline, setActiveTimeline] = useState(false)
   const [activeModal, setActiveModal] = useState<string | null>(null)
 
   const [activeBulk, setActiveBulk] = useState(false)
   const [bulkProgress, setBulkProgress] = useState<number>(0)
-
   const [yearImages, setYearImages] = useState<{ [year: string]: string }>({})
   const yearImageRefs = useRef<Map<number, HTMLDivElement>>(new Map())
 
   const filteredItemList = filterItemList(setting)
   const filteredYearList = filterYearList(setting)
+
+  const changeHeaderSearch = () => {
+    setActiveHeaderSearch((prev) => !prev)
+    if (activeHeaderSearch) {
+      headerSearchRef.current?.blur()
+      setSetting((prev) => ({ ...prev, headerHeight: 63 }))
+    } else {
+      headerSearchRef.current?.focus()
+      setSetting((prev) => ({ ...prev, headerHeight: 109 }))
+    }
+  }
+  const changeSearchText = (text: string) => {
+    setSetting((prev) => ({ ...prev, searchText: text }))
+  }
 
   const openModal = (modalId: string) => {
     setActiveModal(modalId)
@@ -107,7 +125,6 @@ export default function App() {
       ...prevSetting,
       ...newSetting,
     }))
-    setYearImages({})
   }
 
   const changeCurrentLank = (currentLank: number) => {
@@ -227,9 +244,7 @@ export default function App() {
     const endYear = Math.max(...yearList)
 
     const scrollbarWidth = window.innerWidth - document.body.clientWidth
-    const headerHeight = getCssVarPx("--pj-header-height")
     const timelineOffset = getCssVarPx("--pj-timeline-offset")
-    const scrollOffset = headerHeight + timelineOffset
     const isAppleMobile = checkAppleMobile()
 
     changeSetting({
@@ -243,7 +258,7 @@ export default function App() {
       startYear,
       endYear,
       scrollbarWidth,
-      scrollOffset,
+      timelineOffset,
       isAppleMobile,
     })
     setActiveTimeline(true)
@@ -256,7 +271,15 @@ export default function App() {
     <div className="app">
       <ComponentVariable setting={setting} />
       <div className="app-main">
-        <ComponentHeader openModal={openModal} />
+        <ComponentHeader
+          setting={setting}
+          activeHeaderSearch={activeHeaderSearch}
+          headerSearchRef={headerSearchRef}
+          activeModal={activeModal}
+          changeHeaderSearch={changeHeaderSearch}
+          changeSearchText={changeSearchText}
+          openModal={openModal}
+        />
         <ComponentTimeline
           setting={setting}
           activeTimeline={activeTimeline}

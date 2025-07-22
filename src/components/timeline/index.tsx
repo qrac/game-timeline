@@ -25,13 +25,20 @@ export function ComponentTimeline({
   filteredItemList: Item[]
   filteredYearList: number[]
 }) {
-  const { tagList, omitEmptyYears, visibleController, scrollOffset } = setting
+  const {
+    tagList,
+    omitEmptyYears,
+    visibleController,
+    headerHeight,
+    timelineOffset,
+  } = setting
 
   const [currentYear, setCurrentYear] = useState<number | null>(null)
   const [inputYear, setInputYear] = useState<number | "">(currentYear)
 
   const yearHeadingRefs = useRef<Map<number, HTMLDivElement>>(new Map())
   const isScrollingRef = useRef(false)
+  const scrollOffset = headerHeight + timelineOffset
 
   const scrollToYear = (year: number) => {
     const el = yearHeadingRefs.current.get(year)

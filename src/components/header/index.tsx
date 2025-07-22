@@ -1,12 +1,37 @@
-import { BiHelpCircle, BiImages, BiCog } from "react-icons/bi"
+import { useEffect } from "react"
+import { clsx } from "clsx"
+import { BiHelpCircle, BiSearchAlt, BiImages, BiCog } from "react-icons/bi"
 
+import type { Setting } from "../../types"
 import "./index.css"
 
 export function ComponentHeader({
+  setting,
+  activeHeaderSearch,
+  headerSearchRef,
+  activeModal,
+  changeHeaderSearch,
+  changeSearchText,
   openModal,
 }: {
+  setting: Setting
+  activeHeaderSearch: boolean
+  headerSearchRef: React.RefObject<HTMLInputElement>
+  activeModal: string
+  changeHeaderSearch: () => void
+  changeSearchText: (text: string) => void
   openModal: (modalId: string) => void
 }) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && activeHeaderSearch && activeModal === null) {
+        e.preventDefault()
+        changeHeaderSearch()
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [changeHeaderSearch])
   return (
     <header className="header">
       <div className="header-inner">
@@ -31,25 +56,63 @@ export function ComponentHeader({
           <div className="header-buttons">
             <button
               type="button"
-              className="button is-melt is-circle"
+              className={clsx(
+                "button is-melt is-circle",
+                activeModal === "info" && "is-active"
+              )}
               onClick={() => openModal("info")}
             >
               <BiHelpCircle className="header-button-icon" />
             </button>
             <button
               type="button"
-              className="button is-melt is-circle"
+              className={clsx(
+                "button is-melt is-circle",
+                activeHeaderSearch && "is-active"
+              )}
+              onClick={changeHeaderSearch}
+            >
+              <BiSearchAlt className="header-button-icon" />
+            </button>
+            <button
+              type="button"
+              className={clsx(
+                "button is-melt is-circle",
+                activeModal === "booth" && "is-active"
+              )}
               onClick={() => openModal("booth")}
             >
               <BiImages className="header-button-icon" />
             </button>
             <button
               type="button"
-              className="button is-melt is-circle"
+              className={clsx(
+                "button is-melt is-circle",
+                activeModal === "setting" && "is-active"
+              )}
               onClick={() => openModal("setting")}
             >
               <BiCog className="header-button-icon" />
             </button>
+          </div>
+        </div>
+
+        <div
+          className={clsx("header-search", activeHeaderSearch && "is-active")}
+        >
+          <div className="header-search-inner">
+            <div>
+              <div className="header-search-field">
+                <input
+                  type="search"
+                  className="input"
+                  placeholder="検索..."
+                  defaultValue={setting.searchText}
+                  onChange={(e) => changeSearchText(e.target.value.trim())}
+                  ref={headerSearchRef}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

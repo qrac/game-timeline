@@ -19,7 +19,7 @@ export function ComponentModal({
 }) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" && isActive) {
         e.preventDefault()
         closeModal()
       }
