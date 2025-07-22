@@ -82,7 +82,17 @@
   width: 100%;
 }
 
-.header-search .input[type="search"]::-webkit-search-cancel-button,
-.header-search .input[type="search"]::-webkit-search-decoration {
-  cursor: pointer;
+.header-search .button.is-clear {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  translate: 0 -50%;
+}
+
+.header-search-clean-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--theme-tx-3);
 }

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { clsx } from "clsx"
-import { BiHelpCircle, BiSearchAlt, BiImages, BiCog } from "react-icons/bi"
+import { BiHelpCircle, BiSearchAlt, BiImages, BiCog, BiX } from "react-icons/bi"
 
 import type { Setting } from "../../types"
 import "./index.css"
@@ -104,13 +104,22 @@ export function ComponentHeader({
             <div>
               <div className="header-search-field">
                 <input
-                  type="search"
+                  type="text"
                   className="input"
                   placeholder="検索..."
-                  defaultValue={setting.searchText}
+                  value={setting.searchText || ""}
                   onChange={(e) => changeSearchText(e.target.value.trim())}
                   ref={headerSearchRef}
                 />
+                {setting.searchText && (
+                  <button
+                    type="button"
+                    className="button is-melt is-circle is-clear"
+                    onClick={() => changeSearchText("")}
+                  >
+                    <BiX className="header-search-clean-icon" />
+                  </button>
+                )}
               </div>
             </div>
           </div>
