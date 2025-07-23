@@ -1,12 +1,8 @@
-.booth-items {
-  position: relative;
-}
-
-.booth-items > * + * {
+.booth-container > * + * {
   margin-top: 1px;
 }
 
-.booth-items > * + *::before {
+.booth-container > * + *::before {
   content: "";
   position: absolute;
   bottom: 100%;
@@ -16,56 +12,56 @@
   border-top: 1px solid var(--theme-bd-1);
 }
 
-.booth-item {
+.booth-field {
   position: relative;
   padding: 20px;
 }
 
 @media (992px <= width) {
-  .booth-item.is-mobile-only,
-  .booth-item-docs.is-mobile-only {
+  .booth-field.is-mobile-only,
+  .booth-field-docs.is-mobile-only {
     display: none;
   }
 }
 
-.booth-item > * + * {
+.booth-field > * + * {
   margin-top: 8px;
 }
 
-.booth-item-title {
+.booth-field-title {
   font-size: 0.875rem;
   font-weight: 600;
   font-feature-settings: "palt";
   letter-spacing: 0.0125em;
 }
 
-.booth-item-docs > * + * {
+.booth-field-docs > * + * {
   margin-top: 1em;
 }
 
-.booth-item-docs > *:first-child {
+.booth-field-docs > *:first-child {
   text-box-trim: trim-start;
 }
 
-.booth-item-docs > *:last-child {
+.booth-field-docs > *:last-child {
   text-box-trim: trim-end;
 }
 
-.booth-item-docs > *:first-child:last-child {
+.booth-field-docs > *:first-child:last-child {
   text-box-trim: trim-both;
 }
 
-.booth-item-docs p {
+.booth-field-docs p {
   font-size: 0.875rem;
   line-height: 1.5;
 }
 
-.booth-item-docs p.text.is-note {
+.booth-field-docs p.text.is-note {
   color: var(--theme-tx-3);
   font-size: 0.75rem;
 }
 
-.booth-item-stage {
+.booth-field-stage {
   position: relative;
   height: 120px;
   background-color: var(--theme-bg-3);
@@ -74,39 +70,39 @@
   overflow: hidden;
 }
 
-.booth-item-stage-delete {
+.booth-field-stage-delete {
   position: absolute;
   top: -1px;
   right: -1px;
   z-index: 2;
 }
 
-.booth-item-stage-delete .button:is(.is-square, .is-circle) {
+.booth-field-stage-delete .button:is(.is-square, .is-circle) {
   width: 28px;
   height: 28px;
   border-top-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.booth-item-buttons {
+.booth-field-buttons {
   display: flex;
   gap: 6px;
 }
 
-.booth-item-buttons .button {
+.booth-field-buttons .button {
   flex: 1 0;
   gap: 4px;
 }
 
-.booth-item-buttons .text {
+.booth-field-buttons .text {
   font-size: 0.875rem;
 }
 
-.booth-item-button-icon {
+.booth-field-button-icon {
   width: 18px;
   height: 18px;
 }
 
-.booth-item-button-icon.is-lg {
+.booth-field-button-icon.is-lg {
   scale: 1.15;
 }

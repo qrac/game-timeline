@@ -32,104 +32,102 @@ export function ComponentBooth({
   const hasImages = Object.keys(yearImages).length > 0
   return (
     <div className="booth-container">
-      <div className="booth-items">
-        <div className="booth-item">
-          <div className="booth-item-docs">
-            <p>
-              <span>年ごとのスクリーンショットを生成できます。</span>
-            </p>
-            {isAppleMobile && <p>画像は長押しでカメラロールに保存可能です。</p>}
+      <div className="booth-field">
+        <div className="booth-field-docs">
+          <p>
+            <span>年ごとのスクリーンショットを生成できます。</span>
+          </p>
+          {isAppleMobile && <p>画像は長押しでカメラロールに保存可能です。</p>}
+        </div>
+      </div>
+      {activeBulk && (
+        <div className="booth-field">
+          <div className="booth-field-content">
+            <ComponentProgress progress={bulkProgress} />
+          </div>
+          <div className="booth-field-content">
+            <div className="booth-field-buttons">
+              <button
+                className="button is-outline is-danger"
+                onClick={() => {
+                  cancelRef.current = true
+                }}
+              >
+                <BiX className="booth-field-button-icon is-lg" />
+                <span className="text">中断</span>
+              </button>
+            </div>
           </div>
         </div>
-        {activeBulk && (
-          <div className="booth-item">
-            <div className="booth-item-content">
-              <ComponentProgress progress={bulkProgress} />
-            </div>
-            <div className="booth-item-content">
-              <div className="booth-item-buttons">
+      )}
+      {!activeBulk && (
+        <div className="booth-field">
+          <h3 className="booth-field-title">一括処理</h3>
+          <div className="booth-field-content">
+            <div className="booth-field-buttons">
+              {!completed && (
+                <button
+                  className="button is-outline is-primary"
+                  type="button"
+                  onClick={createBulkImage}
+                >
+                  <BiImageAdd className="booth-field-button-icon" />
+                  <span className="text">生成</span>
+                </button>
+              )}
+              {hasImages && (
                 <button
                   className="button is-outline is-danger"
-                  onClick={() => {
-                    cancelRef.current = true
-                  }}
+                  type="button"
+                  onClick={deleteBulkImage}
                 >
-                  <BiX className="booth-item-button-icon is-lg" />
-                  <span className="text">中断</span>
+                  <BiTrash className="booth-field-button-icon" />
+                  <span className="text">削除</span>
                 </button>
-              </div>
+              )}
             </div>
           </div>
-        )}
-        {!activeBulk && (
-          <div className="booth-item">
-            <h3 className="booth-item-title">一括処理</h3>
-            <div className="booth-item-content">
-              <div className="booth-item-buttons">
-                {!completed && (
-                  <button
-                    className="button is-outline is-primary"
-                    type="button"
-                    onClick={createBulkImage}
-                  >
-                    <BiImageAdd className="booth-item-button-icon" />
-                    <span className="text">生成</span>
-                  </button>
-                )}
-                {hasImages && (
-                  <button
-                    className="button is-outline is-danger"
-                    type="button"
-                    onClick={deleteBulkImage}
-                  >
-                    <BiTrash className="booth-item-button-icon" />
-                    <span className="text">削除</span>
-                  </button>
-                )}
-              </div>
+          {!completed && (
+            <div className="booth-field-docs is-mobile-only">
+              <p className="text is-note">
+                ※モバイル機での一括生成は負荷が大きいためご注意ください
+              </p>
             </div>
-            {!completed && (
-              <div className="booth-item-docs is-mobile-only">
-                <p className="text is-note">
-                  ※モバイル機での一括生成は負荷が大きいためご注意ください
-                </p>
+          )}
+        </div>
+      )}
+      <div className="booth-field">
+        <h3 className="booth-field-title">個別処理</h3>
+        {filteredYearList.map((year) => (
+          <div key={year} className="booth-field-content">
+            {yearImages[year] && (
+              <div className="booth-field-stage">
+                <img src={yearImages[year]} alt={`Screenshot for ${year}`} />
+                <div className="booth-field-stage-delete">
+                  <button
+                    className="button is-outline is-square is-danger"
+                    type="button"
+                    onClick={() => deleteYearImage(year)}
+                  >
+                    <BiTrash className="booth-field-button-icon" />
+                  </button>
+                </div>
+              </div>
+            )}
+            {!yearImages[year] && (
+              <div className="booth-field-buttons">
+                <button
+                  className="button is-outline is-primary"
+                  type="button"
+                  onClick={() => createYearImage(year)}
+                >
+                  <BiImageAdd className="booth-field-button-icon" />
+                  <span className="text">{year}年</span>
+                </button>
               </div>
             )}
           </div>
-        )}
-        <div className="booth-item">
-          <h3 className="booth-item-title">個別処理</h3>
-          {filteredYearList.map((year) => (
-            <div key={year} className="booth-item-content">
-              {yearImages[year] && (
-                <div className="booth-item-stage">
-                  <img src={yearImages[year]} alt={`Screenshot for ${year}`} />
-                  <div className="booth-item-stage-delete">
-                    <button
-                      className="button is-outline is-square is-danger"
-                      type="button"
-                      onClick={() => deleteYearImage(year)}
-                    >
-                      <BiTrash className="booth-item-button-icon" />
-                    </button>
-                  </div>
-                </div>
-              )}
-              {!yearImages[year] && (
-                <div className="booth-item-buttons">
-                  <button
-                    className="button is-outline is-primary"
-                    type="button"
-                    onClick={() => createYearImage(year)}
-                  >
-                    <BiImageAdd className="booth-item-button-icon" />
-                    <span className="text">{year}年</span>
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </div>
   )
