@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 
-import { Setting } from "./types"
+import { Setting, Image } from "./types"
 import { ComponentVariable } from "./components/variable"
 import { ComponentHeader } from "./components/header"
 import { ComponentTimeline } from "./components/timeline"
@@ -10,7 +10,6 @@ import { ComponentBooth } from "./components/booth"
 import { ComponentSetting } from "./components/setting"
 import { defaultSetting, headerHeight } from "./params"
 import {
-  htmlToPng,
   fetchFile,
   parseCsv,
   csvToItemList,
@@ -24,6 +23,8 @@ import {
   filterItemList,
   filterYearList,
   checkAppleMobile,
+  htmlToImage,
+  mergeImages,
 } from "./utils"
 import "./app.css"
 
@@ -39,9 +40,10 @@ export default function App() {
   const [activeBulk, setActiveBulk] = useState(false)
   const [bulkProgress, setBulkProgress] = useState<number>(0)
   const cancelRef = useRef(false)
-
-  const [yearImages, setYearImages] = useState<{ [year: string]: string }>({})
-  const yearImageRefs = useRef<Map<number, HTMLDivElement>>(new Map())
+  const [yearImages, setYearImages] = useState<{ [year: string]: Image }>({})
+  const yearAreaRefs = useRef<Map<number, HTMLDivElement>>(new Map())
+  const [mergedImage, setMergedImage] = useState<Image | null>(null)
+  const [mergeYears, setMergeYears] = useState<number[]>([])
 
   const filteredItemList = filterItemList(setting)
   const filteredYearList = filterYearList(setting)
@@ -86,10 +88,10 @@ export default function App() {
         break
       }
       const year = missingYears[i]
-      const el = yearImageRefs.current.get(year)
+      const el = yearAreaRefs.current.get(year)
       if (!el) continue
 
-      const png = await htmlToPng(el)
+      const png = await htmlToImage(el)
       if (png) {
         setYearImages((prev) => ({ ...prev, [year]: png }))
       }
@@ -99,19 +101,54 @@ export default function App() {
     setActiveBulk(false)
   }
   const deleteBulkImage = () => {
-    setYearImages({})
+    setYearImages((prev) => {
+      Object.values(prev).forEach((image) => {
+        URL.revokeObjectURL(image.url)
+      })
+      return {}
+    })
   }
 
   const createYearImage = async (year: number) => {
-    const png = await htmlToPng(yearImageRefs.current.get(year)!)
-    setYearImages((prev) => ({ ...prev, [year]: png }))
+    const image = await htmlToImage(yearAreaRefs.current.get(year)!)
+    setYearImages((prev) => ({ ...prev, [year]: image }))
   }
   const deleteYearImage = (year: number) => {
     setYearImages((prev) => {
-      const newScreenshots = { ...prev }
-      delete newScreenshots[year]
-      return newScreenshots
+      const newYearImages = { ...prev }
+      const image = newYearImages[year]
+      if (image) {
+        URL.revokeObjectURL(image.url)
+        delete newYearImages[year]
+      }
+      return newYearImages
     })
+  }
+
+  const createMergedImage = async () => {
+    const filteredImages = Object.entries(yearImages)
+      .filter(([year]) => mergeYears.includes(Number(year)))
+      .map(([_, image]) => image)
+    const mergedImage = await mergeImages(filteredImages)
+    setMergedImage(mergedImage)
+  }
+  const deleteMergedImage = () => {
+    if (mergedImage) {
+      URL.revokeObjectURL(mergedImage.url)
+      setMergedImage(null)
+    }
+  }
+  const toggleAllMergeYears = () => {
+    if (mergeYears.length === Object.keys(yearImages).length) {
+      setMergeYears([])
+    } else {
+      setMergeYears(Object.keys(yearImages).map(Number))
+    }
+  }
+  const toggleMergeYear = (year: number) => {
+    setMergeYears((prev) =>
+      prev.includes(year) ? prev.filter((y) => y !== year) : [...prev, year]
+    )
   }
 
   const changeSetting = (newSetting: Partial<Setting>) => {
@@ -277,7 +314,7 @@ export default function App() {
         <ComponentTimeline
           setting={setting}
           activeTimeline={activeTimeline}
-          yearImageRefs={yearImageRefs}
+          yearAreaRefs={yearAreaRefs}
           filteredItemList={filteredItemList}
           filteredYearList={filteredYearList}
         />
@@ -304,10 +341,16 @@ export default function App() {
           cancelRef={cancelRef}
           filteredYearList={filteredYearList}
           yearImages={yearImages}
+          mergedImage={mergedImage}
+          mergeYears={mergeYears}
           createBulkImage={createBulkImage}
           deleteBulkImage={deleteBulkImage}
           createYearImage={createYearImage}
           deleteYearImage={deleteYearImage}
+          createMergedImage={createMergedImage}
+          deleteMergedImage={deleteMergedImage}
+          toggleAllMergeYears={toggleAllMergeYears}
+          toggleMergeYear={toggleMergeYear}
         />
       </ComponentModal>
 

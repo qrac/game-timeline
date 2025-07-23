@@ -44,3 +44,10 @@ export type Setting = {
   timelineOffset: number
   isAppleMobile: boolean
 }
+
+export type Image = {
+  url: string
+  width: number
+  height: number
+  size: number
+}

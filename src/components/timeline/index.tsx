@@ -15,13 +15,13 @@ import "./index.css"
 export function ComponentTimeline({
   setting,
   activeTimeline,
-  yearImageRefs,
+  yearAreaRefs,
   filteredItemList,
   filteredYearList,
 }: {
   setting: Setting
   activeTimeline: boolean
-  yearImageRefs: React.RefObject<Map<number, HTMLDivElement>>
+  yearAreaRefs: React.RefObject<Map<number, HTMLDivElement>>
   filteredItemList: Item[]
   filteredYearList: number[]
 }) {
@@ -141,7 +141,7 @@ export function ComponentTimeline({
                   )}
                   key={year}
                   ref={(el) => {
-                    if (el) yearImageRefs.current.set(year, el)
+                    if (el) yearAreaRefs.current.set(year, el)
                   }}
                 >
                   <h2

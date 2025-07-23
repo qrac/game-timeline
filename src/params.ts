@@ -6,6 +6,8 @@ export const headerHeight = {
   static: 0,
 }
 
+export const maxMergedHeight = 8000
+
 export const defaultSetting: Setting = {
   itemList: [],
   termList: [],

@@ -1,37 +1,7 @@
-import { toPng } from "html-to-image"
+import { toBlob } from "html-to-image"
 import Papa from "papaparse"
 
-import type { Item, Term, Color, Setting } from "./types"
-
-export async function htmlToPng(element: HTMLElement): Promise<string | null> {
-  try {
-    const clone = element.cloneNode(true) as HTMLElement
-
-    const wrapper = document.createElement("div")
-    wrapper.classList.add("timeline")
-    wrapper.style.position = "fixed"
-    wrapper.style.top = "0"
-    wrapper.style.left = "0"
-    wrapper.style.width = `${element.offsetWidth}px`
-    wrapper.style.zIndex = "-1"
-    wrapper.style.pointerEvents = "none"
-    wrapper.style.opacity = "0"
-
-    wrapper.appendChild(clone)
-    document.body.appendChild(wrapper)
-
-    const dataUrl = await toPng(clone, {
-      cacheBust: true,
-      pixelRatio: 2,
-    })
-    document.body.removeChild(wrapper)
-
-    return dataUrl
-  } catch (error) {
-    console.error("html-to-image error:", error)
-    return null
-  }
-}
+import type { Item, Term, Color, Image, Setting } from "./types"
 
 export async function fetchFile(url: string): Promise<string> {
   try {
@@ -288,4 +258,103 @@ export function checkAppleMobile(): boolean {
   const isPhone = /iphone|ipod/.test(agent)
   const isPad = /ipad|macintosh/.test(agent) && "ontouchend" in document
   return isPhone || isPad
+}
+
+export async function htmlToImage(
+  element: HTMLElement,
+  pixelRatio?: number
+): Promise<Image | null> {
+  try {
+    const ratio = pixelRatio ?? (window.devicePixelRatio >= 2 ? 2 : 1)
+
+    const clone = element.cloneNode(true) as HTMLElement
+    const wrapper = document.createElement("div")
+    wrapper.classList.add("timeline")
+    wrapper.style.position = "fixed"
+    wrapper.style.top = "0"
+    wrapper.style.left = "0"
+    wrapper.style.width = `${element.offsetWidth}px`
+    wrapper.style.pointerEvents = "none"
+    wrapper.style.opacity = "0"
+    wrapper.appendChild(clone)
+    document.body.appendChild(wrapper)
+
+    const blob = await toBlob(clone, {
+      cacheBust: true,
+      pixelRatio: ratio,
+    })
+    document.body.removeChild(wrapper)
+    if (!blob) return null
+
+    const size = blob.size
+    const bitmap = await createImageBitmap(blob)
+    const width = bitmap.width
+    const height = bitmap.height
+    bitmap.close()
+
+    const url = URL.createObjectURL(blob)
+    return { url, width, height, size }
+  } catch {
+    return null
+  }
+}
+
+export function formatSize(bytes: number): string {
+  if (bytes < 1_000_000) {
+    const kb = Math.round(bytes / 1_000)
+    return `${kb.toLocaleString()} KB`
+  } else if (bytes < 1_000_000_000) {
+    const mb = Math.round(bytes / 1_000_000)
+    return `${mb.toLocaleString()} MB`
+  } else {
+    const gb = Math.round(bytes / 1_000_000_000)
+    return `${gb.toLocaleString()} GB`
+  }
+}
+
+export async function mergeImages(images: Image[]): Promise<Image | null> {
+  try {
+    if (images.length === 0) return null
+
+    const loaded: HTMLImageElement[] = []
+    for (const { url } of images) {
+      const img = new Image()
+      img.src = url
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve()
+        img.onerror = () => reject(new Error(`failed to load ${url}`))
+      })
+      loaded.push(img)
+    }
+
+    const width = Math.max(...loaded.map((img) => img.naturalWidth))
+    const height = loaded.reduce((sum, img) => sum + img.naturalHeight, 0)
+
+    const canvas = document.createElement("canvas")
+    canvas.width = width
+    canvas.height = height
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return null
+
+    ctx.fillStyle = "white"
+    ctx.fillRect(0, 0, width, height)
+
+    let y = 0
+    for (const img of loaded) {
+      ctx.drawImage(img, 0, y, img.naturalWidth, img.naturalHeight)
+      y += img.naturalHeight
+    }
+
+    const blob = await new Promise<Blob | null>((res) =>
+      canvas.toBlob(res, "image/png")
+    )
+    if (!blob) return null
+
+    const mergedUrl = URL.createObjectURL(blob)
+    const size = blob.size
+
+    return { url: mergedUrl, width, height, size }
+  } catch {
+    return null
+  }
 }
