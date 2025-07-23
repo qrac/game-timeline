@@ -58,6 +58,8 @@ export default function App() {
 
   const [activeBulk, setActiveBulk] = useState(false)
   const [bulkProgress, setBulkProgress] = useState<number>(0)
+  const cancelRef = useRef(false)
+
   const [yearImages, setYearImages] = useState<{ [year: string]: string }>({})
   const yearImageRefs = useRef<Map<number, HTMLDivElement>>(new Map())
 
@@ -86,26 +88,32 @@ export default function App() {
   }
 
   const createBulkImage = async () => {
+    cancelRef.current = false
     setActiveBulk(true)
     setBulkProgress(0)
 
-    const missingYears = filteredYearList.filter((year) => !yearImages[year])
-
+    const missingYears = filteredYearList.filter((y) => !yearImages[y])
     const total = missingYears.length
-    const newYearImages: { [year: number]: string } = {}
 
-    for (let i = 0; i < missingYears.length; i++) {
+    for (let i = 0; i < total; i++) {
+      if (cancelRef.current) {
+        break
+      }
       const year = missingYears[i]
-      const element = yearImageRefs.current.get(year)
-      if (!element) continue
+      const el = yearImageRefs.current.get(year)
+      if (!el) continue
 
-      const png = await htmlToPng(element)
-      newYearImages[year] = png || ""
-
-      setYearImages((prev) => ({ ...prev, [year]: png }))
+      const png = await htmlToPng(el)
+      if (png) {
+        setYearImages((prev) => ({ ...prev, [year]: png }))
+      }
       setBulkProgress(Math.round(((i + 1) / total) * 100))
+      await new Promise((res) => setTimeout(res, 50))
     }
     setActiveBulk(false)
+  }
+  const deleteBulkImage = () => {
+    setYearImages({})
   }
 
   const createYearImage = async (year: number) => {
@@ -307,9 +315,11 @@ export default function App() {
           setting={setting}
           activeBulk={activeBulk}
           bulkProgress={bulkProgress}
+          cancelRef={cancelRef}
           filteredYearList={filteredYearList}
           yearImages={yearImages}
           createBulkImage={createBulkImage}
+          deleteBulkImage={deleteBulkImage}
           createYearImage={createYearImage}
           deleteYearImage={deleteYearImage}
         />

@@ -1,4 +1,4 @@
-import { BiX, BiImageAdd } from "react-icons/bi"
+import { BiX, BiTrash, BiImageAdd } from "react-icons/bi"
 
 import type { Setting } from "../../types"
 import { ComponentProgress } from "../progress"
@@ -8,68 +8,109 @@ export function ComponentBooth({
   setting,
   activeBulk,
   bulkProgress,
+  cancelRef,
   filteredYearList,
   yearImages,
   createBulkImage,
+  deleteBulkImage,
   createYearImage,
   deleteYearImage,
 }: {
   setting: Setting
   activeBulk: boolean
   bulkProgress: number
+  cancelRef: React.RefObject<boolean>
   filteredYearList: number[]
   yearImages: { [year: string]: string }
   createBulkImage: () => Promise<void>
+  deleteBulkImage: () => void
   createYearImage: (year: number) => Promise<void>
   deleteYearImage: (year: number) => void
 }) {
   const { isAppleMobile } = setting
   const completed = Object.keys(yearImages).length === filteredYearList.length
+  const hasImages = Object.keys(yearImages).length > 0
   return (
     <div className="booth-container">
-      <div className="booth-docs">
-        <p>
-          <span>年ごとのスクリーンショットを生成できます。</span>
-        </p>
-        {isAppleMobile && <p>画像は長押しでカメラロールに保存可能です。</p>}
-      </div>
       <div className="booth-items">
+        <div className="booth-item">
+          <div className="booth-item-docs">
+            <p>
+              <span>年ごとのスクリーンショットを生成できます。</span>
+            </p>
+            {isAppleMobile && <p>画像は長押しでカメラロールに保存可能です。</p>}
+          </div>
+        </div>
         {activeBulk && (
-          <div className="booth-item is-desktop-only">
+          <div className="booth-item">
             <div className="booth-item-content">
               <ComponentProgress progress={bulkProgress} />
             </div>
-          </div>
-        )}
-        {!completed && !activeBulk && (
-          <div className="booth-item is-desktop-only">
             <div className="booth-item-content">
               <div className="booth-item-buttons">
                 <button
-                  className="button is-outline is-primary"
-                  type="button"
-                  onClick={createBulkImage}
+                  className="button is-outline is-danger"
+                  onClick={() => {
+                    cancelRef.current = true
+                  }}
                 >
-                  <BiImageAdd className="booth-item-button-icon" />
-                  <span className="text">一括生成</span>
+                  <BiX className="booth-item-button-icon is-lg" />
+                  <span className="text">中断</span>
                 </button>
               </div>
             </div>
           </div>
         )}
+        {!activeBulk && (
+          <div className="booth-item">
+            <h3 className="booth-item-title">一括処理</h3>
+            <div className="booth-item-content">
+              <div className="booth-item-buttons">
+                {!completed && (
+                  <button
+                    className="button is-outline is-primary"
+                    type="button"
+                    onClick={createBulkImage}
+                  >
+                    <BiImageAdd className="booth-item-button-icon" />
+                    <span className="text">生成</span>
+                  </button>
+                )}
+                {hasImages && (
+                  <button
+                    className="button is-outline is-danger"
+                    type="button"
+                    onClick={deleteBulkImage}
+                  >
+                    <BiTrash className="booth-item-button-icon" />
+                    <span className="text">削除</span>
+                  </button>
+                )}
+              </div>
+            </div>
+            {!completed && (
+              <div className="booth-item-docs is-mobile-only">
+                <p className="text is-note">
+                  ※モバイル機での一括生成は負荷が大きいためご注意ください
+                </p>
+              </div>
+            )}
+          </div>
+        )}
         <div className="booth-item">
+          <h3 className="booth-item-title">個別処理</h3>
           {filteredYearList.map((year) => (
             <div key={year} className="booth-item-content">
               {yearImages[year] && (
                 <div className="booth-item-stage">
                   <img src={yearImages[year]} alt={`Screenshot for ${year}`} />
-                  <div className="booth-item-stage-over is-top-right">
+                  <div className="booth-item-stage-delete">
                     <button
-                      className="button is-outline is-square is-primary"
+                      className="button is-outline is-square is-danger"
                       type="button"
                       onClick={() => deleteYearImage(year)}
                     >
-                      <BiX className="booth-item-button-icon" />
+                      <BiTrash className="booth-item-button-icon" />
                     </button>
                   </div>
                 </div>

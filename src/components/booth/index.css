@@ -1,28 +1,3 @@
-.booth-docs {
-  padding: 20px;
-}
-
-.booth-docs > * + * {
-  margin-top: 1em;
-}
-
-.booth-docs > *:first-child {
-  text-box-trim: trim-start;
-}
-
-.booth-docs > *:last-child {
-  text-box-trim: trim-end;
-}
-
-.booth-docs > *:first-child:last-child {
-  text-box-trim: trim-both;
-}
-
-.booth-docs p {
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
 .booth-items {
   position: relative;
 }
@@ -31,7 +6,6 @@
   margin-top: 1px;
 }
 
-.booth-docs + .booth-items::before,
 .booth-items > * + *::before {
   content: "";
   position: absolute;
@@ -47,8 +21,9 @@
   padding: 20px;
 }
 
-@media (992px > width) {
-  .booth-item.is-desktop-only {
+@media (992px <= width) {
+  .booth-item.is-mobile-only,
+  .booth-item-docs.is-mobile-only {
     display: none;
   }
 }
@@ -64,6 +39,32 @@
   letter-spacing: 0.0125em;
 }
 
+.booth-item-docs > * + * {
+  margin-top: 1em;
+}
+
+.booth-item-docs > *:first-child {
+  text-box-trim: trim-start;
+}
+
+.booth-item-docs > *:last-child {
+  text-box-trim: trim-end;
+}
+
+.booth-item-docs > *:first-child:last-child {
+  text-box-trim: trim-both;
+}
+
+.booth-item-docs p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.booth-item-docs p.text.is-note {
+  color: var(--theme-tx-3);
+  font-size: 0.75rem;
+}
+
 .booth-item-stage {
   position: relative;
   height: 120px;
@@ -73,26 +74,39 @@
   overflow: hidden;
 }
 
-.booth-item-stage-over {
+.booth-item-stage-delete {
   position: absolute;
+  top: -1px;
+  right: -1px;
   z-index: 2;
 }
 
-.booth-item-stage-over.is-top-right {
-  top: -1px;
-  right: -1px;
-}
-
-.booth-item-stage-over.is-top-right .button {
+.booth-item-stage-delete .button:is(.is-square, .is-circle) {
+  width: 28px;
+  height: 28px;
   border-top-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
+.booth-item-buttons {
+  display: flex;
+  gap: 6px;
+}
+
 .booth-item-buttons .button {
-  width: 100%;
+  flex: 1 0;
+  gap: 4px;
+}
+
+.booth-item-buttons .text {
+  font-size: 0.875rem;
 }
 
 .booth-item-button-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+}
+
+.booth-item-button-icon.is-lg {
+  scale: 1.15;
 }
