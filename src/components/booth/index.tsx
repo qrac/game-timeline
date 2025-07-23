@@ -73,62 +73,64 @@ export function ComponentBooth({
         </div>
       </div>
 
-      {activeBulk && (
-        <div className="booth-field">
-          <div className="booth-field-content">
-            <ComponentProgress progress={bulkProgress} />
-          </div>
-          <div className="booth-field-content">
-            <div className="booth-field-buttons">
-              <button
-                className="button is-outline is-danger"
-                onClick={() => {
-                  cancelRef.current = true
-                }}
-              >
-                <BiX className="booth-field-button-icon is-lg" />
-                <span className="text">中断</span>
-              </button>
+      <div className="booth-field">
+        {activeBulk && (
+          <>
+            <div className="booth-field-content">
+              <ComponentProgress progress={bulkProgress} />
             </div>
-          </div>
+            <div className="booth-field-content">
+              <div className="booth-field-buttons">
+                <button
+                  className="button is-outline is-danger"
+                  onClick={() => {
+                    cancelRef.current = true
+                  }}
+                >
+                  <BiX className="booth-field-button-icon is-lg" />
+                  <span className="text">中断</span>
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+        {!activeBulk && (
+          <>
+            <h3 className="booth-field-title">一括処理</h3>
+            <div className="booth-field-content">
+              <div className="booth-field-buttons">
+                <button
+                  className="button is-outline is-primary"
+                  type="button"
+                  disabled={completed}
+                  onClick={createBulkImage}
+                >
+                  <BiImageAdd className="booth-field-button-icon" />
+                  <span className="text">まとめて生成</span>
+                </button>
+              </div>
+            </div>
+            <div className="booth-field-content">
+              <div className="booth-field-buttons">
+                <button
+                  className="button is-outline is-danger"
+                  type="button"
+                  disabled={!hasImages}
+                  onClick={deleteBulkImage}
+                >
+                  <BiTrash className="booth-field-button-icon" />
+                  <span className="text">まとめて削除</span>
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+        <div className="booth-field-docs is-mobile-only">
+          <p className="text is-note">
+            ※モバイル端末での一括生成は負荷が大きいためご注意ください
+          </p>
         </div>
-      )}
-      {!activeBulk && (
-        <div className="booth-field">
-          <h3 className="booth-field-title">一括処理</h3>
-          <div className="booth-field-content">
-            <div className="booth-field-buttons">
-              <button
-                className="button is-outline is-primary"
-                type="button"
-                disabled={completed}
-                onClick={createBulkImage}
-              >
-                <BiImageAdd className="booth-field-button-icon" />
-                <span className="text">まとめて生成</span>
-              </button>
-            </div>
-          </div>
-          <div className="booth-field-content">
-            <div className="booth-field-buttons">
-              <button
-                className="button is-outline is-danger"
-                type="button"
-                disabled={!hasImages}
-                onClick={deleteBulkImage}
-              >
-                <BiTrash className="booth-field-button-icon" />
-                <span className="text">まとめて削除</span>
-              </button>
-            </div>
-          </div>
-          <div className="booth-field-docs is-mobile-only">
-            <p className="text is-note">
-              ※モバイル端末での一括生成は負荷が大きいためご注意ください
-            </p>
-          </div>
-        </div>
-      )}
+      </div>
 
       <div className="booth-field">
         <h3 className="booth-field-title">個別処理</h3>
