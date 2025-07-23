@@ -28,7 +28,7 @@ export function ComponentTimeline({
   const {
     tagList,
     omitEmptyYears,
-    visibleController,
+    hiddenController,
     headerHeight,
     timelineOffset,
   } = setting
@@ -205,14 +205,14 @@ export function ComponentTimeline({
       <div
         className={clsx(
           "timeline-spacer",
-          visibleController && activeTimeline && "is-active"
+          !hiddenController && activeTimeline && "is-active"
         )}
       />
 
       <div
         className={clsx(
           "timeline-controller",
-          visibleController && activeTimeline && "is-active"
+          !hiddenController && activeTimeline && "is-active"
         )}
       >
         <div className="timeline-controls">

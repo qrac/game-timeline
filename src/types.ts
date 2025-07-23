@@ -37,7 +37,8 @@ export type Setting = {
   currentLank: number
   lankNote: string
   searchText: string
-  visibleController: boolean
+  staticHeader: boolean
+  hiddenController: boolean
   scrollbarWidth: number
   headerHeight: number
   timelineOffset: number

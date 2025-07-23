@@ -8,6 +8,7 @@ import { ComponentModal } from "./components/modal"
 import { ComponentInfo } from "./components/info"
 import { ComponentBooth } from "./components/booth"
 import { ComponentSetting } from "./components/setting"
+import { defaultSetting, headerHeight } from "./params"
 import {
   htmlToPng,
   fetchFile,
@@ -25,27 +26,6 @@ import {
   checkAppleMobile,
 } from "./utils"
 import "./app.css"
-
-const defaultSetting: Setting = {
-  itemList: [],
-  termList: [],
-  categoryList: [],
-  tagList: [],
-  colorList: [],
-  lankList: [],
-  yearList: [],
-  startYear: 1983,
-  endYear: 2025,
-  omitEmptyYears: false,
-  currentLank: 2,
-  lankNote: "1=有名作品のみ, 2=個性派作品含む, 3=全件表示",
-  searchText: "",
-  visibleController: true,
-  scrollbarWidth: 0,
-  headerHeight: 63,
-  timelineOffset: 0,
-  isAppleMobile: false,
-}
 
 export default function App() {
   const [setting, setSetting] = useState<Setting>(defaultSetting)
@@ -67,13 +47,19 @@ export default function App() {
   const filteredYearList = filterYearList(setting)
 
   const changeHeaderSearch = () => {
+    const { staticHeader } = setting
+    const fixedHeaderHeight = staticHeader
+      ? 0
+      : activeHeaderSearch
+      ? headerHeight.default
+      : headerHeight.search
+    setSetting((prev) => ({ ...prev, headerHeight: fixedHeaderHeight }))
     setActiveHeaderSearch((prev) => !prev)
+
     if (activeHeaderSearch) {
       headerSearchRef.current?.blur()
-      setSetting((prev) => ({ ...prev, headerHeight: 63 }))
     } else {
       headerSearchRef.current?.focus()
-      setSetting((prev) => ({ ...prev, headerHeight: 113 }))
     }
   }
   const changeSearchText = (text: string) => {
@@ -333,6 +319,7 @@ export default function App() {
       >
         <ComponentSetting
           setting={setting}
+          activeHeaderSearch={activeHeaderSearch}
           isMobileSidebar
           changeSetting={changeSetting}
           changeCurrentLank={changeCurrentLank}

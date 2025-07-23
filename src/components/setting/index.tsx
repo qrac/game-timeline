@@ -6,10 +6,12 @@ import type { Setting } from "../../types"
 import { ComponentSelect } from "../select"
 import { ComponentCheck } from "../check"
 import { ComponentTagcloud } from "../tagcloud"
+import { headerHeight } from "../../params"
 import "./index.css"
 
 export function ComponentSetting({
   setting,
+  activeHeaderSearch,
   isMobileSidebar,
   changeSetting,
   changeCurrentLank,
@@ -17,6 +19,7 @@ export function ComponentSetting({
   changeTerms,
 }: {
   setting: Setting
+  activeHeaderSearch: boolean
   isMobileSidebar?: boolean
   changeSetting: (newSetting: Partial<Setting>) => void
   changeCurrentLank: (currentLank: number) => void
@@ -33,8 +36,15 @@ export function ComponentSetting({
     omitEmptyYears,
     currentLank,
     lankNote,
-    visibleController,
+    staticHeader,
+    hiddenController,
   } = setting
+
+  const fixedHeaderHeight = staticHeader
+    ? 0
+    : activeHeaderSearch
+    ? headerHeight.search
+    : headerHeight.default
 
   const changeItemsRef = useRef<HTMLInputElement>(null)
   const changeTermsRef = useRef<HTMLInputElement>(null)
@@ -52,6 +62,28 @@ export function ComponentSetting({
         isMobileSidebar && "is-mobile-sidebar"
       )}
     >
+      <div className="setting-field">
+        <h3 className="setting-field-title">画面周り</h3>
+        <div className="setting-field-checks">
+          <ComponentCheck
+            checked={staticHeader}
+            onChange={(e) => {
+              changeSetting({
+                staticHeader: e.target.checked,
+                headerHeight: fixedHeaderHeight,
+              })
+            }}
+            text="ヘッダーを固定しない"
+          />
+          <ComponentCheck
+            checked={hiddenController}
+            onChange={(e) => {
+              changeSetting({ hiddenController: e.target.checked })
+            }}
+            text="移動ボタン類を隠す"
+          />
+        </div>
+      </div>
       <div className="setting-field">
         <h3 className="setting-field-title">表示する年</h3>
         <div className="setting-field-selects">
@@ -78,13 +110,6 @@ export function ComponentSetting({
               changeSetting({ omitEmptyYears: e.target.checked })
             }}
             text="データのない年を省略"
-          />
-          <ComponentCheck
-            checked={!visibleController}
-            onChange={(e) => {
-              changeSetting({ visibleController: !e.target.checked })
-            }}
-            text="移動ボタン類を隠す"
           />
         </div>
       </div>

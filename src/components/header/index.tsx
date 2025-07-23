@@ -22,6 +22,8 @@ export function ComponentHeader({
   changeSearchText: (text: string) => void
   openModal: (modalId: string) => void
 }) {
+  const { staticHeader } = setting
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && activeHeaderSearch && activeModal === null) {
@@ -33,7 +35,7 @@ export function ComponentHeader({
     return () => document.removeEventListener("keydown", handleKeyDown)
   }, [changeHeaderSearch])
   return (
-    <header className="header">
+    <header className={clsx("header", staticHeader && "is-static")}>
       <div className="header-inner">
         <div className="header-contents">
           <h1 className="header-title">
