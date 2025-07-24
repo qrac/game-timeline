@@ -107,6 +107,7 @@ export default function App() {
       })
       return {}
     })
+    setMergeYears([])
   }
 
   const createYearImage = async (year: number) => {
@@ -123,6 +124,7 @@ export default function App() {
       }
       return newYearImages
     })
+    setMergeYears((prev) => prev.filter((y) => y !== year))
   }
 
   const createMergedImage = async () => {
