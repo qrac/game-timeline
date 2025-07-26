@@ -47,26 +47,28 @@
 }
 
 .today-item-label {
-  display: block;
+  display: grid;
+  place-content: center;
   align-self: flex-start;
-  padding: 1.5px 2px;
+  height: 1.9375rem;
+  padding: 0 4px;
   border-radius: 2px;
   background-color: var(--theme-danger);
   color: var(--theme-bg-1);
-  line-height: 1;
+  line-height: 1.125;
   text-align: center;
   text-box-trim: trim-both;
 }
 
 .today-item-label-main {
   display: block;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
 .today-item-label-sub {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 600;
 }
 
