@@ -397,7 +397,7 @@ export default function App() {
       <ComponentModal
         isActive={activeModal === "today"}
         isStaticHeight
-        title="今日は何の日？"
+        title="何の日？"
         closeModal={closeModal}
       >
         <ComponentToday

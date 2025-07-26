@@ -113,26 +113,26 @@ export function ComponentTimeline({
       <div
         className={clsx("timeline-container", activeTimeline && "is-active")}
       >
-        {todayItemCount > 0 && (
-          <div className="timeline-today">
-            <button
-              className="timeline-today-button"
-              onClick={() => openModal("today")}
-            >
-              <BiCalendar className="timeline-today-button-icon" />
-              <span className="timeline-today-button-text">
-                <span className="text">今日</span>
-                <span className="text">
-                  （{todayDate.month}月{todayDate.day}日）
-                </span>
-                <span className="text">は何の日？</span>
+        <div className="timeline-today">
+          <button
+            className="timeline-today-button"
+            onClick={() => openModal("today")}
+          >
+            <BiCalendar className="timeline-today-button-icon" />
+            <span className="timeline-today-button-text">
+              <span className="text">今日</span>
+              <span className="text">
+                （{todayDate.month}月{todayDate.day}日）
               </span>
+              <span className="text">は何の日？</span>
+            </span>
+            {todayItemCount > 0 && (
               <span className="timeline-today-button-count">
                 {todayItemCount}
               </span>
-            </button>
-          </div>
-        )}
+            )}
+          </button>
+        </div>
         {filteredItemList.length > 0 ? (
           <div className="timeline-years">
             {filteredYearList.map((year, index) => {

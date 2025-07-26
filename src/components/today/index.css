@@ -12,7 +12,7 @@
   align-items: center;
   gap: 0.25rem;
   padding-right: 1rem;
-  color: var(--theme-primary);
+  color: var(--theme-tx-3);
   font-family: var(--font-sans-en);
   font-weight: 900;
 }
