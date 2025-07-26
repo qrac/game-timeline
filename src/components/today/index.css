@@ -110,6 +110,10 @@
   gap: 4px;
 }
 
+.today-bottom-input-set > input {
+  white-space: nowrap;
+}
+
 .today-bottom-input-set > *:not(.is-square) {
   flex: 1 0;
 }
