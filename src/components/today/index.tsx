@@ -1,4 +1,5 @@
-import { BiRevision } from "react-icons/bi"
+import { parseISO, format, addDays, subDays } from "date-fns"
+import { BiRevision, BiMinusCircle, BiPlusCircle } from "react-icons/bi"
 
 import type { Setting } from "../../types"
 import { ComponentItem } from "../item"
@@ -18,6 +19,14 @@ export function ComponentToday({
   const filteredItemList = filterDateItemList(itemList, currentDate)
     .filter((item) => item.category !== "news")
     .sort((a, b) => a.date.timestamp - b.date.timestamp)
+  const handlePrevDay = () => {
+    const prev = subDays(parseISO(currentDate.value), 1)
+    changeCurrentDate(format(prev, "yyyy-MM-dd"))
+  }
+  const handleNextDay = () => {
+    const next = addDays(parseISO(currentDate.value), 1)
+    changeCurrentDate(format(next, "yyyy-MM-dd"))
+  }
   return (
     <div className="today-container">
       <div className="today-header">
@@ -50,12 +59,24 @@ export function ComponentToday({
           日付を変更して別の日を確認できます。
         </p>
         <div className="today-bottom-input-set">
+          <button
+            className="button is-outline is-square"
+            onClick={handlePrevDay}
+          >
+            <BiMinusCircle className="today-bottom-button-icon" />
+          </button>
           <input
             className="input"
             type="date"
             value={currentDate.value}
             onChange={(e) => changeCurrentDate(e.target.value)}
           />
+          <button
+            className="button is-outline is-square"
+            onClick={handleNextDay}
+          >
+            <BiPlusCircle className="today-bottom-button-icon" />
+          </button>
           <button
             className="button is-outline is-square"
             onClick={resetCurrentDate}

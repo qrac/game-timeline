@@ -107,7 +107,7 @@
 
 .today-bottom-input-set {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 .today-bottom-input-set > *:not(.is-square) {
