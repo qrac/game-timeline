@@ -7,12 +7,14 @@ import "./index.css"
 export function ComponentModal({
   isActive,
   isMobileSidebar,
+  isStaticHeight,
   title,
   closeModal,
   children,
 }: {
   isActive: boolean
   isMobileSidebar?: boolean
+  isStaticHeight?: boolean
   title: string
   closeModal: () => void
   children?: React.ReactNode
@@ -34,6 +36,7 @@ export function ComponentModal({
         className={clsx(
           "modal-container",
           isMobileSidebar && "is-mobile-sidebar",
+          isStaticHeight && "is-static-height",
           isActive && "is-active"
         )}
       >

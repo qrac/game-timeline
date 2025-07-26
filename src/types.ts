@@ -1,9 +1,19 @@
-export type Item = {
-  name: string
+export type SplitDate = {
+  value: string
   year: number
+  month: number
+  day: number
   timestamp: number
+}
+
+export type ItemDate = SplitDate & {
   hasMonth: boolean
   hasDay: boolean
+}
+
+export type Item = {
+  name: string
+  date: ItemDate
   category: string
   tags: string[]
   labels: string[]
@@ -23,6 +33,13 @@ export type Color = {
   color: string
 }
 
+export type Image = {
+  url: string
+  width: number
+  height: number
+  size: number
+}
+
 export type Setting = {
   itemList: Item[]
   termList: Term[]
@@ -36,6 +53,9 @@ export type Setting = {
   omitEmptyYears: boolean
   currentLank: number
   lankNote: string
+  todayDate: SplitDate
+  currentDate: SplitDate
+  todayItemCount: number
   searchText: string
   staticHeader: boolean
   hiddenController: boolean
@@ -43,11 +63,4 @@ export type Setting = {
   headerHeight: number
   timelineOffset: number
   isAppleMobile: boolean
-}
-
-export type Image = {
-  url: string
-  width: number
-  height: number
-  size: number
 }

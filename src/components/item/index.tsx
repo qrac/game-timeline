@@ -11,33 +11,35 @@ export function ComponentItem({
   item: Item
   tagList: Term[]
 }) {
-  let dateTime = format(new Date(item.timestamp), "yyyy-MM-dd")
-  let dateStr = format(new Date(item.timestamp), "yyyy年M月d日")
+  const { name, date, category, tags, labels } = item
 
-  if (!item.hasDay) {
-    dateTime = format(new Date(item.timestamp), "yyyy-MM")
-    dateStr = format(new Date(item.timestamp), "yyyy年M月")
+  let dateTime = format(new Date(date.timestamp), "yyyy-MM-dd")
+  let dateStr = format(new Date(date.timestamp), "yyyy年M月d日")
+
+  if (!date.hasDay) {
+    dateTime = format(new Date(date.timestamp), "yyyy-MM")
+    dateStr = format(new Date(date.timestamp), "yyyy年M月")
   }
-  if (!item.hasMonth) {
-    dateTime = format(new Date(item.timestamp), "yyyy")
-    dateStr = format(new Date(item.timestamp), "yyyy年")
+  if (!date.hasMonth) {
+    dateTime = format(new Date(date.timestamp), "yyyy")
+    dateStr = format(new Date(date.timestamp), "yyyy年")
   }
   return (
-    <div className={clsx("item", `is-category-${item.category}`)}>
-      {item.category === "hardware" && (
+    <div className={clsx("item", `is-category-${category}`)}>
+      {category === "hardware" && (
         <div
           className={clsx(
             "item-bar",
-            item.tags.length > 0 && item.tags.map((tag) => `is-accent-${tag}`)
+            tags.length > 0 && tags.map((tag) => `is-accent-${tag}`)
           )}
         />
       )}
       <div className="item-content">
-        <h3 className="item-name">{item.name}</h3>
+        <h3 className="item-name">{name}</h3>
         <div className="item-info">
-          {item.labels.length > 0 && (
+          {labels.length > 0 && (
             <ul className="item-labels">
-              {item.labels.map((label) => {
+              {labels.map((label) => {
                 const tag = tagList.find((tag) => tag.id === label)
                 const tagLabel = tag ? tag.label : label
                 return (

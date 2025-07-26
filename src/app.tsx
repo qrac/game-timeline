@@ -8,10 +8,12 @@ import { ComponentModal } from "./components/modal"
 import { ComponentInfo } from "./components/info"
 import { ComponentBooth } from "./components/booth"
 import { ComponentSetting } from "./components/setting"
+import { ComponentToday } from "./components/today"
 import { defaultSetting, headerHeight } from "./params"
 import {
   fetchFile,
   parseCsv,
+  getSplitDate,
   csvToItemList,
   csvToTermList,
   getTermIds,
@@ -22,6 +24,7 @@ import {
   getCssVarPx,
   filterItemList,
   filterYearList,
+  filterDateItemList,
   checkAppleMobile,
   htmlToImage,
   mergeImages,
@@ -177,6 +180,14 @@ export default function App() {
       currentLank,
     })
   }
+  const changeCurrentDate = (dateValue: string) => {
+    const currentDate = getSplitDate(new Date(dateValue))
+    changeSetting({ currentDate })
+  }
+  const resetCurrentDate = () => {
+    const currentDate = getSplitDate(new Date())
+    changeSetting({ currentDate })
+  }
 
   const changeItems = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -185,7 +196,7 @@ export default function App() {
     const reader = new FileReader()
 
     reader.onload = (event) => {
-      const { termList } = setting
+      const { termList, currentDate } = setting
       const itemsData = event.target?.result as string
       const parsedItems = parseCsv(itemsData)
 
@@ -204,6 +215,7 @@ export default function App() {
       const yearList = getYearList(itemList)
       const startYear = Math.min(...yearList)
       const endYear = Math.max(...yearList)
+      const todayItemCount = filterDateItemList(itemList, currentDate).length
 
       changeSetting({
         itemList,
@@ -216,6 +228,7 @@ export default function App() {
         endYear,
         currentLank,
         lankNote: "",
+        todayItemCount,
       })
     }
     reader.readAsText(file)
@@ -276,6 +289,10 @@ export default function App() {
     const startYear = Math.min(...yearList)
     const endYear = Math.max(...yearList)
 
+    const todayDate = getSplitDate(new Date())
+    const currentDate = todayDate
+    const todayItemCount = filterDateItemList(itemList, currentDate).length
+
     const scrollbarWidth = window.innerWidth - document.body.clientWidth
     const timelineOffset = getCssVarPx("--pj-timeline-offset")
     const isAppleMobile = checkAppleMobile()
@@ -290,6 +307,9 @@ export default function App() {
       yearList,
       startYear,
       endYear,
+      todayDate,
+      currentDate,
+      todayItemCount,
       scrollbarWidth,
       timelineOffset,
       isAppleMobile,
@@ -319,6 +339,7 @@ export default function App() {
           yearAreaRefs={yearAreaRefs}
           filteredItemList={filteredItemList}
           filteredYearList={filteredYearList}
+          openModal={openModal}
         />
       </div>
 
@@ -370,6 +391,19 @@ export default function App() {
           changeCurrentLank={changeCurrentLank}
           changeItems={changeItems}
           changeTerms={changeTerms}
+        />
+      </ComponentModal>
+
+      <ComponentModal
+        isActive={activeModal === "today"}
+        isStaticHeight
+        title="今日は何の日？"
+        closeModal={closeModal}
+      >
+        <ComponentToday
+          setting={setting}
+          changeCurrentDate={changeCurrentDate}
+          resetCurrentDate={resetCurrentDate}
         />
       </ComponentModal>
     </div>

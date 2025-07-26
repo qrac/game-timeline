@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import { clsx } from "clsx"
 import {
+  BiCalendar,
   BiArrowToLeft,
   BiMinusCircle,
   BiPlusCircle,
@@ -18,16 +19,20 @@ export function ComponentTimeline({
   yearAreaRefs,
   filteredItemList,
   filteredYearList,
+  openModal,
 }: {
   setting: Setting
   activeTimeline: boolean
   yearAreaRefs: React.RefObject<Map<number, HTMLDivElement>>
   filteredItemList: Item[]
   filteredYearList: number[]
+  openModal: (modalId: string) => void
 }) {
   const {
     tagList,
     omitEmptyYears,
+    todayDate,
+    todayItemCount,
     hiddenController,
     headerHeight,
     timelineOffset,
@@ -108,6 +113,26 @@ export function ComponentTimeline({
       <div
         className={clsx("timeline-container", activeTimeline && "is-active")}
       >
+        {todayItemCount > 0 && (
+          <div className="timeline-today">
+            <button
+              className="timeline-today-button"
+              onClick={() => openModal("today")}
+            >
+              <BiCalendar className="timeline-today-button-icon" />
+              <span className="timeline-today-button-text">
+                <span className="text">今日</span>
+                <span className="text">
+                  （{todayDate.month}月{todayDate.day}日）
+                </span>
+                <span className="text">は何の日？</span>
+              </span>
+              <span className="timeline-today-button-count">
+                {todayItemCount}
+              </span>
+            </button>
+          </div>
+        )}
         {filteredItemList.length > 0 ? (
           <div className="timeline-years">
             {filteredYearList.map((year, index) => {
@@ -116,14 +141,14 @@ export function ComponentTimeline({
 
               const mainItemList = filteredItemList
                 .filter((item) => {
-                  return item.year === year && item.category !== "news"
+                  return item.date.year === year && item.category !== "news"
                 })
-                .sort((a, b) => a.timestamp - b.timestamp)
+                .sort((a, b) => a.date.timestamp - b.date.timestamp)
               const subItemList = filteredItemList
                 .filter((item) => {
-                  return item.year === year && item.category === "news"
+                  return item.date.year === year && item.category === "news"
                 })
-                .sort((a, b) => a.timestamp - b.timestamp)
+                .sort((a, b) => a.date.timestamp - b.date.timestamp)
               const emptyMain = mainItemList.length === 0
               const emptySub = subItemList.length === 0
               const emptyItems = emptyMain && emptySub

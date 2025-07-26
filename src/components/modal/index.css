@@ -82,6 +82,10 @@
   }
 }
 
+.modal-container.is-static-height {
+  height: 70vh;
+}
+
 .modal-header {
   position: absolute;
   top: 0;

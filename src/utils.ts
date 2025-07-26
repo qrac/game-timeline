@@ -1,7 +1,15 @@
 import { toBlob } from "html-to-image"
 import Papa from "papaparse"
 
-import type { Item, Term, Color, Image, Setting } from "./types"
+import type {
+  SplitDate,
+  ItemDate,
+  Item,
+  Term,
+  Color,
+  Image,
+  Setting,
+} from "./types"
 
 export async function fetchFile(url: string): Promise<string> {
   try {
@@ -31,16 +39,29 @@ export function parseCsv(csvString: string): { [key: string]: string }[] {
   return parsedCsv
 }
 
-export function getCustomDate(date: string): {
-  year: number
-  timestamp: number
-  hasMonth: boolean
-  hasDay: boolean
-} {
-  const [yearStr, monthStr, dayStr] = date.split("-")
+export function getDateValue(year: number, month: number, day: number): string {
+  return (
+    `${year}-` +
+    `${String(month).padStart(2, "0")}-` +
+    `${String(day).padStart(2, "0")}`
+  )
+}
+
+export function getSplitDate(date: Date): SplitDate {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const timestamp = date.getTime()
+  const value = getDateValue(year, month, day)
+  return { value, year, month, day, timestamp }
+}
+
+export function getItemDate(dateValue: string): ItemDate {
+  const [yearStr, monthStr, dayStr] = dateValue.split("-")
   const year = Number(yearStr)
-  const month = Number(monthStr)
-  const day = Number(dayStr)
+  const month = Number(monthStr) || 0
+  const day = Number(dayStr) || 0
+  const value = getDateValue(year, month, day)
 
   const hasMonth = month !== 0
   const hasDay = day !== 0
@@ -49,7 +70,7 @@ export function getCustomDate(date: string): {
   const safeDay = hasDay ? day : 1
   const timestamp = new Date(year, safeMonth - 1, safeDay).getTime()
 
-  return { year, timestamp, hasMonth, hasDay }
+  return { value, year, month, day, timestamp, hasMonth, hasDay }
 }
 
 export function strToArray(str: string): string[] {
@@ -64,27 +85,14 @@ export function csvToItemList(parsedCsv: { [key: string]: string }[]): Item[] {
   return parsedCsv
     .map((row) => {
       const name = row.name?.trim() || ""
-      const { year, timestamp, hasMonth, hasDay } = getCustomDate(
-        row.date.trim()
-      )
+      const date = getItemDate(row.date.trim())
       const category = row.category?.trim() || ""
       const tags = strToArray(row.tags || "")
       const labels = strToArray(row.labels || "")
       const lank = row.lank ? Math.max(1, Math.floor(Number(row.lank))) : 1
-
-      return {
-        name,
-        year,
-        timestamp,
-        hasMonth,
-        hasDay,
-        category,
-        tags,
-        labels,
-        lank,
-      }
+      return { name, date, category, tags, labels, lank }
     })
-    .filter((item) => item.year && item.timestamp)
+    .filter((item) => item.date.year && item.date.timestamp)
 }
 
 export function csvToTermList(parsedCsv: { [key: string]: string }[]): Term[] {
@@ -165,7 +173,9 @@ export function getLankList(itemList: Item[]): number[] {
 }
 
 export function getYearList(itemList: Item[]): number[] {
-  return [...new Set(itemList.map((item) => item.year))].sort((a, b) => a - b)
+  return [...new Set(itemList.map((item) => item.date.year))].sort(
+    (a, b) => a - b
+  )
 }
 
 export function getCssVarPx(name: string): number {
@@ -231,6 +241,12 @@ export function filterYearList(setting: Setting): number[] {
     const count = minEndYear - maxStartYear + 1
     return Array.from({ length: count }, (_, i) => maxStartYear + i)
   }
+}
+
+export function filterDateItemList(itemList: Item[], date: SplitDate): Item[] {
+  return itemList.filter((item) => {
+    return item.date.month === date.month && item.date.day === date.day
+  })
 }
 
 export function scrollToY(targetY: number, duration: number = 500) {
