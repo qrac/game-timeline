@@ -111,8 +111,7 @@
 }
 
 .today-bottom-input-set > input {
-  padding-right: 0;
-  padding-left: 0;
+  text-align: center;
   white-space: nowrap;
 }
 
