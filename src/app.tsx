@@ -215,7 +215,9 @@ export default function App() {
       const yearList = getYearList(itemList)
       const startYear = Math.min(...yearList)
       const endYear = Math.max(...yearList)
-      const todayItemCount = filterDateItemList(itemList, currentDate).length
+      const todayItemCount = filterDateItemList(itemList, currentDate).filter(
+        (item) => item.category !== "news"
+      ).length
 
       changeSetting({
         itemList,
@@ -291,7 +293,9 @@ export default function App() {
 
     const todayDate = getSplitDate(new Date())
     const currentDate = todayDate
-    const todayItemCount = filterDateItemList(itemList, currentDate).length
+    const todayItemCount = filterDateItemList(itemList, currentDate).filter(
+      (item) => item.category !== "news"
+    ).length
 
     const scrollbarWidth = window.innerWidth - document.body.clientWidth
     const timelineOffset = getCssVarPx("--pj-timeline-offset")
