@@ -3,8 +3,8 @@ import { clsx } from "clsx"
 import {
   BiCalendar,
   BiArrowToLeft,
-  BiMinusCircle,
-  BiPlusCircle,
+  BiChevronLeftCircle,
+  BiChevronRightCircle,
   BiArrowToRight,
 } from "react-icons/bi"
 
@@ -254,7 +254,7 @@ export function ComponentTimeline({
               if (idx > 0) scrollToYear(filteredYearList[idx - 1])
             }}
           >
-            <BiMinusCircle className="timeline-control-icon" />
+            <BiChevronLeftCircle className="timeline-control-icon" />
           </button>
           <input
             type="number"
@@ -270,7 +270,7 @@ export function ComponentTimeline({
                 scrollToYear(filteredYearList[idx + 1])
             }}
           >
-            <BiPlusCircle className="timeline-control-icon" />
+            <BiChevronRightCircle className="timeline-control-icon" />
           </button>
           <button
             className="button is-melt"
