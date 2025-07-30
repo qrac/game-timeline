@@ -107,16 +107,22 @@
 
 .today-bottom-input-set {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
-.today-bottom-input-set > input {
+.today-bottom-input-set > .joint {
+  flex: 1 0;
+}
+
+.today-bottom-input-set > .joint > *:not(.is-square) {
+  flex: 1 0;
+}
+
+.today-bottom-input-set > .joint > .input {
+  --input-border-color: var(--theme-bd-2);
+  box-shadow: none;
   text-align: center;
   white-space: nowrap;
-}
-
-.today-bottom-input-set > *:not(.is-square) {
-  flex: 1 0;
 }
 
 .today-bottom-button-icon {

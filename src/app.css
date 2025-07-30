@@ -2,6 +2,7 @@
 @import "musubii/src/bases/typo/font.css";
 @import "musubii/src/bases/base/reset.css";
 @import "musubii/src/bases/base/html.css";
+@import "musubii/src/layouts/joint/main.css";
 @import "musubii/src/elements/button/main.css";
 @import "musubii/src/elements/form/main.css";
 @import "musubii/src/elements/form/select.css";

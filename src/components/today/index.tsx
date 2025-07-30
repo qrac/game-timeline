@@ -1,5 +1,5 @@
 import { parseISO, format, addDays, subDays } from "date-fns"
-import { BiRevision, BiMinusCircle, BiPlusCircle } from "react-icons/bi"
+import { BiRevision, BiChevronLeft, BiChevronRight } from "react-icons/bi"
 
 import type { Setting } from "../../types"
 import { ComponentItem } from "../item"
@@ -59,24 +59,26 @@ export function ComponentToday({
           日付を変更して別の日を確認できます。
         </p>
         <div className="today-bottom-input-set">
-          <button
-            className="button is-outline is-square"
-            onClick={handlePrevDay}
-          >
-            <BiMinusCircle className="today-bottom-button-icon" />
-          </button>
-          <input
-            className="input"
-            type="date"
-            value={currentDate.value}
-            onChange={(e) => changeCurrentDate(e.target.value)}
-          />
-          <button
-            className="button is-outline is-square"
-            onClick={handleNextDay}
-          >
-            <BiPlusCircle className="today-bottom-button-icon" />
-          </button>
+          <div className="joint">
+            <button
+              className="button is-outline is-square"
+              onClick={handlePrevDay}
+            >
+              <BiChevronLeft className="today-bottom-button-icon" />
+            </button>
+            <input
+              className="input"
+              type="date"
+              value={currentDate.value}
+              onChange={(e) => changeCurrentDate(e.target.value)}
+            />
+            <button
+              className="button is-outline is-square"
+              onClick={handleNextDay}
+            >
+              <BiChevronRight className="today-bottom-button-icon" />
+            </button>
+          </div>
           <button
             className="button is-outline is-square"
             onClick={resetCurrentDate}
