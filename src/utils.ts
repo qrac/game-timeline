@@ -221,7 +221,9 @@ export function filterItemList(setting: Setting): Item[] {
     .filter((s) => s.length > 0)
 
   const searchedItemList = termFilteredItemList.filter((item) =>
-    keywords.some((keyword) => item.name.includes(keyword))
+    keywords.some((keyword) =>
+      item.name.toLowerCase().includes(keyword.toLowerCase())
+    )
   )
 
   return searchedItemList
