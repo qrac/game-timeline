@@ -23,6 +23,9 @@ export function ComponentInfo() {
   return (
     <div className="info-container">
       <div className="info-docs">
+        <div>
+          <img src="/assets/v2.png" alt="v2" width={760} height={486} />
+        </div>
         <p>
           あの頃、どんなゲームが流行った？どっちが先に出た？続編は何年ぶり？
         </p>
