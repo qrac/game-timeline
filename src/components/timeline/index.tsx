@@ -192,9 +192,9 @@ export function ComponentTimeline({
                           mainItemList.length >= 2 && "is-separate"
                         )}
                       >
-                        {mainItemList.map((item) => (
+                        {mainItemList.map((item, index) => (
                           <ComponentItem
-                            key={item.name}
+                            key={index}
                             item={item}
                             tagList={tagList}
                           />
@@ -207,9 +207,9 @@ export function ComponentTimeline({
                             subItemList.length >= 2 && "is-separate"
                           )}
                         >
-                          {subItemList.map((item) => (
+                          {subItemList.map((item, index) => (
                             <ComponentItem
-                              key={item.name}
+                              key={index}
                               item={item}
                               tagList={tagList}
                             />
