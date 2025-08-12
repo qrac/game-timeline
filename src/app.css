@@ -13,6 +13,7 @@
 :root {
   --pj-scrollbar-width: 0px;
   --pj-app-max-width: 540px;
+  --pj-fixed-header-height: 63px;
   --pj-timeline-offset: 16px;
   --pj-controller-height: 42px;
   --pj-color-accent: #7c899c;
