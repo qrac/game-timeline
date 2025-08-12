@@ -3,15 +3,15 @@ import { clsx } from "clsx"
 import { format } from "date-fns"
 import { BiCaretRight, BiCaretLeft } from "react-icons/bi"
 
-import type { Item, Term } from "../../types"
+import type { Item, Term, Setting } from "../../types"
 import "./index.css"
 
 export function ComponentItem({
   item,
-  tagList,
+  setting,
 }: {
   item: Item
-  tagList: Term[]
+  setting: Setting
 }) {
   const { name, date, category, tags, labels } = item
 
@@ -40,7 +40,7 @@ export function ComponentItem({
         <h3 className="item-name">{name}</h3>
         <div className="item-info">
           {labels.length > 0 && (
-            <ItemLabels labels={labels} tagList={tagList} />
+            <ItemLabels labels={labels} setting={setting} />
           )}
           <time className="item-date" dateTime={dateTime}>
             {dateStr}
@@ -53,16 +53,17 @@ export function ComponentItem({
 
 function ItemLabels({
   labels,
-  tagList,
+  setting,
 }: {
   labels: string[]
-  tagList: Term[]
+  setting: Setting
 }) {
+  const { tagList, fullOpenLabels } = setting
   const isMulti = labels.length > 1 && labels.includes("multi")
   const filteredLabels = isMulti
     ? labels.filter((label) => label !== "multi")
     : labels
-  if (!isMulti) {
+  if (fullOpenLabels || !isMulti) {
     return (
       <ul className="item-labels">
         {filteredLabels.map((label) => (

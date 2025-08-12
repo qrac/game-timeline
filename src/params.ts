@@ -21,6 +21,7 @@ export const defaultSetting: Setting = {
   omitEmptyYears: false,
   currentLank: 2,
   lankNote: "1=有名作品のみ, 2=個性派作品含む, 3=全件表示",
+  fullOpenLabels: false,
   todayDate: {
     value: "",
     year: 0,

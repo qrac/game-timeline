@@ -81,7 +81,9 @@ input[type="checkbox"]:not(:checked)
   display: none;
 }
 
-input[type="checkbox"]:checked + .item-labels > .item-label-control.is-open {
+input[type="checkbox"]:checked
+  + .item-labels
+  > :is(.item-label:first-child, .item-label-control.is-open) {
   display: none;
 }
 

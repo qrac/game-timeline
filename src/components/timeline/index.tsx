@@ -29,7 +29,6 @@ export function ComponentTimeline({
   openModal: (modalId: string) => void
 }) {
   const {
-    tagList,
     omitEmptyYears,
     todayDate,
     todayItemCount,
@@ -196,7 +195,7 @@ export function ComponentTimeline({
                           <ComponentItem
                             key={index}
                             item={item}
-                            tagList={tagList}
+                            setting={setting}
                           />
                         ))}
                       </div>
@@ -211,7 +210,7 @@ export function ComponentTimeline({
                             <ComponentItem
                               key={index}
                               item={item}
-                              tagList={tagList}
+                              setting={setting}
                             />
                           ))}
                         </div>

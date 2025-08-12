@@ -53,6 +53,7 @@ export type Setting = {
   omitEmptyYears: boolean
   currentLank: number
   lankNote: string
+  fullOpenLabels: boolean
   todayDate: SplitDate
   currentDate: SplitDate
   todayItemCount: number

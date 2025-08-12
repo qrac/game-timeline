@@ -36,6 +36,7 @@ export function ComponentSetting({
     omitEmptyYears,
     currentLank,
     lankNote,
+    fullOpenLabels,
     staticHeader,
     hiddenController,
   } = setting
@@ -124,6 +125,15 @@ export function ComponentSetting({
           list={lankList}
         />
         {lankNote && <p className="setting-field-note">※{lankNote}</p>}
+        <div className="setting-field-checks">
+          <ComponentCheck
+            checked={fullOpenLabels}
+            onChange={(e) => {
+              changeSetting({ fullOpenLabels: e.target.checked })
+            }}
+            text="マルチプラットフォームのラベルをすべて展開"
+          />
+        </div>
       </div>
 
       {categoryList.length > 0 && (
