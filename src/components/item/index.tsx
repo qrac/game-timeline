@@ -1,5 +1,7 @@
+import { useId } from "react"
 import { clsx } from "clsx"
 import { format } from "date-fns"
+import { BiCaretRight, BiCaretLeft } from "react-icons/bi"
 
 import type { Item, Term } from "../../types"
 import "./index.css"
@@ -38,20 +40,7 @@ export function ComponentItem({
         <h3 className="item-name">{name}</h3>
         <div className="item-info">
           {labels.length > 0 && (
-            <ul className="item-labels">
-              {labels.map((label) => {
-                const tag = tagList.find((tag) => tag.id === label)
-                const tagLabel = tag ? tag.label : label
-                return (
-                  <li
-                    className={clsx("item-label", `is-accent-${label}`)}
-                    key={label}
-                  >
-                    {tagLabel}
-                  </li>
-                )
-              })}
-            </ul>
+            <ItemLabels labels={labels} tagList={tagList} />
           )}
           <time className="item-date" dateTime={dateTime}>
             {dateStr}
@@ -59,5 +48,63 @@ export function ComponentItem({
         </div>
       </div>
     </div>
+  )
+}
+
+function ItemLabels({
+  labels,
+  tagList,
+}: {
+  labels: string[]
+  tagList: Term[]
+}) {
+  const isMulti = labels.length > 1 && labels.includes("multi")
+  const filteredLabels = isMulti
+    ? labels.filter((label) => label !== "multi")
+    : labels
+  if (!isMulti) {
+    return (
+      <ul className="item-labels">
+        {filteredLabels.map((label) => (
+          <ItemLabel key={label} label={label} tagList={tagList} />
+        ))}
+      </ul>
+    )
+  }
+  const uid = useId()
+  return (
+    <>
+      <input
+        type="checkbox"
+        className="input is-hidden"
+        id={"item-labels-" + uid}
+      />
+      <ul className="item-labels">
+        <ItemLabel label="multi" tagList={tagList} />
+        <li className="item-label-control is-open">
+          <label htmlFor={"item-labels-" + uid}>
+            <span className="text">詳細</span>
+            <BiCaretRight />
+          </label>
+        </li>
+        {filteredLabels.map((label) => (
+          <ItemLabel key={label} label={label} tagList={tagList} />
+        ))}
+        <li className="item-label-control is-close">
+          <label htmlFor={"item-labels-" + uid}>
+            <BiCaretLeft />
+            <span className="text">閉じる</span>
+          </label>
+        </li>
+      </ul>
+    </>
+  )
+}
+
+function ItemLabel({ label, tagList }: { label: string; tagList: Term[] }) {
+  const tag = tagList.find((tag) => tag.id === label)
+  const tagLabel = tag ? tag.label : label
+  return (
+    <li className={clsx("item-label", `is-accent-${label}`)}>{tagLabel}</li>
   )
 }

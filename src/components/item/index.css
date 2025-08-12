@@ -40,7 +40,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.125rem;
+  gap: 0.25rem 0.125rem;
 }
 
 .item-labels {
@@ -50,23 +50,46 @@
 }
 
 .item-label {
-  display: grid;
-  place-content: center;
-  height: var(--item-date-font-size);
-  padding: 0 0.25em;
+  display: flex;
+  align-items: center;
+  padding: 1px 0.25em;
   background-color: var(--pj-color-accent);
+  border: 1px solid transparent;
   border-radius: 2px;
   color: var(--theme-bg-2);
   font-size: var(--item-label-font-size);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.125;
+}
+
+.item-label-control > label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 1px 0.25em;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  font-size: var(--item-label-font-size);
+  font-weight: 600;
+  line-height: 1.125;
+}
+
+input[type="checkbox"]:not(:checked)
+  + .item-labels
+  > .item-label-control.is-open
+  ~ :is(.item-label, .item-label-control.is-close) {
+  display: none;
+}
+
+input[type="checkbox"]:checked + .item-labels > .item-label-control.is-open {
+  display: none;
 }
 
 .item-date {
   color: var(--theme-tx-3);
   font-size: var(--item-date-font-size);
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.125;
   white-space: nowrap;
 }
 

@@ -45,6 +45,8 @@ ngpc,ネオジオポケットカラー,NGPC
 
 xbox,Xbox,Xbox
 xbox360,Xbox 360,Xbox 360
+xboxone,Xbox One,Xbox One
+xboxxs,Xbox Series X|S,Xbox Series X|S
 pce,PCエンジン,PCE
 pcfx,PC-FX,PC-FX
 ws,ワンダースワン,WS
@@ -55,6 +57,7 @@ mac,Mac,Mac,#556AD0
 ios,iOS,iOS,#080808
 android,Android,Android,#57BD6B
 apple-arcade,Apple Arcade,Apple Arcade,
+stadia,Stadia,Stadia,
 steam,Steam,Steam,#145F8F
 
 nintendo,任天堂,NINTENDO,#e70013
