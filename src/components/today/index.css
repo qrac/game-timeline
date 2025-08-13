@@ -50,7 +50,7 @@
   display: grid;
   place-content: center;
   align-self: flex-start;
-  height: 1.9375rem;
+  height: 2.125rem;
   padding: 0 4px;
   border-radius: 2px;
   background-color: var(--theme-danger);
