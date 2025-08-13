@@ -15,7 +15,7 @@ export function ComponentToday({
   changeCurrentDate: (dateValue: string) => void
   resetCurrentDate: () => void
 }) {
-  const { itemList, tagList, currentDate } = setting
+  const { itemList, currentDate } = setting
   const filteredItemList = filterDateItemList(itemList, currentDate)
     .filter((item) => item.category !== "news")
     .sort((a, b) => a.date.timestamp - b.date.timestamp)
@@ -47,7 +47,7 @@ export function ComponentToday({
                 </span>
                 <span className="today-item-label-sub">周年</span>
               </p>
-              <ComponentItem item={item} tagList={tagList} />
+              <ComponentItem item={item} setting={setting} />
             </div>
           ))}
         </div>
