@@ -65,7 +65,7 @@ export function ComponentHeader({
               <input
                 type="text"
                 className="input is-round"
-                placeholder="検索..."
+                placeholder="検索...（カンマ区切りで複数）"
                 value={setting.searchText || ""}
                 onChange={(e) => changeSearchText(e.target.value)}
               />
@@ -134,7 +134,7 @@ export function ComponentHeader({
                 <input
                   type="text"
                   className="input"
-                  placeholder="検索..."
+                  placeholder="検索...（カンマ区切りで複数）"
                   value={setting.searchText || ""}
                   onChange={(e) => changeSearchText(e.target.value)}
                   ref={headerSearchRef}
