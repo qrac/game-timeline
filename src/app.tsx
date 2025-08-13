@@ -230,7 +230,7 @@ export default function App() {
         startYear,
         endYear,
         currentLank,
-        lankNote: "",
+        hasLankNote: false,
         todayItemCount,
       })
     }

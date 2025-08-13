@@ -28,11 +28,33 @@
   letter-spacing: 0.0125em;
 }
 
+.setting-field-with {
+  display: flex;
+  gap: 8px;
+}
+
+.setting-field-with > .select {
+  flex: none;
+  align-self: flex-start;
+}
+
 .setting-field-note {
   color: var(--theme-tx-3);
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-feature-settings: "palt";
   letter-spacing: 0.0125em;
+}
+
+@media (width < 1200px) {
+  .setting-field-note-br.is-wide-only {
+    display: none;
+  }
+}
+
+@media (width >= 1200px) {
+  .setting-field-note-sep.is-wide-none {
+    display: none;
+  }
 }
 
 .setting-field-selects {

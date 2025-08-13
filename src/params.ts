@@ -20,7 +20,7 @@ export const defaultSetting: Setting = {
   endYear: 2025,
   omitEmptyYears: false,
   currentLank: 2,
-  lankNote: "1=有名作品のみ, 2=個性派作品含む, 3=全件表示",
+  hasLankNote: true,
   fullOpenLabels: false,
   todayDate: {
     value: "",

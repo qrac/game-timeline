@@ -27,6 +27,7 @@ export function ComponentSetting({
   changeTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
   const {
+    itemList,
     lankList,
     categoryList,
     tagList,
@@ -35,11 +36,40 @@ export function ComponentSetting({
     endYear,
     omitEmptyYears,
     currentLank,
-    lankNote,
+    hasLankNote,
     fullOpenLabels,
     staticHeader,
     hiddenController,
   } = setting
+
+  const counts = {
+    lank1Hardware:
+      itemList.filter((item) => item.lank === 1 && item.category === "hardware")
+        .length || 0,
+    lank1Software:
+      itemList.filter((item) => item.lank === 1 && item.category === "software")
+        .length || 0,
+    lank2Hardware:
+      itemList.filter((item) => item.lank === 2 && item.category === "hardware")
+        .length || 0,
+    lank2Software:
+      itemList.filter((item) => item.lank === 2 && item.category === "software")
+        .length || 0,
+    lank3Hardware:
+      itemList.filter((item) => item.lank === 3 && item.category === "hardware")
+        .length || 0,
+    lank3Software:
+      itemList.filter((item) => item.lank === 3 && item.category === "software")
+        .length || 0,
+  }
+  const total = {
+    lank2Hardware: counts.lank1Hardware + counts.lank2Hardware,
+    lank2Software: counts.lank1Software + counts.lank2Software,
+    lank3Hardware:
+      counts.lank1Hardware + counts.lank2Hardware + counts.lank3Hardware,
+    lank3Software:
+      counts.lank1Software + counts.lank2Software + counts.lank3Software,
+  }
 
   const changeItemsRef = useRef<HTMLInputElement>(null)
   const changeTermsRef = useRef<HTMLInputElement>(null)
@@ -89,14 +119,33 @@ export function ComponentSetting({
 
       <div className="setting-field">
         <h3 className="setting-field-title">情報量</h3>
-        <ComponentSelect
-          value={currentLank}
-          onChange={(e) => {
-            changeCurrentLank(Number(e.target.value))
-          }}
-          list={lankList}
-        />
-        {lankNote && <p className="setting-field-note">※{lankNote}</p>}
+        <div className="setting-field-with">
+          <ComponentSelect
+            value={currentLank}
+            onChange={(e) => {
+              changeCurrentLank(Number(e.target.value))
+            }}
+            list={lankList}
+          />
+          {hasLankNote && (
+            <p className="setting-field-note">
+              {`【1】有名作品のみ`}
+              <br className="setting-field-note-br is-wide-only" />
+              <span className="setting-field-note-sep is-wide-none">／</span>
+              {`ハードウェア（${counts.lank1Hardware}）, ソフトウェア（${counts.lank1Software}）`}
+              <br />
+              {`【2】推し作品含む`}
+              <br className="setting-field-note-br is-wide-only" />
+              <span className="setting-field-note-sep is-wide-none">／</span>
+              {`ハードウェア（${total.lank2Hardware}）, ソフトウェア（${total.lank2Software}）`}
+              <br />
+              {`【3】全件表示`}
+              <br className="setting-field-note-br is-wide-only" />
+              <span className="setting-field-note-sep is-wide-none">／</span>
+              {`ハードウェア（${total.lank3Hardware}）, ソフトウェア（${total.lank3Software}）`}
+            </p>
+          )}
+        </div>
         <div className="setting-field-checks">
           <ComponentCheck
             checked={fullOpenLabels}
