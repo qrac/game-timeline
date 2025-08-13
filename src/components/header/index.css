@@ -106,6 +106,17 @@
 
 .header-search-field.is-wide-only .input {
   width: 400px;
+  text-indent: 24px;
+}
+
+.header-search-head-icon {
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  width: 20px;
+  height: 20px;
+  color: var(--theme-tx-3);
+  translate: 0 -47%;
 }
 
 .header-search-field .button.is-clear {
