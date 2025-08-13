@@ -15,14 +15,14 @@ import "./index.css"
 
 export function ComponentTimeline({
   setting,
-  activeTimeline,
+  activeContents,
   yearAreaRefs,
   filteredItemList,
   filteredYearList,
   openModal,
 }: {
   setting: Setting
-  activeTimeline: boolean
+  activeContents: boolean
   yearAreaRefs: React.RefObject<Map<number, HTMLDivElement>>
   filteredItemList: Item[]
   filteredYearList: number[]
@@ -108,10 +108,8 @@ export function ComponentTimeline({
     return () => observer.disconnect()
   }, [filteredYearList, scrollOffset])
   return (
-    <main className="timeline">
-      <div
-        className={clsx("timeline-container", activeTimeline && "is-active")}
-      >
+    <div className="timeline">
+      <div className="timeline-container">
         <div className="timeline-today">
           <button
             className="timeline-today-button"
@@ -229,14 +227,14 @@ export function ComponentTimeline({
       <div
         className={clsx(
           "timeline-spacer",
-          !hiddenController && activeTimeline && "is-active"
+          !hiddenController && activeContents && "is-active"
         )}
       />
 
       <div
         className={clsx(
           "timeline-controller",
-          !hiddenController && activeTimeline && "is-active"
+          !hiddenController && activeContents && "is-active"
         )}
       >
         <div className="timeline-controls">
@@ -279,6 +277,6 @@ export function ComponentTimeline({
           </button>
         </div>
       </div>
-    </main>
+    </div>
   )
 }

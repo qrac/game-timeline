@@ -5,29 +5,9 @@
   --timeline-sub-column-width: 35%;
 }
 
-.timeline {
-  background-color: var(--theme-bg-2);
-  overflow-x: hidden;
-}
-
 .timeline-container {
-  max-width: var(--pj-app-max-width);
+  max-width: var(--pj-timeline-max-width);
   margin: 0 auto;
-  transition: opacity 0.4s ease-in-out, translate 0.4s ease-in-out,
-    display 0.4s allow-discrete;
-}
-
-.timeline-container:not(.is-active) {
-  display: none;
-  translate: 0 32px;
-  opacity: 0;
-}
-
-@starting-style {
-  .timeline-container {
-    translate: 0 32px;
-    opacity: 0;
-  }
 }
 
 .timeline-today {

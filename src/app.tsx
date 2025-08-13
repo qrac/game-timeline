@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import { clsx } from "clsx"
 
 import { Setting, Image } from "./types"
 import { ComponentVariable } from "./components/variable"
@@ -37,7 +38,7 @@ export default function App() {
   const [activeHeaderSearch, setActiveHeaderSearch] = useState(false)
   const headerSearchRef = useRef<HTMLInputElement>(null)
 
-  const [activeTimeline, setActiveTimeline] = useState(false)
+  const [activeContents, setActiveContents] = useState(false)
   const [activeModal, setActiveModal] = useState<string | null>(null)
 
   const [activeBulk, setActiveBulk] = useState(false)
@@ -318,7 +319,7 @@ export default function App() {
       timelineOffset,
       isAppleMobile,
     })
-    setActiveTimeline(true)
+    setActiveContents(true)
   }
 
   useEffect(() => {
@@ -327,7 +328,7 @@ export default function App() {
   return (
     <div className="app">
       <ComponentVariable setting={setting} />
-      <div className="app-main">
+      <div className="app-stage">
         <ComponentHeader
           setting={setting}
           activeHeaderSearch={activeHeaderSearch}
@@ -337,14 +338,53 @@ export default function App() {
           changeSearchText={changeSearchText}
           openModal={openModal}
         />
-        <ComponentTimeline
-          setting={setting}
-          activeTimeline={activeTimeline}
-          yearAreaRefs={yearAreaRefs}
-          filteredItemList={filteredItemList}
-          filteredYearList={filteredYearList}
-          openModal={openModal}
-        />
+        <div className="app-contents">
+          <div
+            className={clsx(
+              "app-contents-container",
+              activeContents && "is-active"
+            )}
+          >
+            <div className="app-contents-grid">
+              <aside className="app-aside">
+                <div className="app-aside-container">
+                  <div className="app-aside-contents">
+                    <ComponentInfo />
+                  </div>
+                </div>
+              </aside>
+              <div className="app-main">
+                <div className="app-main-container">
+                  <div className="app-main-contents">
+                    <ComponentTimeline
+                      setting={setting}
+                      activeContents={activeContents}
+                      yearAreaRefs={yearAreaRefs}
+                      filteredItemList={filteredItemList}
+                      filteredYearList={filteredYearList}
+                      openModal={openModal}
+                    />
+                  </div>
+                </div>
+              </div>
+              <aside className="app-aside">
+                <div className="app-aside-container">
+                  <div className="app-aside-contents">
+                    <ComponentSetting
+                      setting={setting}
+                      activeHeaderSearch={activeHeaderSearch}
+                      isMobileSidebar
+                      changeSetting={changeSetting}
+                      changeCurrentLank={changeCurrentLank}
+                      changeItems={changeItems}
+                      changeTerms={changeTerms}
+                    />
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
       </div>
 
       <ComponentModal

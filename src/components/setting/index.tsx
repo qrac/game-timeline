@@ -41,12 +41,6 @@ export function ComponentSetting({
     hiddenController,
   } = setting
 
-  const fixedHeaderHeight = staticHeader
-    ? 0
-    : activeHeaderSearch
-    ? headerHeight.search
-    : headerHeight.default
-
   const changeItemsRef = useRef<HTMLInputElement>(null)
   const changeTermsRef = useRef<HTMLInputElement>(null)
 
@@ -63,28 +57,6 @@ export function ComponentSetting({
         isMobileSidebar && "is-mobile-sidebar"
       )}
     >
-      <div className="setting-field">
-        <h3 className="setting-field-title">画面周り</h3>
-        <div className="setting-field-checks">
-          <ComponentCheck
-            checked={staticHeader}
-            onChange={(e) => {
-              changeSetting({
-                staticHeader: e.target.checked,
-                headerHeight: fixedHeaderHeight,
-              })
-            }}
-            text="ヘッダーを固定しない"
-          />
-          <ComponentCheck
-            checked={hiddenController}
-            onChange={(e) => {
-              changeSetting({ hiddenController: e.target.checked })
-            }}
-            text="移動ボタン類を隠す"
-          />
-        </div>
-      </div>
       <div className="setting-field">
         <h3 className="setting-field-title">表示する年</h3>
         <div className="setting-field-selects">
@@ -167,6 +139,34 @@ export function ComponentSetting({
           />
         </div>
       )}
+
+      <div className="setting-field">
+        <h3 className="setting-field-title">画面周り</h3>
+        <div className="setting-field-checks">
+          <ComponentCheck
+            checked={staticHeader}
+            onChange={(e) => {
+              changeSetting({
+                staticHeader: e.target.checked,
+                headerHeight: (() => {
+                  if (e.target.checked) return headerHeight.static
+                  if (!e.target.checked && activeHeaderSearch)
+                    return headerHeight.search
+                  return headerHeight.default
+                })(),
+              })
+            }}
+            text="ヘッダーを固定しない"
+          />
+          <ComponentCheck
+            checked={hiddenController}
+            onChange={(e) => {
+              changeSetting({ hiddenController: e.target.checked })
+            }}
+            text="移動ボタン類を隠す"
+          />
+        </div>
+      </div>
 
       <div className="setting-field">
         <h3 className="setting-field-title">データの差し替え</h3>
