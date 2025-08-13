@@ -13,9 +13,9 @@
 :root {
   --pj-scrollbar-width: 0px;
   --pj-app-max-width: 540px;
+  --pj-app-offset: 16px;
   --pj-fixed-header-height: 63px;
   --pj-timeline-max-width: 540px;
-  --pj-timeline-offset: 16px;
   --pj-controller-height: 42px;
   --pj-color-accent: #7c899c;
   --theme-tx-2: #101010;
@@ -72,7 +72,7 @@ body {
   .app-contents-grid {
     display: grid;
     grid-template-columns: 1fr var(--pj-timeline-max-width) 1fr;
-    gap: calc(var(--pj-timeline-offset) / 2);
+    gap: calc(var(--pj-app-offset) / 2);
     max-width: var(--pj-app-max-width);
     margin: 0 auto;
     padding: 0 16px;
@@ -87,8 +87,8 @@ body {
 
 .app-aside-container {
   position: sticky;
-  top: calc(var(--pj-fixed-header-height) + var(--pj-timeline-offset));
-  margin-top: var(--pj-timeline-offset);
+  top: calc(var(--pj-fixed-header-height) + var(--pj-app-offset));
+  margin-top: var(--pj-app-offset);
   border: 1px solid var(--theme-bd-1);
   border-radius: 6px;
   overflow: hidden;
@@ -97,7 +97,7 @@ body {
 
 .app-aside-contents {
   max-height: calc(
-    100svh - var(--pj-fixed-header-height) - var(--pj-timeline-offset) * 2
+    100svh - var(--pj-fixed-header-height) - var(--pj-app-offset) * 2
   );
   overflow-y: auto;
 }
