@@ -9,6 +9,7 @@ import type {
   Color,
   Image,
   Setting,
+  UrlParams,
 } from "./types"
 
 export async function fetchFile(url: string): Promise<string> {
@@ -111,9 +112,11 @@ export function csvToTermList(parsedCsv: { [key: string]: string }[]): Term[] {
 export function getTermIds(
   itemList: Item[],
   property: keyof Item,
-  currentLank: number
+  currentLank?: number
 ): string[] {
-  const filteredItemList = itemList.filter((item) => item.lank <= currentLank)
+  const filteredItemList = currentLank
+    ? itemList.filter((item) => item.lank <= currentLank)
+    : itemList
 
   const values: string[] = []
 
@@ -276,6 +279,55 @@ export function checkAppleMobile(): boolean {
   const isPhone = /iphone|ipod/.test(agent)
   const isPad = /ipad|macintosh/.test(agent) && "ontouchend" in document
   return isPhone || isPad
+}
+
+export function settingToUrlParams(
+  setting: Setting,
+  activeModal?: string | null
+): UrlParams {
+  const {
+    categoryList,
+    tagList,
+    startYear,
+    endYear,
+    currentDate,
+    omitEmptyYears,
+    currentLank,
+    fullOpenLabels,
+    searchText,
+  } = setting
+  return {
+    txt: searchText
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0)
+      .join(","),
+    cat: categoryList
+      .filter((term) => term.filter)
+      .map((term) => term.id)
+      .join(","),
+    tag: tagList
+      .filter((term) => term.filter)
+      .map((term) => term.id)
+      .join(","),
+    start: startYear,
+    end: endYear,
+    omit: omitEmptyYears,
+    lank: currentLank,
+    full: fullOpenLabels,
+    today: activeModal === "today" ? currentDate.value : undefined,
+  }
+}
+
+export function diffUrlParams(obj1: UrlParams, obj2: UrlParams): UrlParams {
+  let diff = {}
+
+  for (const key of Object.keys({ ...obj1, ...obj2 }) as (keyof UrlParams)[]) {
+    if (obj1[key] !== obj2[key]) {
+      diff[key] = obj2[key]
+    }
+  }
+  return diff
 }
 
 export async function htmlToImage(

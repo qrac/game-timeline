@@ -16,6 +16,10 @@ import "./index.css"
 export function ComponentTimeline({
   setting,
   activeContents,
+  currentYear,
+  setCurrentYear,
+  inputYear,
+  setInputYear,
   yearAreaRefs,
   filteredItemList,
   filteredYearList,
@@ -23,6 +27,10 @@ export function ComponentTimeline({
 }: {
   setting: Setting
   activeContents: boolean
+  currentYear: number | null
+  setCurrentYear: (year: number | null) => void
+  inputYear: number | ""
+  setInputYear: (year: number | "") => void
   yearAreaRefs: React.RefObject<Map<number, HTMLDivElement>>
   filteredItemList: Item[]
   filteredYearList: number[]
@@ -33,16 +41,13 @@ export function ComponentTimeline({
     todayDate,
     todayItemCount,
     hiddenController,
+    appOffset,
     headerHeight,
-    timelineOffset,
   } = setting
-
-  const [currentYear, setCurrentYear] = useState<number | null>(null)
-  const [inputYear, setInputYear] = useState<number | "">(currentYear)
 
   const yearHeadingRefs = useRef<Map<number, HTMLDivElement>>(new Map())
   const isScrollingRef = useRef(false)
-  const scrollOffset = headerHeight + timelineOffset
+  const scrollOffset = headerHeight + appOffset
 
   const scrollToYear = (year: number) => {
     const el = yearHeadingRefs.current.get(year)
@@ -166,15 +171,17 @@ export function ComponentTimeline({
                     if (el) yearAreaRefs.current.set(year, el)
                   }}
                 >
-                  <h2
-                    className="timeline-year-title"
-                    id={year.toString()}
-                    ref={(el) => {
-                      if (el) yearHeadingRefs.current.set(year, el)
-                    }}
-                  >
-                    <span className="timeline-year-title-text">{year}</span>
-                  </h2>
+                  <a href={`#${year}`} onClick={() => scrollToYear(year)}>
+                    <h2
+                      className="timeline-year-title"
+                      id={year.toString()}
+                      ref={(el) => {
+                        if (el) yearHeadingRefs.current.set(year, el)
+                      }}
+                    >
+                      <span className="timeline-year-title-text">{year}</span>
+                    </h2>
+                  </a>
                   <div className="timeline-year-bar" />
                   {!emptyItems && (
                     <div

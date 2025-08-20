@@ -14,7 +14,6 @@ export function ComponentSetting({
   activeHeaderSearch,
   isMobileSidebar,
   changeSetting,
-  changeCurrentLank,
   changeItems,
   changeTerms,
 }: {
@@ -22,7 +21,6 @@ export function ComponentSetting({
   activeHeaderSearch: boolean
   isMobileSidebar?: boolean
   changeSetting: (newSetting: Partial<Setting>) => void
-  changeCurrentLank: (currentLank: number) => void
   changeItems: (e: React.ChangeEvent<HTMLInputElement>) => void
   changeTerms: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
@@ -123,7 +121,7 @@ export function ComponentSetting({
           <ComponentSelect
             value={currentLank}
             onChange={(e) => {
-              changeCurrentLank(Number(e.target.value))
+              changeSetting({ currentLank: Number(e.target.value) })
             }}
             list={lankList}
           />

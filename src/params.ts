@@ -41,7 +41,8 @@ export const defaultSetting: Setting = {
   staticHeader: false,
   hiddenController: false,
   scrollbarWidth: 0,
+  appOffset: 0,
+  appSlide: 32,
   headerHeight: headerHeight.default,
-  timelineOffset: 0,
   isAppleMobile: false,
 }

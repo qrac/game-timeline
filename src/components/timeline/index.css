@@ -103,7 +103,9 @@
 
 .timeline-year-title {
   position: relative;
-  scroll-margin-top: calc(var(--pj-fixed-header-height) + var(--pj-app-offset));
+  scroll-margin-top: calc(
+    var(--pj-fixed-header-height) + var(--pj-app-offset) + var(--pj-app-slide)
+  );
   font-size: var(--timeline-year-font-size);
   font-family: var(--font-sans-en);
   font-weight: 900;

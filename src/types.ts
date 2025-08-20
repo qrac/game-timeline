@@ -61,7 +61,20 @@ export type Setting = {
   staticHeader: boolean
   hiddenController: boolean
   scrollbarWidth: number
+  appOffset: number
+  appSlide: number
   headerHeight: number
-  timelineOffset: number
   isAppleMobile: boolean
+}
+
+export type UrlParams = {
+  txt?: string
+  cat?: string
+  tag?: string
+  start?: number
+  end?: number
+  omit?: boolean
+  lank?: number
+  full?: boolean
+  today?: string
 }

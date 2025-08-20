@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import { clsx } from "clsx"
 
-import { Setting, Image } from "./types"
+import { Setting, UrlParams, Image } from "./types"
 import { ComponentVariable } from "./components/variable"
 import { ComponentHeader } from "./components/header"
 import { ComponentTimeline } from "./components/timeline"
@@ -27,6 +27,8 @@ import {
   filterYearList,
   filterDateItemList,
   checkAppleMobile,
+  settingToUrlParams,
+  diffUrlParams,
   htmlToImage,
   mergeImages,
 } from "./utils"
@@ -34,12 +36,16 @@ import "./app.css"
 
 export default function App() {
   const [setting, setSetting] = useState<Setting>(defaultSetting)
+  const [defaultUrlParams, setDefaultUrlParams] = useState<UrlParams>({})
 
   const [activeHeaderSearch, setActiveHeaderSearch] = useState(false)
   const headerSearchRef = useRef<HTMLInputElement>(null)
 
   const [activeContents, setActiveContents] = useState(false)
   const [activeModal, setActiveModal] = useState<string | null>(null)
+
+  const [currentYear, setCurrentYear] = useState<number | null>(null)
+  const [inputYear, setInputYear] = useState<number | "">(currentYear)
 
   const [activeBulk, setActiveBulk] = useState(false)
   const [bulkProgress, setBulkProgress] = useState<number>(0)
@@ -51,6 +57,59 @@ export default function App() {
 
   const filteredItemList = filterItemList(setting)
   const filteredYearList = filterYearList(setting)
+
+  const loadUrlParams = () => {
+    const url = new URL(window.location.href)
+    const sp = url.searchParams
+    const params = {
+      txt: sp.getAll("txt").join(",") || undefined,
+      cat: sp.getAll("cat").join(",") || undefined,
+      tag: sp.getAll("tag").join(",") || undefined,
+      start: Number(sp.get("start")) || undefined,
+      end: Number(sp.get("end")) || undefined,
+      omit: sp.has("omit") ? true : undefined,
+      lank: Number(sp.get("lank")) || undefined,
+      full: sp.has("full") ? true : undefined,
+      today: sp.get("today") || undefined,
+    }
+    let urlParams: UrlParams = {}
+    for (const [key, value] of Object.entries(params)) {
+      if (value !== undefined) {
+        urlParams[key] = value
+      }
+    }
+    return urlParams
+  }
+
+  const updateUrlParams = (
+    mergedSetting: Setting,
+    inlineModal?: string | null
+  ) => {
+    const url = new URL(window.location.href)
+    const sp = url.searchParams
+    const urlParams = settingToUrlParams(
+      mergedSetting,
+      inlineModal || inlineModal === null ? inlineModal : activeModal
+    )
+    const diff = diffUrlParams(defaultUrlParams, urlParams)
+
+    for (const key of Object.keys(urlParams)) {
+      sp.delete(key)
+    }
+    for (const [key, value] of Object.entries(diff)) {
+      if (!value) continue
+
+      const str = String(value)
+
+      if (str.includes(",")) {
+        const arr = str.split(",")
+        for (const v of arr) sp.append(key, String(v))
+        continue
+      }
+      sp.set(key, str)
+    }
+    window.history.replaceState({}, "", url.toString())
+  }
 
   const changeHeaderSearch = () => {
     const { staticHeader } = setting
@@ -70,13 +129,16 @@ export default function App() {
   }
   const changeSearchText = (text: string) => {
     setSetting((prev) => ({ ...prev, searchText: text }))
+    updateUrlParams({ ...setting, searchText: text })
   }
 
   const openModal = (modalId: string) => {
     setActiveModal(modalId)
+    if (modalId === "today") updateUrlParams(setting, "today")
   }
   const closeModal = () => {
     setActiveModal(null)
+    if (activeModal === "today") updateUrlParams(setting, null)
   }
 
   const createBulkImage = async () => {
@@ -144,6 +206,7 @@ export default function App() {
       setMergedImage(null)
     }
   }
+
   const toggleAllMergeYears = () => {
     if (mergeYears.length === Object.keys(yearImages).length) {
       setMergeYears([])
@@ -157,30 +220,19 @@ export default function App() {
     )
   }
 
-  const changeSetting = (newSetting: Partial<Setting>) => {
+  const changeSetting = (
+    newSetting: Partial<Setting>,
+    ignoreUrlParams?: boolean
+  ) => {
     setSetting((prevSetting) => ({
       ...prevSetting,
       ...newSetting,
     }))
+    if (!ignoreUrlParams) {
+      updateUrlParams({ ...setting, ...newSetting })
+    }
   }
 
-  const changeCurrentLank = (currentLank: number) => {
-    const { itemList, termList } = setting
-
-    const categoryIds = getTermIds(itemList, "category", currentLank)
-    const tagIds = getTermIds(itemList, "tags", currentLank)
-    const labelIds = getTermIds(itemList, "labels", currentLank)
-    const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
-
-    const categoryList = resolveTermList(categoryIds, termList)
-    const tagList = resolveTermList(tagLabelIds, termList)
-
-    changeSetting({
-      categoryList: categoryList,
-      tagList: tagList,
-      currentLank,
-    })
-  }
   const changeCurrentDate = (dateValue: string) => {
     const currentDate = getSplitDate(new Date(dateValue))
     changeSetting({ currentDate })
@@ -244,14 +296,14 @@ export default function App() {
     const reader = new FileReader()
 
     reader.onload = (event) => {
-      const { itemList, currentLank } = setting
+      const { itemList } = setting
       const termsData = event.target?.result as string
       const parsedTerms = parseCsv(termsData)
 
       const termList = csvToTermList(parsedTerms)
-      const categoryIds = getTermIds(itemList, "category", currentLank)
-      const tagIds = getTermIds(itemList, "tags", currentLank)
-      const labelIds = getTermIds(itemList, "labels", currentLank)
+      const categoryIds = getTermIds(itemList, "category")
+      const tagIds = getTermIds(itemList, "tags")
+      const labelIds = getTermIds(itemList, "labels")
       const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
 
       const categoryList = resolveTermList(categoryIds, termList)
@@ -270,7 +322,6 @@ export default function App() {
 
   const setup = async () => {
     const timestamp = Date.now()
-    const { currentLank } = setting
 
     const itemsData = await fetchFile(`/assets/items.csv?t=${timestamp}`)
     const termsData = await fetchFile(`/assets/terms.csv?t=${timestamp}`)
@@ -280,9 +331,9 @@ export default function App() {
     const itemList = csvToItemList(parsedItems)
     const termList = csvToTermList(parsedTerms)
     const lankList = getLankList(itemList)
-    const categoryIds = getTermIds(itemList, "category", currentLank)
-    const tagIds = getTermIds(itemList, "tags", currentLank)
-    const labelIds = getTermIds(itemList, "labels", currentLank)
+    const categoryIds = getTermIds(itemList, "category")
+    const tagIds = getTermIds(itemList, "tags")
+    const labelIds = getTermIds(itemList, "labels")
     const tagLabelIds = [...new Set([...tagIds, ...labelIds])]
     const categoryList = resolveTermList(categoryIds, termList)
     const tagList = resolveTermList(tagLabelIds, termList)
@@ -294,15 +345,19 @@ export default function App() {
 
     const todayDate = getSplitDate(new Date())
     const currentDate = todayDate
-    const todayItemCount = filterDateItemList(itemList, currentDate).filter(
+    const todayItemCount = filterDateItemList(itemList, todayDate).filter(
       (item) => item.category !== "news"
     ).length
 
     const scrollbarWidth = window.innerWidth - document.body.clientWidth
-    const timelineOffset = getCssVarPx("--pj-timeline-offset")
+    const appOffset = getCssVarPx("--pj-app-offset")
     const isAppleMobile = checkAppleMobile()
 
-    changeSetting({
+    const appUrlParams = settingToUrlParams(setting)
+    const urlParams = { ...appUrlParams, ...loadUrlParams() }
+    const diff = diffUrlParams(appUrlParams, urlParams)
+
+    let tempSetting: Partial<Setting> = {
       itemList,
       termList,
       lankList,
@@ -310,16 +365,67 @@ export default function App() {
       tagList,
       colorList,
       yearList,
-      startYear,
-      endYear,
+      startYear: diff.start || startYear,
+      endYear: diff.end || endYear,
       todayDate,
       currentDate,
       todayItemCount,
       scrollbarWidth,
-      timelineOffset,
+      appOffset,
       isAppleMobile,
-    })
+    }
+
+    if (diff.txt) {
+      tempSetting.searchText = diff.txt
+    }
+    if (diff.cat) {
+      const cats = diff.cat.split(",").map((id) => id.trim())
+      tempSetting.categoryList = categoryList.map((item) => ({
+        ...item,
+        filter: cats.includes(item.id),
+      }))
+    }
+    if (diff.tag) {
+      const tags = diff.tag.split(",").map((id) => id.trim())
+      tempSetting.tagList = tagList.map((item) => ({
+        ...item,
+        filter: tags.includes(item.id),
+      }))
+    }
+    if (diff.omit) {
+      tempSetting.omitEmptyYears = diff.omit
+    }
+    if (diff.lank) {
+      tempSetting.currentLank = diff.lank
+    }
+    if (diff.full) {
+      tempSetting.fullOpenLabels = diff.full
+    }
+    if (diff.today && /^\d{4}-\d{2}-\d{2}$/.test(diff.today)) {
+      const newCurrentDate = getSplitDate(new Date(diff.today))
+      tempSetting.currentDate = newCurrentDate
+      setActiveModal("today")
+    }
+
+    changeSetting(tempSetting, true)
+
+    const hash = window.location.hash
+
+    if (hash) {
+      const target = document.getElementById(hash.replace("#", ""))
+      if (target) {
+        target.scrollIntoView({
+          behavior: "auto",
+          block: "start",
+        })
+      }
+    }
+    setDefaultUrlParams(appUrlParams)
     setActiveContents(true)
+
+    setTimeout(() => {
+      changeSetting({ appSlide: 0 }, true)
+    }, 400)
   }
 
   useEffect(() => {
@@ -359,6 +465,10 @@ export default function App() {
                     <ComponentTimeline
                       setting={setting}
                       activeContents={activeContents}
+                      currentYear={currentYear}
+                      setCurrentYear={setCurrentYear}
+                      inputYear={inputYear}
+                      setInputYear={setInputYear}
                       yearAreaRefs={yearAreaRefs}
                       filteredItemList={filteredItemList}
                       filteredYearList={filteredYearList}
@@ -375,7 +485,6 @@ export default function App() {
                       activeHeaderSearch={activeHeaderSearch}
                       isMobileSidebar
                       changeSetting={changeSetting}
-                      changeCurrentLank={changeCurrentLank}
                       changeItems={changeItems}
                       changeTerms={changeTerms}
                     />
@@ -432,7 +541,6 @@ export default function App() {
           activeHeaderSearch={activeHeaderSearch}
           isMobileSidebar
           changeSetting={changeSetting}
-          changeCurrentLank={changeCurrentLank}
           changeItems={changeItems}
           changeTerms={changeTerms}
         />
