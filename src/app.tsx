@@ -411,7 +411,7 @@ export default function App() {
 
     const hash = window.location.hash
 
-    if (hash) {
+    const tryScroll = () => {
       const target = document.getElementById(hash.replace("#", ""))
       if (target) {
         target.scrollIntoView({
@@ -419,6 +419,9 @@ export default function App() {
           block: "start",
         })
       }
+    }
+    if (hash) {
+      requestAnimationFrame(() => requestAnimationFrame(tryScroll))
     }
     setDefaultUrlParams(appUrlParams)
     setActiveContents(true)
