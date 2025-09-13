@@ -123,6 +123,7 @@ New スーパーマリオブラザーズ U,2012-12-18,software,"nintendo","wiiu"
 ゼルダ無双 ハイラルオールスターズ,2016-01-21,software,"nintendo","3ds",3
 ゼルダ無双 ハイラルオールスターズ DX,2018-03-22,software,"nintendo","switch",3
 ゼルダ無双 厄災の黙示録,2020-11-20,software,"nintendo","switch",3
+ゼルダ無双 封印戦記,2025-11-06,software,"nintendo","switch2",3
 
 星のカービィ,1992-04-27,software,"nintendo","gb"
 星のカービィ夢の泉の物語,1993-03-23,software,"nintendo","fc"
@@ -282,6 +283,9 @@ BUSHI青龍伝 〜二人の勇者〜,1997-01-17,software,"gamefreak","sfc",3
 HD-2D版 ドラゴンクエストIII そして伝説へ…,2024-11-24,software,"square-enix","multi,switch,ps5,xboxxs,steam,win"
 HD-2D版 ドラゴンクエストI＆II,2025-10-30,software,"square-enix","multi,switch2,switch,ps5,xboxxs,win"
 HD-2D版 ドラゴンクエストI＆II,2025-10-31,software,"square-enix","steam",3
+
+ドラゴンクエストVII Reimagined,2026-02-05,software,"square-enix","multi,switch2,switch,ps5,ps4,xboxxs,win"
+ドラゴンクエストVII Reimagined,2026-02-06,software,"square-enix","steam",3
 
 トルネコの大冒険 不思議のダンジョン,1993-09-19,software,"enix","sfc"
 トルネコの大冒険2 不思議のダンジョン,1999-09-15,software,"enix","ps1",2
@@ -866,8 +870,10 @@ SNK VS. CAPCOM SVC CHAOS,2003-07-24,software,"snk","arcade"
 モンスターハンターライズ,2021-03-26,software,"capcom","switch"
 モンスターハンターライズ サンブレイク,2022-06-30,software,"capcom","switch"
 モンスターハンターワイルズ,2025-02-28,software,"capcom","ps5,steam"
+
 モンスターハンターストーリーズ,2016-10-08,software,"capcom","3ds",2
 モンスターハンターストーリーズ2,2021-07-09,software,"capcom","switch",2
+モンスターハンターストーリーズ3 ～運命の双竜～,2026-03-13,software,"capcom","multi,switch2,ps5,xboxxs,steam",2
 モンスターハンターNow,2023-09-14,software,"capcom","ios,android"
 
 ストリートファイターII,1991-02-14,software,"capcom","arcade"
@@ -974,6 +980,8 @@ STEINS;GATE,2009-10-15,software,"5pb","xbox360",2
 モンスターストライク,2015-12-17,software,"mixi","ios,android"
 
 ロードランナー,1983-10-13,software,"brøderbund","pc",2
+
+Minecraft,2011-11-18,software,"mojang","win",
 
 東京ディズニーランド,1983-04-15,news,"japan"
 東京ドーム,1988-03-18,news,"japan"
