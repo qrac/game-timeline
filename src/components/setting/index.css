@@ -45,18 +45,6 @@
   letter-spacing: 0.0125em;
 }
 
-@media (width < 1200px) {
-  .setting-field-note-br.is-wide-only {
-    display: none;
-  }
-}
-
-@media (width >= 1200px) {
-  .setting-field-note-sep.is-wide-none {
-    display: none;
-  }
-}
-
 .setting-field-selects {
   display: flex;
   align-items: center;
@@ -81,18 +69,6 @@
 .setting-field-selects > *:nth-child(2) {
   font-size: 0.875rem;
   text-align: center;
-}
-
-@media (width <= 540px) {
-  .setting-container.is-mobile-sidebar .setting-field-selects > * {
-    flex: 0 0 100%;
-  }
-}
-
-@media (width <= 540px) {
-  .setting-container.is-mobile-sidebar .tagcloud > .button {
-    flex: 0 0 100%;
-  }
 }
 
 .setting-field-checks > * {

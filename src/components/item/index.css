@@ -1,59 +1,48 @@
 .item {
   --item-bar-width: 4px;
-  --item-name-font-size: 0.875rem;
+  --item-name-font-size: 0.75rem;
   --item-label-font-size: 0.625rem;
-  --item-date-font-size: 0.75rem;
-  --item-hardware-name-font-size: 1rem;
-  --item-news-name-font-size: 0.6875rem;
+  --item-date-font-size: 0.625rem;
+  --item-hardware-name-font-size: 0.875rem;
+  --item-news-name-font-size: 0.625rem;
   --item-news-date-font-size: 0.625rem;
 }
 
 .item {
   position: relative;
-  padding-left: 14px;
+  display: flex;
 }
 
 .item-bar {
-  position: absolute;
-  top: 50%;
-  left: 0;
   width: 4px;
-  height: 100%;
-  background-color: var(--pj-color-accent);
-  translate: 50% -50%;
+  margin-right: 0.25rem;
+  background-color: var(--theme-pj-accent);
 }
 
-.item-content > * + * {
-  margin-top: 0.25rem;
-}
-
-.item-name {
+.item-content {
   font-size: var(--item-name-font-size);
-  font-weight: 600;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   line-height: 1.25;
   text-box-trim: trim-both;
 }
 
-.item-info {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.25rem 0.125rem;
+.item-name {
+  margin-right: 0.125rem;
+  font-size: var(--item-name-font-size);
+  font-weight: 600;
 }
 
 .item-labels {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   gap: 0.125rem;
+  margin-right: 0.1875rem;
 }
 
 .item-label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   padding: 1px 0.25em;
-  background-color: var(--pj-color-accent);
+  background-color: var(--theme-pj-accent);
   border: 1px solid transparent;
   border-radius: 2px;
   color: var(--theme-bg-2);
@@ -88,30 +77,30 @@ input[type="checkbox"]:checked
 }
 
 .item-date {
+  display: inline-block;
   color: var(--theme-tx-3);
   font-size: var(--item-date-font-size);
   font-weight: 500;
-  line-height: 1.125;
-  white-space: nowrap;
 }
 
+.item.is-category-hardware .item-content,
 .item.is-category-hardware .item-name {
   font-size: var(--item-hardware-name-font-size);
 }
 
-.item.is-category-news {
-  margin-left: auto;
-  padding-left: 0;
-}
-
-.item.is-category-news .item-content > * + * {
-  margin-top: 0.25rem;
-}
-
+.item.is-category-news .item-content,
 .item.is-category-news .item-name {
   font-size: var(--item-news-name-font-size);
+  font-weight: 500;
 }
 
 .item.is-category-news .item-date {
   font-size: var(--item-news-date-font-size);
+}
+
+.timeline-year.is-separate-main
+  .item.is-category-hardware
+  + .item.is-category-software {
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--theme-bd-2);
 }

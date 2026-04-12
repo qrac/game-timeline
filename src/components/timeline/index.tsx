@@ -1,161 +1,70 @@
-import { useState, useRef, useEffect } from "react"
 import { clsx } from "clsx"
-import {
-  BiCalendar,
-  BiArrowToLeft,
-  BiChevronLeftCircle,
-  BiChevronRightCircle,
-  BiArrowToRight,
-} from "react-icons/bi"
 
-import type { Setting, Item } from "../../types"
+import type { Item, Term } from "../../types"
 import { ComponentItem } from "../item"
-import { scrollToY } from "../../utils"
 import "./index.css"
 
 export function ComponentTimeline({
-  setting,
-  activeContents,
-  currentYear,
-  setCurrentYear,
-  inputYear,
-  setInputYear,
-  yearAreaRefs,
-  filteredItemList,
-  filteredYearList,
-  openModal,
+  items,
+  tags,
+  selectedCategoryIds,
+  selectedTagIds,
 }: {
-  setting: Setting
-  activeContents: boolean
-  currentYear: number | null
-  setCurrentYear: (year: number | null) => void
-  inputYear: number | ""
-  setInputYear: (year: number | "") => void
-  yearAreaRefs: React.RefObject<Map<number, HTMLDivElement>>
-  filteredItemList: Item[]
-  filteredYearList: number[]
-  openModal: (modalId: string) => void
+  items: Item[]
+  tags: Term[]
+  selectedCategoryIds: string[]
+  selectedTagIds: string[]
 }) {
-  const {
-    omitEmptyYears,
-    todayDate,
-    todayItemCount,
-    hiddenController,
-    appOffset,
-    headerHeight,
-  } = setting
-
-  const yearHeadingRefs = useRef<Map<number, HTMLDivElement>>(new Map())
-  const isScrollingRef = useRef(false)
-  const scrollOffset = headerHeight + appOffset
-
-  const scrollToYear = (year: number) => {
-    const el = yearHeadingRefs.current.get(year)
-    if (el) {
-      const rect = el.getBoundingClientRect()
-      const offsetTop = window.pageYOffset + rect.top
-      const targetY = offsetTop - scrollOffset
-
-      isScrollingRef.current = true
-
-      scrollToY(targetY, 500)
-
-      setCurrentYear(year)
-      setInputYear(year)
-
-      setTimeout(() => {
-        isScrollingRef.current = false
-      }, 500)
-    }
-  }
-
-  const changeInputYear = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value
-    const num = Number(val)
-
-    if (val === "") {
-      setInputYear("")
-    } else {
-      setInputYear(num)
-      if (filteredYearList.includes(num)) {
-        scrollToYear(num)
-      }
-    }
-  }
-
-  useEffect(() => {
-    const callback = (entries: IntersectionObserverEntry[]) => {
-      if (isScrollingRef.current) return
-
-      const visible = entries.filter((entry) => entry.isIntersecting)
-      if (visible.length === 0) return
-      const topMost = visible.reduce((prev, curr) =>
-        prev.boundingClientRect.top < curr.boundingClientRect.top ? prev : curr
-      )
-      const yearStr = topMost.target.getAttribute("id")
-      const year = yearStr ? Number(yearStr) : null
-      if (year && year !== currentYear) {
-        setCurrentYear(year)
-        setInputYear(year)
-      }
-    }
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: `-${scrollOffset}px 0px -40% 0px`,
-      threshold: 0,
-    })
-    filteredYearList.forEach((year) => {
-      const el = yearHeadingRefs.current.get(year)
-      if (el) {
-        observer.observe(el)
-      }
-    })
-    return () => observer.disconnect()
-  }, [filteredYearList, scrollOffset])
+  const isSeparateMain = true
+  const filteredItemList = items.filter((item) => {
+    const categoryMatched = selectedCategoryIds.length
+      ? selectedCategoryIds.includes(item.category)
+      : true
+    const tagMatched = selectedTagIds.length
+      ? item.tags.some((tag) => selectedTagIds.includes(tag)) ||
+        item.labels.some((label) => selectedTagIds.includes(label))
+      : true
+    return categoryMatched && tagMatched
+  })
+  const filteredYearList = [
+    ...new Set(filteredItemList.map((item) => item.date.year)),
+  ].sort((a, b) => a - b)
   return (
     <div className="timeline">
       <div className="timeline-container">
-        <div className="timeline-today">
-          <button
-            className="timeline-today-button"
-            onClick={() => openModal("today")}
-          >
-            <BiCalendar className="timeline-today-button-icon" />
-            <span className="timeline-today-button-text">
-              <span className="text">今日</span>
-              <span className="text">
-                （{todayDate.month}月{todayDate.day}日）
-              </span>
-              <span className="text">は何の日？</span>
-            </span>
-            {todayItemCount > 0 && (
-              <span className="timeline-today-button-count">
-                {todayItemCount}
-              </span>
-            )}
-          </button>
-        </div>
         {filteredItemList.length > 0 ? (
           <div className="timeline-years">
             {filteredYearList.map((year, index) => {
               const isFirstYear = index === 0
               const isLastYear = index === filteredYearList.length - 1
 
-              const mainItemList = filteredItemList
+              const hardwareItemList = filteredItemList
                 .filter((item) => {
-                  return item.date.year === year && item.category !== "news"
+                  return item.date.year === year && item.category === "hardware"
                 })
                 .sort((a, b) => a.date.timestamp - b.date.timestamp)
+              const softwareItemList = filteredItemList
+                .filter((item) => {
+                  return item.date.year === year && item.category === "software"
+                })
+                .sort((a, b) => a.date.timestamp - b.date.timestamp)
+
+              const mainItemList = isSeparateMain
+                ? [...hardwareItemList, ...softwareItemList]
+                : [...hardwareItemList, ...softwareItemList].sort(
+                    (a, b) => a.date.timestamp - b.date.timestamp,
+                  )
               const subItemList = filteredItemList
                 .filter((item) => {
                   return item.date.year === year && item.category === "news"
                 })
                 .sort((a, b) => a.date.timestamp - b.date.timestamp)
+
               const emptyMain = mainItemList.length === 0
               const emptySub = subItemList.length === 0
               const emptyItems = emptyMain && emptySub
 
-              if (emptyItems && omitEmptyYears) {
+              if (emptyItems) {
                 return null
               }
               return (
@@ -164,58 +73,50 @@ export function ComponentTimeline({
                     "timeline-year",
                     isFirstYear && "is-first",
                     isLastYear && "is-last",
-                    emptyItems && "is-empty"
+                    emptyItems && "is-empty",
+                    isSeparateMain && "is-separate-main",
                   )}
                   key={year}
-                  ref={(el) => {
-                    if (el) yearAreaRefs.current.set(year, el)
-                  }}
                 >
-                  <a href={`#${year}`} onClick={() => scrollToYear(year)}>
-                    <h2
-                      className="timeline-year-title"
-                      id={year.toString()}
-                      ref={(el) => {
-                        if (el) yearHeadingRefs.current.set(year, el)
-                      }}
-                    >
-                      <span className="timeline-year-title-text">{year}</span>
-                    </h2>
-                  </a>
+                  <h2 className="timeline-year-title" id={year.toString()}>
+                    <span className="timeline-year-title-text">{year}</span>
+                  </h2>
                   <div className="timeline-year-bar" />
                   {!emptyItems && (
                     <div
                       className={clsx(
                         "timeline-year-columns",
-                        emptySub && "is-empty-sub"
+                        emptySub && "is-empty-sub",
                       )}
                     >
-                      <div
-                        className={clsx(
-                          "timeline-year-column is-main",
-                          mainItemList.length >= 2 && "is-separate"
-                        )}
-                      >
-                        {mainItemList.map((item, index) => (
-                          <ComponentItem
-                            key={index}
-                            item={item}
-                            setting={setting}
-                          />
-                        ))}
-                      </div>
+                      {mainItemList.length > 0 && (
+                        <div
+                          className={clsx(
+                            "timeline-year-column is-main",
+                            mainItemList.length >= 2 && "is-separate",
+                          )}
+                        >
+                          {mainItemList.map((item, index) => (
+                            <ComponentItem
+                              key={index}
+                              item={item}
+                              tagList={tags}
+                            />
+                          ))}
+                        </div>
+                      )}
                       {subItemList.length > 0 && (
                         <div
                           className={clsx(
                             "timeline-year-column is-sub",
-                            subItemList.length >= 2 && "is-separate"
+                            subItemList.length >= 2 && "is-separate",
                           )}
                         >
                           {subItemList.map((item, index) => (
                             <ComponentItem
                               key={index}
                               item={item}
-                              setting={setting}
+                              tagList={tags}
                             />
                           ))}
                         </div>
@@ -229,60 +130,6 @@ export function ComponentTimeline({
         ) : (
           <div className="timeline-blank">表示するデータがないよ！</div>
         )}
-      </div>
-
-      <div
-        className={clsx(
-          "timeline-spacer",
-          !hiddenController && activeContents && "is-active"
-        )}
-      />
-
-      <div
-        className={clsx(
-          "timeline-controller",
-          !hiddenController && activeContents && "is-active"
-        )}
-      >
-        <div className="timeline-controls">
-          <button
-            className="button is-melt"
-            onClick={() => scrollToYear(filteredYearList[0])}
-          >
-            <BiArrowToLeft className="timeline-control-icon" />
-          </button>
-          <button
-            className="button is-melt"
-            onClick={() => {
-              const idx = filteredYearList.indexOf(currentYear)
-              if (idx > 0) scrollToYear(filteredYearList[idx - 1])
-            }}
-          >
-            <BiChevronLeftCircle className="timeline-control-icon" />
-          </button>
-          <input
-            type="number"
-            className="input is-inside is-center is-year"
-            value={inputYear ?? ""}
-            onChange={changeInputYear}
-          />
-          <button
-            className="button is-melt"
-            onClick={() => {
-              const idx = filteredYearList.indexOf(currentYear)
-              if (idx < filteredYearList.length - 1)
-                scrollToYear(filteredYearList[idx + 1])
-            }}
-          >
-            <BiChevronRightCircle className="timeline-control-icon" />
-          </button>
-          <button
-            className="button is-melt"
-            onClick={() => scrollToYear(filteredYearList.at(-1)!)}
-          >
-            <BiArrowToRight className="timeline-control-icon" />
-          </button>
-        </div>
       </div>
     </div>
   )

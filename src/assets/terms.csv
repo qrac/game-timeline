@@ -1,11 +1,11 @@
-id,name,label,color
-hardware,ハードウェア,HARDWARE
-software,ソフトウェア,SOFTWARE
-news,ニュース,NEWS
+id,name,label,color,filter
+hardware,ハードウェア,HARDWARE,,true
+software,ソフトウェア,SOFTWARE,,true
+news,ニュース,NEWS,,true
 
-home,据え置き機,HOME
-portable,携帯機,PORTABLE
-arcade,アーケード,ARCADE,#53a01f
+home,据え置き機,HOME,,true
+portable,携帯機,PORTABLE,,true
+arcade,アーケード,AC,#53a01f,true
 multi,マルチプラットフォーム,MULTI,#7846ad
 
 fc,ファミコン,FC,#a94454

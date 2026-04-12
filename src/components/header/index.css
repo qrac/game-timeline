@@ -1,34 +1,5 @@
 .header {
-  position: sticky;
-  top: 0;
   display: grid;
-  align-items: center;
-  background: var(--theme-bg-3);
-  border-bottom: 1px solid var(--theme-bd-1);
-  z-index: 10;
-}
-
-.header.is-static {
-  position: relative;
-}
-
-.header-inner {
-  max-width: var(--pj-app-max-width);
-  width: 100%;
-  margin: 0 auto;
-  padding: 12px 16px;
-}
-
-.header-grid {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-column {
-  display: flex;
-  align-items: center;
-  gap: 16px;
 }
 
 .header-title {
@@ -49,91 +20,17 @@
   font-feature-settings: "palt";
 }
 
-.header-buttons {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.header-buttons .button.is-melt.is-active {
+.header .button.is-melt.is-active {
   background: var(--button-melt-hover-bg-mix);
   color: var(--theme-primary);
 }
 
-@media (width >= 1200px) {
-  .header-buttons .button.is-wide-none {
-    display: none;
-  }
-}
-
 .header-button-icon {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
 }
 
-.header-search {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.12s ease-in-out;
-}
-
-.header-search.is-active {
-  grid-template-rows: 1fr;
-}
-
-.header-search-inner {
-  margin: 0 -4px;
-  overflow: hidden;
-}
-
-.header-search-inner > div {
-  padding: 8px 4px 4px;
-}
-
-.header-search-field {
-  position: relative;
-}
-
-@media (width < 1200px) {
-  .header-search-field.is-wide-only {
-    display: none;
-  }
-}
-
-.header-search-field .input {
-  width: 100%;
-}
-
-.header-search-field .input::placeholder {
-  font-feature-settings: "palt";
-}
-
-.header-search-field.is-wide-only .input {
-  width: 400px;
-  text-indent: 22px;
-}
-
-.header-search-head-icon {
-  position: absolute;
-  top: 50%;
-  left: 11px;
-  width: 20px;
-  height: 20px;
-  color: var(--theme-tx-3);
-  translate: 0 -47%;
-}
-
-.header-search-field .button.is-clear {
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  width: 28px;
-  height: 28px;
-  translate: 0 -50%;
-}
-
-.header-search-clean-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--theme-tx-3);
+.header-sticky {
+  position: sticky;
+  top: 16px;
 }

@@ -2,23 +2,23 @@
 @import "musubii/src/bases/typo/font.css";
 @import "musubii/src/bases/base/reset.css";
 @import "musubii/src/bases/base/html.css";
-@import "musubii/src/layouts/joint/main.css";
+@import "musubii/src/layouts/box/main.css";
+@import "musubii/src/elements/text/main.css";
+@import "musubii/src/elements/icon/main.css";
 @import "musubii/src/elements/button/main.css";
 @import "musubii/src/elements/form/main.css";
-@import "musubii/src/elements/form/select.css";
 @import "musubii/src/elements/form/label.css";
-@import "musubii/src/elements/form/radio.css";
 @import "musubii/src/elements/form/checkbox.css";
+@import "musubii/src/utilities/display/main.css";
+@import "musubii/src/utilities/display/desktop.css";
+@import "musubii/src/utilities/flex/main.css";
+@import "musubii/src/utilities/space/main.css";
+@import "musubii/src/utilities/margin/main.css";
+@import "musubii/src/utilities/negative/main.css";
+@import "musubii/src/utilities/padding/main.css";
+@import "musubii/src/utilities/size/main.css";
 
 :root {
-  --pj-scrollbar-width: 0px;
-  --pj-app-max-width: 540px;
-  --pj-app-offset: 16px;
-  --pj-app-slide: 32px;
-  --pj-fixed-header-height: 63px;
-  --pj-timeline-max-width: 540px;
-  --pj-controller-height: 42px;
-  --pj-color-accent: #7c899c;
   --theme-tx-2: #101010;
   --theme-tx-3: #6a6a71;
   --theme-bg-1: #fcfcfc;
@@ -27,82 +27,26 @@
   --theme-bd-1: #dbdbdd;
   --theme-bd-2: #c6c6c8;
   --theme-primary: #8766b6;
-}
-
-@media (width >= 1200px) {
-  :root {
-    --pj-app-max-width: 1180px;
-  }
+  --theme-pj-accent: #7c899c;
 }
 
 body {
-  background-color: var(--theme-bg-3);
-}
-
-.app-stage {
-  position: relative;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto 1fr;
-  min-height: 100vh;
-}
-
-.app-contents {
   background-color: var(--theme-bg-2);
 }
 
-.app-contents-container {
-  transition: opacity 0.4s ease-in-out, translate 0.4s ease-in-out,
-    display 0.4s allow-discrete;
+.app-contents {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr;
+  max-width: 780px;
+  min-height: 100vh;
+  margin: 0 auto;
 }
 
-.app-contents-container:not(.is-active) {
-  display: none;
-  translate: 0 32px;
-  opacity: 0;
-}
-
-@starting-style {
-  .app-contents-container {
-    translate: 0 32px;
-    opacity: 0;
+@media (992px <= width) {
+  .app-contents {
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
   }
-}
-
-@media (width >= 1200px) {
-  .app-contents-grid {
-    display: grid;
-    grid-template-columns: 1fr var(--pj-timeline-max-width) 1fr;
-    gap: calc(var(--pj-app-offset) / 2);
-    max-width: var(--pj-app-max-width);
-    margin: 0 auto;
-    padding: 0 16px;
-  }
-}
-
-@media (width < 1200px) {
-  .app-aside {
-    display: none;
-  }
-}
-
-.app-aside-container {
-  position: sticky;
-  top: calc(var(--pj-fixed-header-height) + var(--pj-app-offset));
-  margin-top: var(--pj-app-offset);
-  border: 1px solid var(--theme-bd-1);
-  border-radius: 6px;
-  overflow: hidden;
-  transition: top 0.12s ease-in-out;
-}
-
-.app-aside-contents {
-  max-height: calc(
-    100svh - var(--pj-fixed-header-height) - var(--pj-app-offset) * 2
-  );
-  overflow-y: auto;
-}
-
-.app-aside-contents .info-links {
-  background-color: var(--theme-bg-3);
 }

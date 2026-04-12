@@ -5,9 +5,11 @@ import "./index.css"
 
 export function ComponentTagcloud({
   list,
+  selectedIds,
   onToggle,
 }: {
   list: Term[]
+  selectedIds: string[]
   onToggle: (id: string) => void
 }) {
   return (
@@ -15,12 +17,15 @@ export function ComponentTagcloud({
       {list.map((term, index) => (
         <label
           key={index}
-          className={clsx("button is-outline", term.filter && "is-active")}
+          className={clsx(
+            "button is-outline",
+            selectedIds.includes(term.id) && "is-active",
+          )}
         >
           <input
             className="input"
             type="checkbox"
-            checked={term.filter}
+            checked={selectedIds.includes(term.id)}
             onChange={() => onToggle(term.id)}
           />
           <span className="checkbox" />

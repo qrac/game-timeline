@@ -3,15 +3,15 @@ import { clsx } from "clsx"
 import { format } from "date-fns"
 import { BiCaretRight, BiCaretLeft } from "react-icons/bi"
 
-import type { Item, Term, Setting } from "../../types"
+import type { Item, Term } from "../../types"
 import "./index.css"
 
 export function ComponentItem({
   item,
-  setting,
+  tagList,
 }: {
   item: Item
-  setting: Setting
+  tagList: Term[]
 }) {
   const { name, date, category, tags, labels } = item
 
@@ -32,20 +32,16 @@ export function ComponentItem({
         <div
           className={clsx(
             "item-bar",
-            tags.length > 0 && tags.map((tag) => `is-accent-${tag}`)
+            tags.length > 0 && tags.map((tag) => `is-accent-${tag}`),
           )}
         />
       )}
       <div className="item-content">
-        <h3 className="item-name">{name}</h3>
-        <div className="item-info">
-          {labels.length > 0 && (
-            <ItemLabels labels={labels} setting={setting} />
-          )}
-          <time className="item-date" dateTime={dateTime}>
-            {dateStr}
-          </time>
-        </div>
+        {labels.length > 0 && <ItemLabels labels={labels} tagList={tagList} />}
+        <span className="item-name">{name}</span>
+        <time className="item-date" dateTime={dateTime}>
+          {dateStr}
+        </time>
       </div>
     </div>
   )
@@ -53,12 +49,12 @@ export function ComponentItem({
 
 function ItemLabels({
   labels,
-  setting,
+  tagList,
 }: {
   labels: string[]
-  setting: Setting
+  tagList: Term[]
 }) {
-  const { tagList, fullOpenLabels } = setting
+  const fullOpenLabels = false
   const isMulti = labels.length > 1 && labels.includes("multi")
   const filteredLabels = isMulti
     ? labels.filter((label) => label !== "multi")
